@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+._*
+
+# Trình soạn thảo
+.vscode/
+.idea/
+*.swp
+
+# Node (chỉ dùng khi chạy `npx serve` để xem thử — không cần đưa lên repo)
+node_modules/

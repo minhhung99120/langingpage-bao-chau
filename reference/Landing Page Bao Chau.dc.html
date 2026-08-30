@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-gradient-start:#F0F8FD;
+  --bg-gradient-end:#D6EBFA;
+  --heading-gradient-start:#1E6FB5;
+  --heading-gradient-end:#072644;
+  --color-navy:#072644;
+  --color-white:#FFFFFF;
+  --color-accent-badge:#B8860B;
+  --color-body:#3E5A75;
+  --color-hairline:#D6E4F0;
+  --radius-button:10px;
+  --radius-card:14px;
+  --transition-base:200ms cubic-bezier(0.22,1,0.36,1);
+  --transition-image-zoom:400ms cubic-bezier(0.22,1,0.36,1);
+  --shell:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--color-white);color:var(--color-body);font-family:'Be Vietnam Pro',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1E6FB5;text-decoration:none}
+a:hover{color:var(--color-navy)}
+:focus-visible{outline:2px solid #1E6FB5;outline-offset:2px}
+@keyframes bc-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.82)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:1ms!important}}
+</style>
+</helmet>
+
+<div style="font-family:'Be Vietnam Pro',system-ui,sans-serif;color:var(--color-body);background:var(--color-white);overflow-x:clip">
+
+<!-- HEADER (STICKY) -->
+<header style="position:sticky;top:0;z-index:60;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--color-hairline)">
+  <div style="max-width:var(--shell);margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:nowrap">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;flex:0 0 auto">
+      <img src="img/logo-bao-chau.png" alt="Logo Bảo Châu" width="128" height="96" fetchpriority="high" decoding="async" style="display:block;height:clamp(34px,4vw,42px);width:auto">
+      <span style="display:grid;gap:1px">
+        <span style="font-size:20px;font-weight:700;letter-spacing:-0.02em;line-height:1.1;color:var(--color-navy)">Bảo Châu</span>
+        <span style="font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#7A8EA3">Đào tạo lái xe</span>
+      </span>
+    </a>
+    <nav style="display:flex;align-items:center;gap:18px;margin-left:auto;flex-wrap:nowrap">
+      <a href="#hoc-phi" style="font-size:15px;font-weight:500;color:var(--color-navy);background-image:linear-gradient(#072644,#072644);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1.5px;transition:background-size var(--transition-base);display: {{ navLinkDisplay }}" style-hover="background-size:100% 1.5px">Học phí</a>
+      <a href="#lo-trinh" style="font-size:15px;font-weight:500;color:var(--color-navy);background-image:linear-gradient(#072644,#072644);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1.5px;transition:background-size var(--transition-base);display: {{ navLinkDisplay }}" style-hover="background-size:100% 1.5px">Lộ trình</a>
+      <a href="#cau-hoi" style="font-size:15px;font-weight:500;color:var(--color-navy);background-image:linear-gradient(#072644,#072644);background-repeat:no-repeat;background-position:0 100%;background-size:0% 1.5px;transition:background-size var(--transition-base);display: {{ navLinkDisplay }}" style-hover="background-size:100% 1.5px">Câu hỏi</a>
+      <a href="tel:0378999120" style="font-size:15px;font-weight:600;color:var(--color-navy);align-items:center;gap:6px;display: {{ hotlineDisplay }}" style-hover="color:#1E6FB5">0378.999.120</a>
+      <a href="#dang-ky" style="display:inline-flex;align-items:center;justify-content:center;background:var(--color-navy);color:var(--color-white);font-size:15px;font-weight:600;padding:12px 22px;border-radius:var(--radius-button);box-shadow:0 6px 16px rgba(7,38,68,0.18);transition:transform var(--transition-base),filter var(--transition-base),box-shadow var(--transition-base)" style-hover="filter:brightness(1.14);transform:scale(1.02);box-shadow:0 10px 24px rgba(7,38,68,0.26);color:#FFFFFF" style-active="transform:scale(0.97)">Nhận tư vấn</a>
+    </nav>
+  </div>
+</header>
+
+<!-- KHỐI 1: HERO -->
+<section id="top" data-hero="1" data-screen-label="Khối 1 — Hero" style="position:relative;overflow:hidden;background:linear-gradient(135deg,var(--bg-gradient-start),var(--bg-gradient-end))">
+  <div data-parallax="0.14" style="position:absolute;left:0;right:0;top:-12%;height:124%;background:radial-gradient(60% 55% at 78% 30%,rgba(255,255,255,0.75),rgba(255,255,255,0) 70%),linear-gradient(135deg,rgba(30,111,181,0.08),rgba(7,38,68,0.05));will-change:transform;pointer-events:none"></div>
+  <div style="position:relative;max-width:var(--shell);margin:0 auto;padding:clamp(30px,6vw,84px) 22px clamp(38px,6vw,88px);display:grid;gap:clamp(22px,4vw,56px);align-items:center;grid-template-columns: {{ heroCols }};grid-template-areas: {{ heroAreas }}">
+    <div data-reveal="1" style="grid-area:hero-text;display:grid;grid-template-columns:minmax(0,1fr);gap:22px;max-width:560px;min-width:0">
+      <h1 style="margin:0;font-size:clamp(32px,5vw,52px);line-height:1.22;padding-top:0.06em;font-weight:700;letter-spacing:-0.025em;color:var(--color-navy)">
+        <span style="background:linear-gradient(135deg,var(--heading-gradient-start),var(--heading-gradient-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Học lái ô tô Bảo Châu</span><br>
+        <span style="background:linear-gradient(135deg,var(--heading-gradient-start),var(--heading-gradient-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Hơn cả một khoá học</span>
+      </h1>
+      <p style="margin:0;font-size:clamp(16px,1.5vw,18.5px);line-height:1.7;color:#2F506F;text-align:justify;text-justify:inter-word;">10+ năm tư vấn và đào tạo hơn 10.000 học viên tại Hà Nội - Bảo Châu hướng đến trải nghiệm học tập chất lượng, tiên tiến. Chung tay xây dựng cộng đồng lái xe an toàn, văn minh.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;max-width:480px;min-width:0">
+        <div style="background:var(--color-white);border:1px solid #C9E1F4;border-radius:12px;padding:12px 14px;transition:transform var(--transition-base),box-shadow var(--transition-base),border-color var(--transition-base)" style-hover="transform:translateY(-3px);border-color:#1E6FB5;box-shadow:0 12px 26px rgba(7,38,68,0.16)">
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-navy)">Ưu đãi tháng này</div>
+          <div style="font-size:20px;font-weight:700;color:var(--color-navy);margin-top:3px">Giảm 1.000.000đ</div>
+        </div>
+        <div style="background:var(--color-white);border:1px solid #C9E1F4;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:9px;transition:transform var(--transition-base),box-shadow var(--transition-base),border-color var(--transition-base)" style-hover="transform:translateY(-3px);border-color:#1E6FB5;box-shadow:0 12px 26px rgba(7,38,68,0.16)">
+          <span style="width:8px;height:8px;border-radius:50%;background:#1E6FB5;animation:bc-dot 1.6s ease-in-out infinite;flex:0 0 auto"></span>
+          <span data-slot="1" style="font-size:15px;font-weight:600;color:var(--color-navy);font-variant-numeric:tabular-nums;transition:opacity var(--transition-base)">{{ slotsLabel }}</span>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="1" data-reveal-delay="120" style="grid-area:hero-media;display:grid;gap:14px;justify-items:center">
+      <div onPointerDown="{{ stackDown }}" onPointerUp="{{ stackUp }}" onPointerCancel="{{ stackUp }}" onMouseEnter="{{ stackEnter }}" onMouseLeave="{{ stackLeave }}" style="position:relative;width:100%;aspect-ratio:4/3;padding-top:20px;cursor:grab;touch-action:pan-y;user-select:none">
+        <div style="position:absolute;left:0;right:0;top:20px;bottom:0;overflow:hidden;border-radius:var(--radius-card);box-shadow:0 24px 60px rgba(7,38,68,0.18);transition:transform 420ms cubic-bezier(0.22,1,0.36,1),opacity 420ms cubic-bezier(0.22,1,0.36,1);transform: {{ s0t }};opacity: {{ s0o }};z-index: {{ s0z }}">
+          <img src="img/hero-giao-vien-hoc-vien.jpg" alt="Giáo viên Bảo Châu ngồi ghế phụ hướng dẫn học viên đang cầm vô-lăng" fetchpriority="high" decoding="async" width="1200" height="900" style="display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--transition-image-zoom);transform: {{ s0img }}">
+        </div>
+        <div style="position:absolute;left:0;right:0;top:20px;bottom:0;overflow:hidden;border-radius:var(--radius-card);box-shadow:0 24px 60px rgba(7,38,68,0.18);transition:transform 420ms cubic-bezier(0.22,1,0.36,1),opacity 420ms cubic-bezier(0.22,1,0.36,1);transform: {{ s1t }};opacity: {{ s1o }};z-index: {{ s1z }}">
+          <img src="img/hero-huong-dan-can-so.jpg" alt="Giáo viên chỉ cách chuyển cần số trên xe tập lái" loading="lazy" decoding="async" width="1200" height="900" style="display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--transition-image-zoom);transform: {{ s1img }}">
+        </div>
+        <div style="position:absolute;left:0;right:0;top:20px;bottom:0;overflow:hidden;border-radius:var(--radius-card);box-shadow:0 24px 60px rgba(7,38,68,0.18);transition:transform 420ms cubic-bezier(0.22,1,0.36,1),opacity 420ms cubic-bezier(0.22,1,0.36,1);transform: {{ s2t }};opacity: {{ s2o }};z-index: {{ s2z }}">
+          <img src="img/hero-chan-ga-chan-phanh.jpg" alt="Học viên đặt chân lên chân phanh và chân ga trong buổi học vỡ" loading="lazy" decoding="async" width="1200" height="900" style="display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--transition-image-zoom);transform: {{ s2img }}">
+        </div>
+        <button type="button" aria-label="Ảnh trước" onClick="{{ stackPrev }}" style="position:absolute;left:10px;top:calc(50% + 10px);transform:translateY(-50%);z-index:6;padding:6px 10px;border:0;background:transparent;color:rgba(255,255,255,0.9);font-size:34px;font-weight:400;line-height:1;cursor:pointer;text-shadow:0 2px 10px rgba(7,38,68,0.45);align-items:center;justify-content:center;transition:opacity var(--transition-base);opacity: {{ arrowOpacity }};display: {{ dotsDisplay }}" style-hover="opacity:1">‹</button>
+        <button type="button" aria-label="Ảnh sau" onClick="{{ stackNext }}" style="position:absolute;right:10px;top:calc(50% + 10px);transform:translateY(-50%);z-index:6;padding:6px 10px;border:0;background:transparent;color:rgba(255,255,255,0.9);font-size:34px;font-weight:400;line-height:1;cursor:pointer;text-shadow:0 2px 10px rgba(7,38,68,0.45);align-items:center;justify-content:center;transition:opacity var(--transition-base);opacity: {{ arrowOpacity }};display: {{ dotsDisplay }}" style-hover="opacity:1">›</button>
+        <div style="position:absolute;left:0;right:0;bottom:12px;z-index:5;justify-content:center;align-items:center;gap:6px;display: {{ dotsDisplay }}">
+          <button type="button" aria-label="Ảnh 1" onClick="{{ goStack0 }}" style="height:6px;padding:0;border:0;border-radius:99px;cursor:pointer;transition:all var(--transition-base);background: {{ dot0 }};width: {{ dot0w }}" style-hover="opacity:1"></button>
+          <button type="button" aria-label="Ảnh 2" onClick="{{ goStack1 }}" style="height:6px;padding:0;border:0;border-radius:99px;cursor:pointer;transition:all var(--transition-base);background: {{ dot1 }};width: {{ dot1w }}" style-hover="opacity:1"></button>
+          <button type="button" aria-label="Ảnh 3" onClick="{{ goStack2 }}" style="height:6px;padding:0;border:0;border-radius:99px;cursor:pointer;transition:all var(--transition-base);background: {{ dot2 }};width: {{ dot2w }}" style-hover="opacity:1"></button>
+        </div>
+      </div>
+    </div>
+    <div style="grid-area:hero-form">
+      <dc-import name="FormDangKy" lead-api-url="{{ leadApiUrl }}" form-location="Hero" hint-size="100%,360px"></dc-import>
+    </div>
+  </div>
+</section>
+
+<!-- KHỐI 1.5: DẢI SỐ LIỆU -->
+<section data-screen-label="Khối 1.5 — Dải số liệu" style="background:var(--color-white)">
+  <div style="max-width:var(--shell);margin:0 auto;padding:clamp(32px,5vw,64px) 22px">
+    <div data-reveal="1" style="height:5px;border-radius:99px;background:linear-gradient(90deg,var(--bg-gradient-start),var(--bg-gradient-end));margin-bottom:22px"></div>
+    <div data-reveal="1" style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-navy);margin-bottom:22px">Bảo Châu trong con số</div>
+    <div style="display:grid;grid-template-columns: {{ statCols }};gap:clamp(14px,1.8vw,24px)">
+      <div data-reveal="1" style="display:grid;gap:8px;align-content:start">
+        <div style="display:flex;align-items:flex-end;height:clamp(34px,4.1vw,46px)"><div data-count="10000" data-suffix="+" style="font-size:clamp(30px,3.6vw,40px);font-weight:700;letter-spacing:-0.02em;color:var(--color-navy);line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap">10.000+</div></div>
+        <div style="font-size:15px;line-height:1.55;color:#4A6480">Học viên đã học lái tại Bảo Châu</div>
+      </div>
+      <div data-reveal="1" data-reveal-delay="80" style="display:grid;gap:8px;align-content:start">
+        <div style="display:flex;align-items:flex-end;height:clamp(34px,4.1vw,46px)"><div data-count="10" data-suffix="+" style="font-size:clamp(30px,3.6vw,40px);font-weight:700;letter-spacing:-0.02em;color:var(--color-navy);line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap">10+</div></div>
+        <div style="font-size:15px;line-height:1.55;color:#4A6480">Năm Tư vấn Tuyển sinh và Đào tạo lái xe</div>
+      </div>
+      <div data-reveal="1" data-reveal-delay="160" style="display:grid;gap:8px;align-content:start">
+        <div style="display:flex;align-items:flex-end;height:clamp(34px,4.1vw,46px)"><div style="font-size:clamp(30px,3.6vw,40px);font-weight:700;letter-spacing:-0.02em;color:var(--color-navy);line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap">10+</div></div>
+        <div style="font-size:15px;line-height:1.55;color:#4A6480">Sân tập trải khắp địa bàn Hà Nội</div>
+      </div>
+      <div data-reveal="1" data-reveal-delay="240" style="display:grid;gap:8px;align-content:start">
+        <div style="display:flex;align-items:flex-end;height:clamp(34px,4.1vw,46px)"><div style="font-size:clamp(30px,3.6vw,40px);font-weight:700;letter-spacing:-0.02em;color:var(--color-navy);line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap">1 – 1 – 1</div></div>
+        <div style="font-size:15px;line-height:1.55;color:#4A6480">1 thầy – 1 trò – 1 xe</div>
+      </div>
+      <div data-reveal="1" data-reveal-delay="320" style="display:grid;gap:8px;align-content:start;grid-column: {{ statLastSpan }}">
+        <div style="display:flex;align-items:flex-end;height:clamp(34px,4.1vw,46px)"><div style="font-size:clamp(30px,3.6vw,40px);font-weight:700;letter-spacing:-0.02em;color:var(--color-navy);line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap">Hợp đồng</div></div>
+        <div style="font-size:15px;line-height:1.55;color:#4A6480">Hợp đồng đào tạo rõ ràng, minh bạch</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KHỐI 2: VẤN ĐỀ NGÀNH -->
+<section data-screen-label="Khối 2 — Vấn đề ngành" style="background:linear-gradient(135deg,var(--bg-gradient-start),var(--bg-gradient-end))">
+  <div style="max-width:860px;margin:0 auto;padding:clamp(40px,7vw,96px) 22px">
+    <div data-reveal="1" style="display:grid;gap:20px">
+      <h2 style="margin:0;font-size:clamp(26px,3.6vw,40px);line-height:1.32;padding-top:0.08em;font-weight:700;letter-spacing:-0.025em;background:linear-gradient(135deg,var(--heading-gradient-start),var(--heading-gradient-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">“Trọn gói” - nhưng trọn gói tới đâu?</h2>
+      <p style="margin:0;font-size:clamp(15.5px,1.6vw,18px);line-height:1.7;color:#2F506F;text-align:justify;text-justify:inter-word;">Gần như trung tâm nào cũng quảng cáo trọn gói. Vấn đề là chữ “trọn gói” không có định nghĩa chung, nên mỗi nơi một kiểu. Nộp hồ sơ xong mới nghe tới: tiền xăng xe phụ thu do giá xăng tăng, tiền bến bãi, tiền bồi dưỡng thầy, tiền thi chứng chỉ,... Mỗi khoản vài trăm nghìn, nghe không lớn nhưng cộng lại thì con số cuối cùng đã khác hẳn con số ban đầu.</p>
+      <p style="margin:0;font-size:clamp(16px,1.7vw,19px);line-height:1.6;font-weight:700;color:#B42318">Và thời điểm phát hiện ra thường là lúc khó lùi nhất: hồ sơ đã nộp, đã đi học vài buổi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KHỐI 3: CHÍNH SÁCH 3 KHÔNG -->
+<section data-screen-label="Khối 3 — Chính sách 3 Không" style="background:var(--color-white)">
+  <div style="max-width:var(--shell);margin:0 auto;padding:clamp(40px,7vw,96px) 22px;display:grid;gap:clamp(40px,5vw,68px)">
+    <div data-reveal="1" style="max-width:100%;display:grid;gap:14px">
+      <div style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-navy)">Chính sách 3 Không</div>
+      <h2 style="margin: 0; font-size: clamp(26px,3.6vw,40px); line-height: 1.32; padding-top: 0.08em; font-weight: 700; letter-spacing: -0.025em; background: linear-gradient(135deg,var(--heading-gradient-start),var(--heading-gradient-end)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; margin-top: -9px">Ở Bảo Châu, con số lúc ký là con số cuối cùng</h2>
+    </div>
+
+    <!-- Khối 3A: 3 ô KHÔNG -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(16px,2vw,24px)">
+      <div data-reveal="1" style="background:var(--color-white);border:1px solid #C9E1F4;border-radius:var(--radius-card);padding:18px;display:grid;gap:14px">
+        <div style="position:relative;overflow:hidden;border-radius:10px;aspect-ratio:16/10">
+          <img src="img/khoi3-tu-van-bang-gia.jpg" alt="Tư vấn viên Bảo Châu giải thích bảng học phí cho học viên tại văn phòng" loading="lazy" decoding="async" width="760" height="475" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--transition-image-zoom)" style-hover="transform:scale(1.05)">
+        </div>
+        <div style="display:grid;gap:7px">
+          <div style="font-size:21px;font-weight:700;color:var(--color-navy);letter-spacing:-0.02em;line-height:1.3">KHÔNG phát sinh chi phí ngầm</div>
+          <p style="margin:0;font-size:15px;line-height:1.65;color:#4A6480;text-align:justify;text-justify:inter-word;">Học phí TRỌN GÓI đã gồm hồ sơ đăng ký, khám sức khoẻ, đào tạo lý thuyết, học cabin, thực hành và tổ chức kiểm tra hết môn.</p>
+        </div>
+      </div>
+      <div data-reveal="1" data-reveal-delay="130" style="background:var(--color-white);border:1px solid #C9E1F4;border-radius:var(--radius-card);padding:18px;display:grid;gap:14px">
+        <div style="position:relative;overflow:hidden;border-radius:10px;aspect-ratio:16/10">
+          <img src="img/khoi3-xe-tai-san.jpg" alt="Xe tập lái Bảo Châu và giáo viên tại sân tập" loading="lazy" decoding="async" width="760" height="475" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--transition-image-zoom)" style-hover="transform:scale(1.05)">
+        </div>
+        <div style="display:grid;gap:7px">
+          <div style="font-size:21px;font-weight:700;color:var(--color-navy);letter-spacing:-0.02em;line-height:1.3">KHÔNG phụ phí xăng xe, bến bãi</div>
+          <p style="margin:0;font-size:15px;line-height:1.65;color:#4A6480;text-align:justify;text-justify:inter-word;">Học viên không phải trả thêm cho mỗi buổi ra sân, cũng không phải trả tiền đỗ xăng xe tập. Công thầy và xăng xe đã nằm trong học phí.</p>
+        </div>
+      </div>
+      <div data-reveal="1" data-reveal-delay="260" style="background:var(--color-white);border:1px solid #C9E1F4;border-radius:var(--radius-card);padding:18px;display:grid;gap:14px">
+        <div style="position:relative;overflow:hidden;border-radius:10px;aspect-ratio:16/10">
+          <img src="img/khoi3-giao-vien-hoc-vien.jpg" alt="Giáo viên trao đổi với học viên bên cạnh xe tập lái tại sân" loading="lazy" decoding="async" width="760" height="475" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--transition-image-zoom)" style-hover="transform:scale(1.05)">
+        </div>
+        <div style="display:grid;gap:7px">
+          <div style="font-size:21px;font-weight:700;color:var(--color-navy);letter-spacing:-0.02em;line-height:1.3">KHÔNG tiền bồi dưỡng, lót tay giáo viên</div>
+          <p style="margin:0;font-size:15px;line-height:1.65;color:#4A6480;text-align:justify;text-justify:inter-word;">Giáo viên tại Bảo Châu được thưởng theo đánh giá của chính học viên — nên tận tâm là quyền lợi của thầy, không phải thứ học viên phải mua thêm.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Khối 3B: hợp đồng thật -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,3.5vw,48px);align-items:center">
+      <div data-reveal="1" style="position:relative;overflow:hidden;border-radius:var(--radius-card);aspect-ratio:4/3;box-shadow:0 18px 44px rgba(7,38,68,0.14)">
+        <img src="img/khoi3-hop-dong.jpg" alt="Học viên ký hợp đồng đào tạo lái xe của Bảo Châu" loading="lazy" decoding="async" width="1100" height="825" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--transition-image-zoom)" style-hover="transform:scale(1.05)">
+      </div>
+      <div data-reveal="1" data-reveal-delay="120" style="display:grid;gap:18px">
+        <h3 style="margin:0;font-size:clamp(19px,2.05vw,25px);line-height:1.35;font-weight:700;letter-spacing:-0.02em;color:var(--color-navy)">Ba điều này không chỉ nằm trong quảng cáo<br>CHÚNG NẰM TRONG HỢP ĐỒNG!</h3>
+        <p style="margin:0;font-size:15px;line-height:1.7;color:#4A6480;text-align:justify;text-justify:inter-word;">Hợp đồng đào tạo bằng văn bản được ký trước khi học viên vào lớp, ghi rõ học phí, lộ trình học và quyền lợi của học viên.</p>
+        <a href="#dang-ky" style="justify-self:start;display:inline-flex;align-items:center;justify-content:center;background:var(--color-navy);color:var(--color-white);font-size:16px;font-weight:600;padding:14px 24px;border-radius:var(--radius-button);box-shadow:0 6px 16px rgba(7,38,68,0.18);transition:transform var(--transition-base),filter var(--transition-base),box-shadow var(--transition-base)" style-hover="filter:brightness(1.14);transform:scale(1.02);box-shadow:0 10px 24px rgba(7,38,68,0.26);color:#FFFFFF" style-active="transform:scale(0.97)">Xem trước hợp đồng khi tư vấn</a>
+      </div>
+    </div>
+
+    <!-- Khối 3C: đã bao gồm / chưa bao gồm -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(16px,2vw,24px)">
+      <div data-reveal="1" style="background:linear-gradient(135deg,var(--bg-gradient-start),var(--bg-gradient-end));border-radius:var(--radius-card);padding:clamp(20px,2.5vw,28px);display:grid;gap:14px;align-content:start">
+        <div style="font-size:19px;font-weight:700;color:var(--color-navy)">Đã bao gồm trong học phí</div>
+        <ul style="margin:0;padding:0;list-style:none;display:grid;gap:11px;font-size:15.5px;line-height:1.6;color:#2F506F">
+          <li style="display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start"><span aria-hidden="true" style="color:#1E6FB5;font-weight:700;line-height:1.5">✓</span><span>Hồ sơ mở lớp khai giảng</span></li>
+          <li style="display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start"><span aria-hidden="true" style="color:#1E6FB5;font-weight:700;line-height:1.5">✓</span><span>Phí khám sức khỏe</span></li>
+          <li style="display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start"><span aria-hidden="true" style="color:#1E6FB5;font-weight:700;line-height:1.5">✓</span><span>Học lý thuyết và tổ chức thi hết môn</span></li>
+          <li style="display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start"><span aria-hidden="true" style="color:#1E6FB5;font-weight:700;line-height:1.5">✓</span><span>Quản lý hồ sơ, chăm sóc học viên</span></li>
+          <li style="display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start"><span aria-hidden="true" style="color:#1E6FB5;font-weight:700;line-height:1.5">✓</span><span>Học vỡ, học sa hình, tổng ôn</span></li>
+          <li style="display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start"><span aria-hidden="true" style="color:#1E6FB5;font-weight:700;line-height:1.5">✓</span><span>Chạy DAT đường trường đủ số km theo quy định</span></li>
+          <li style="display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start"><span aria-hidden="true" style="color:#1E6FB5;font-weight:700;line-height:1.5">✓</span><span>Công thầy, xăng xe</span></li>
+        </ul>
+      </div>
+      <div data-reveal="1" data-reveal-delay="120" style="background:var(--color-white);border:1px solid var(--color-hairline);border-radius:var(--radius-card);padding:clamp(20px,2.5vw,28px);display:grid;gap:14px;align-content:start">
+        <div style="font-size:19px;font-weight:700;color:var(--color-navy)">Chưa bao gồm</div>
+        <ul style="margin:0;padding:0;list-style:none;display:grid;gap:13px;font-size:15.5px;line-height:1.65;color:#4A6480;text-align:justify;text-justify:inter-word;">
+          <li><strong style="color:var(--color-navy)">Lệ phí thi sát hạch: 645.000đ</strong> — nộp trực tiếp cho đơn vị tổ chức thi theo quy định Nhà nước. Bảo Châu không thu khoản này. Gói Cao cấp đã bao gồm.</li>
+          <li><strong style="color:var(--color-navy)">Nếu thi trượt: từ 700.000đ</strong> — phí đăng ký thi lại 700.000đ + phí phần trượt: lý thuyết 100.000đ · sa hình 350.000đ · đường trường 80.000đ.</li>
+          <li><strong style="color:var(--color-navy)">Bổ túc thực hành thêm: 350.000đ/giờ</strong> — chỉ khi muốn học thêm ngoài số giờ của gói, tự chọn, không bắt buộc.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KHỐI 5: HỌC PHÍ 3 HẠNG -->
+<section id="hoc-phi" data-screen-label="Khối 5 — Học phí" style="scroll-margin-top:88px;background:linear-gradient(135deg,var(--bg-gradient-start),var(--bg-gradient-end))">
+  <div style="max-width:var(--shell);margin:0 auto;padding:clamp(40px,7vw,96px) 22px;display:grid;gap:clamp(26px,3vw,38px)">
+    <div data-reveal="1" style="display:grid;gap:14px;max-width:720px">
+      <h2 style="margin:0;font-size:clamp(26px,3.6vw,40px);line-height:1.32;padding-top:0.08em;font-weight:700;letter-spacing:-0.025em;background:linear-gradient(135deg,var(--heading-gradient-start),var(--heading-gradient-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Học phí niêm yết công khai</h2>
+      <p style="margin:0;font-size:clamp(15px,1.5vw,17px);line-height:1.65;color:#2F506F;text-align:justify;text-justify:inter-word;">Trọn gói từ khi đăng ký đến lúc cầm bằng trên tay!</p>
+    </div>
+
+    <div data-reveal="1" style="display:grid;gap:22px">
+      <div role="tablist" aria-label="Chọn hạng bằng" style="position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:rgba(255,255,255,0.7);border:1px solid #C9E1F4;border-radius:12px;padding:4px;max-width:520px">
+        <div aria-hidden="true" style="position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:9px;background:var(--color-navy);box-shadow:0 6px 16px rgba(7,38,68,0.22);transition:transform 250ms cubic-bezier(0.22,1,0.36,1);transform: {{ tabIndicator }}"></div>
+        <button type="button" role="tab" aria-selected="{{ isTabA }}" onClick="{{ setTabA }}" style="position:relative;z-index:1;font-family:inherit;font-size:15px;font-weight:600;padding:12px 8px;border:0;border-radius:9px;background:transparent;cursor:pointer;transition:color var(--transition-base);color: {{ tabAColor }}">B số tự động</button>
+        <button type="button" role="tab" aria-selected="{{ isTabB }}" onClick="{{ setTabB }}" style="position:relative;z-index:1;font-family:inherit;font-size:15px;font-weight:600;padding:12px 8px;border:0;border-radius:9px;background:transparent;cursor:pointer;transition:color var(--transition-base);color: {{ tabBColor }}">B số sàn</button>
+        <button type="button" role="tab" aria-selected="{{ isTabC }}" onClick="{{ setTabC }}" style="position:relative;z-index:1;font-family:inherit;font-size:15px;font-weight:600;padding:12px 8px;border:0;border-radius:9px;background:transparent;cursor:pointer;transition:color var(--transition-base);color: {{ tabCColor }}">C1</button>
+      </div>
+
+      <!-- Tab B số tự động -->
+      <sc-if value="{{ isTabA }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;gap:22px">
+          <div data-pkg-grid="1" style="display:grid;gap:16px;{{ priceFlow }}">
+            <div style="background:var(--color-white);border:1px solid var(--color-hairline);border-radius:var(--radius-card);padding:22px;display:grid;gap:13px;align-content:start;scroll-snap-align:center;box-shadow:none">
+              <div data-pkg-row="h0" style="display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:24px">
+                <div style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#7A8EA3">Tiết kiệm</div>
+              </div>
+              <div style="font-size:33px;font-weight:700;letter-spacing:-0.025em;color:var(--color-navy);font-variant-numeric:tabular-nums;line-height:1.1">16.000.000đ</div>
+              <div data-pkg-row="h1" style="display:grid">
+                <div data-pkg-row="h1a" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid var(--color-hairline)">
+                  <span style="font-size:13px;letter-spacing:0.01em;color:#7A8EA3">Giờ học thực hành</span>
+                  <span style="font-size:15px;font-weight:700;color:var(--color-navy);font-variant-numeric:tabular-nums;white-space:nowrap">20 giờ</span>
+                </div>
+                <div data-pkg-row="h1b" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid var(--color-hairline)">
+                  <span style="font-size:13px;letter-spacing:0.01em;color:#7A8EA3">Đóng trước vào lớp</span>
+                  <span style="font-size:15px;font-weight:700;color:var(--color-navy);font-variant-numeric:tabular-nums;white-space:nowrap">5.000.000đ</span>
+                </div>
+              </div>
+              <button type="button" onClick="{{ pkgA1Toggle }}" aria-expanded="{{ pkgA1Open }}" style="font-family:inherit;justify-self:start;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0;margin:-6px 0 -4px;border:0;background:none;color:#5B7794;font-size:13.5px;font-weight:600;letter-spacing:0.01em;cursor:pointer;transition:opacity var(--transition-base)" style-hover="opacity:0.65">
+                <span>Chi tiết gói</span>
+                <span aria-hidden="true" style="flex:0 0 auto;font-size:9px;line-height:1;transition:transform 280ms cubic-bezier(0.22,1,0.36,1);transform: {{ pkgA1Icon }}">▼</span>
+              </button>
+              <div style="overflow:hidden;transition:max-height 340ms cubic-bezier(0.22,1,0.36,1),opacity 240ms cubic-bezier(0.22,1,0.36,1);max-height: {{ pkgA1Max }};opacity: {{ pkgA1Op }}">
+                <div style="display:grid">
+                  <div data-pkg-row="r1" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Hồ sơ mở lớp khai giảng</div>
+                  <div data-pkg-row="r2" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Phí khám sức khoẻ</div>
+                  <div data-pkg-row="r3" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Học lý thuyết + thi hết môn lý thuyết/thực hành + quản lý (làm hồ sơ, chụp ảnh, in ảnh, quản lý học viên…)</div>
+                  <div data-pkg-row="r4" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#A8BACB;text-align:center">–</div>
+                  <div data-pkg-row="r5" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480"><strong style="color:var(--color-navy);font-weight:700">Học vỡ:</strong> 01 buổi x 1,5h<br><strong style="color:var(--color-navy);font-weight:700">Học sa hình:</strong> 02 buổi x 1,5h<br>+ 01 buổi tổng ôn x 1,5h</div>
+                  <div data-pkg-row="r6" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#A8BACB;text-align:center">–</div>
+                  <div data-pkg-row="r7" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480"><strong style="color:var(--color-navy);font-weight:700">Chạy DAT:</strong><div style="display:grid;gap:5px;margin-top:6px"><div style="display:grid;grid-template-columns:14px 1fr;gap:8px"><span style="color:#A8BACB">•</span><span>Đủ 710km hạng B số tự động – 14h học</span></div></div></div>
+                  <div data-pkg-row="r8" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#A8BACB;text-align:center">–</div>
+                  <div data-pkg-row="r9" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#A8BACB;text-align:center">–</div>
+                  <div data-pkg-row="r10" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#A8BACB;text-align:center">–</div>
+                  <div data-pkg-row="r11" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#A8BACB;text-align:center">–</div>
+                  <div data-pkg-row="r12" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#A8BACB;text-align:center">–</div>
+                  <div data-pkg-row="r13" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Lệ phí thi sát hạch (645.000đ) — <span style="color:#B42318;font-weight:600">học viên tự nộp tại sân thi sát hạch</span></div>
+                </div>
+              </div>
+            </div>
+            <div style="background:var(--color-navy);border:1px solid var(--color-navy);border-radius:var(--radius-card);padding:22px;display:grid;gap:13px;align-content:start;scroll-snap-align:center;box-shadow:0 20px 48px rgba(7,38,68,0.26)">
+              <div data-pkg-row="h0" style="display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:24px">
+                <div style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9CC3E4">Tiêu chuẩn</div>
+                <div style="font-size:10.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-navy);background:var(--color-accent-badge);padding:4px 8px;border-radius:6px;flex:0 0 auto">Phổ biến nhất</div>
+              </div>
+              <div style="font-size:33px;font-weight:700;letter-spacing:-0.025em;color:var(--color-white);font-variant-numeric:tabular-nums;line-height:1.1">17.500.000đ</div>
+              <div data-pkg-row="h1" style="display:grid">
+                <div data-pkg-row="h1a" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid rgba(255,255,255,0.14)">
+                  <span style="font-size:13px;letter-spacing:0.01em;color:rgba(201,225,244,0.72)">Giờ học thực hành</span>
+                  <span style="font-size:15px;font-weight:700;color:var(--color-white);font-variant-numeric:tabular-nums;white-space:nowrap">22 giờ</span>
+                </div>
+                <div data-pkg-row="h1b" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid rgba(255,255,255,0.14)">
+                  <span style="font-size:13px;letter-spacing:0.01em;color:rgba(201,225,244,0.72)">Đóng trước vào lớp</span>
+                  <span style="font-size:15px;font-weight:700;color:var(--color-white);font-variant-numeric:tabular-nums;white-space:nowrap">5.000.000đ</span>
+                </div>
+              </div>
+              <button type="button" onClick="{{ pkgA2Toggle }}" aria-expanded="{{ pkgA2Open }}" style="font-family:inherit;justify-self:start;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0;margin:-6px 0 -4px;border:0;background:none;color:#9CC3E4;font-size:13.5px;font-weight:600;letter-spacing:0.01em;cursor:pointer;transition:opacity var(--transition-base)" style-hover="opacity:0.65">
+                <span>Chi tiết gói</span>
+                <span aria-hidden="true" style="flex:0 0 auto;font-size:9px;line-height:1;transition:transform 280ms cubic-bezier(0.22,1,0.36,1);transform: {{ pkgA2Icon }}">▼</span>
+              </button>
+              <div style="overflow:hidden;transition:max-height 340ms cubic-bezier(0.22,1,0.36,1),opacity 240ms cubic-bezier(0.22,1,0.36,1);max-height: {{ pkgA2Max }};opacity: {{ pkgA2Op }}">
+                <div style="display:grid">
+                  <div data-pkg-row="r1" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Hồ sơ mở lớp khai giảng sớm. Học sớm, thi sớm trong khoảng 04 tháng</div>
+                  <div data-pkg-row="r2" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Phí khám sức khoẻ</div>
+                  <div data-pkg-row="r3" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Học lý thuyết + thi hết môn lý thuyết/thực hành + quản lý (làm hồ sơ, chụp ảnh, in ảnh, quản lý học viên…)</div>
+                  <div data-pkg-row="r4" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">02h học cabin mô phỏng</div>
+                  <div data-pkg-row="r5" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4"><strong style="color:var(--color-white);font-weight:700">Học vỡ:</strong> 02 buổi x 1,5h<br><strong style="color:var(--color-white);font-weight:700">Học sa hình:</strong> 02 buổi x 1,5h<br>+ 01 buổi tổng ôn x 2h</div>
+                  <div data-pkg-row="r6" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Phí thuê sân tập sa hình</div>
+                  <div data-pkg-row="r7" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4"><strong style="color:var(--color-white);font-weight:700">Chạy DAT:</strong><div style="display:grid;gap:5px;margin-top:6px"><div style="display:grid;grid-template-columns:14px 1fr;gap:8px"><span style="color:rgba(201,225,244,0.45)">•</span><span>Đủ 710km hạng B số tự động – 14h học</span></div><div style="color:#FF9B8F;font-weight:600">Chạy cao tốc + đường tỉnh lộ + đỗ xe ngang dọc thực tế</div></div></div>
+                  <div data-pkg-row="r8" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:rgba(201,225,244,0.45);text-align:center">–</div>
+                  <div data-pkg-row="r9" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:rgba(201,225,244,0.45);text-align:center">–</div>
+                  <div data-pkg-row="r10" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:rgba(201,225,244,0.45);text-align:center">–</div>
+                  <div data-pkg-row="r11" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:rgba(201,225,244,0.45);text-align:center">–</div>
+                  <div data-pkg-row="r12" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:rgba(201,225,244,0.45);text-align:center">–</div>
+                  <div data-pkg-row="r13" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Lệ phí thi sát hạch (645.000đ) — <span style="color:#FF9B8F;font-weight:600">học viên tự nộp tại sân thi sát hạch</span></div>
+                </div>
+              </div>
+            </div>
+            <div style="background:var(--color-white);border:1px solid var(--color-hairline);border-radius:var(--radius-card);padding:22px;display:grid;gap:13px;align-content:start;scroll-snap-align:center;box-shadow:none">
+              <div data-pkg-row="h0" style="display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:24px">
+                <div style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#7A8EA3">Cao cấp</div>
+              </div>
+              <div style="font-size:33px;font-weight:700;letter-spacing:-0.025em;color:var(--color-navy);font-variant-numeric:tabular-nums;line-height:1.1">26.000.000đ</div>
+              <div data-pkg-row="h1" style="display:grid">
+                <div data-pkg-row="h1a" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid var(--color-hairline)">
+                  <span style="font-size:13px;letter-spacing:0.01em;color:#7A8EA3">Giờ học thực hành</span>
+                  <span style="font-size:15px;font-weight:700;color:var(--color-navy);font-variant-numeric:tabular-nums;white-space:nowrap">32 giờ</span>
+                </div>
+                <div data-pkg-row="h1b" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid var(--color-hairline)">
+                  <span style="font-size:13px;letter-spacing:0.01em;color:#7A8EA3">Đóng trước vào lớp</span>
+                  <span style="font-size:15px;font-weight:700;color:var(--color-navy);font-variant-numeric:tabular-nums;white-space:nowrap">15.000.000đ</span>
+                </div>
+              </div>
+              <button type="button" onClick="{{ pkgA3Toggle }}" aria-expanded="{{ pkgA3Open }}" style="font-family:inherit;justify-self:start;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0;margin:-6px 0 -4px;border:0;background:none;color:#5B7794;font-size:13.5px;font-weight:600;letter-spacing:0.01em;cursor:pointer;transition:opacity var(--transition-base)" style-hover="opacity:0.65">
+                <span>Chi tiết gói</span>
+                <span aria-hidden="true" style="flex:0 0 auto;font-size:9px;line-height:1;transition:transform 280ms cubic-bezier(0.22,1,0.36,1);transform: {{ pkgA3Icon }}">▼</span>
+              </button>
+              <div style="overflow:hidden;transition:max-height 340ms cubic-bezier(0.22,1,0.36,1),opacity 240ms cubic-bezier(0.22,1,0.36,1);max-height: {{ pkgA3Max }};opacity: {{ pkgA3Op }}">
+                <div style="display:grid">
+                  <div data-pkg-row="r1" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Hồ sơ mở lớp khai giảng sớm nhất. Đăng ký học ngay, thi sớm trong khoảng 03 tháng</div>
+                  <div data-pkg-row="r2" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Phí khám sức khoẻ</div>
+                  <div data-pkg-row="r3" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Học lý thuyết + thi hết môn lý thuyết/thực hành + quản lý (làm hồ sơ, chụp ảnh, in ảnh, quản lý học viên…)</div>
+                  <div data-pkg-row="r4" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">02h học cabin mô phỏng</div>
+                  <div data-pkg-row="r5" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480"><strong style="color:var(--color-navy);font-weight:700">Học vỡ:</strong> 03 buổi x 2h<br><strong style="color:var(--color-navy);font-weight:700">Học sa hình:</strong> 02 buổi x 2h<br>+ 01 buổi tổng ôn x 2h</div>
+                  <div data-pkg-row="r6" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Phí thuê sân tập sa hình</div>
+                  <div data-pkg-row="r7" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480"><strong style="color:var(--color-navy);font-weight:700">Chạy DAT:</strong><div style="display:grid;gap:5px;margin-top:6px"><div style="display:grid;grid-template-columns:14px 1fr;gap:8px"><span style="color:#A8BACB">•</span><span>Đủ 710km hạng B số tự động – 20h học</span></div><div style="color:#B42318;font-weight:600">Chạy cao tốc + đường tỉnh lộ + đi phố + đường đèo + đỗ xe ngang dọc thực tế</div></div></div>
+                  <div data-pkg-row="r8" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Hỗ trợ học lý thuyết + thi hết môn + cabin</div>
+                  <div data-pkg-row="r9" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Miễn phí 02h tập xe chip</div>
+                  <div data-pkg-row="r10" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Đưa đón đi học từng buổi</div>
+                  <div data-pkg-row="r11" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Đưa đón đi thi từng buổi</div>
+                  <div data-pkg-row="r12" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Miễn phí thi lại (nếu trượt)</div>
+                  <div data-pkg-row="r13" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480"><strong style="color:var(--color-navy);font-weight:700">Đã bao gồm lệ phí thi sát hạch</strong> (645.000đ)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="position:relative;overflow:hidden;border-radius:var(--radius-card);aspect-ratio:21/9">
+            <img src="img/khoi5-xe-vios-so-tu-dong.jpg" alt="Cần số xe số tự động trên xe tập lái hạng B của Bảo Châu" loading="lazy" decoding="async" width="1600" height="686" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--transition-image-zoom)" style-hover="transform:scale(1.05)">
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- Tab B số sàn -->
+      <sc-if value="{{ isTabB }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;gap:22px">
+          <div data-pkg-grid="1" style="display:grid;gap:16px;{{ priceFlow }}">
+            <div style="background:var(--color-white);border:1px solid var(--color-hairline);border-radius:var(--radius-card);padding:22px;display:grid;gap:13px;align-content:start;scroll-snap-align:center;box-shadow:none">
+              <div data-pkg-row="h0" style="display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:24px">
+                <div style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#7A8EA3">Tiết kiệm</div>
+              </div>
+              <div style="font-size:33px;font-weight:700;letter-spacing:-0.025em;color:var(--color-navy);font-variant-numeric:tabular-nums;line-height:1.1">16.500.000đ</div>
+              <div data-pkg-row="h1" style="display:grid">
+                <div data-pkg-row="h1a" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid var(--color-hairline)">
+                  <span style="font-size:13px;letter-spacing:0.01em;color:#7A8EA3">Giờ học thực hành</span>
+                  <span style="font-size:15px;font-weight:700;color:var(--color-navy);font-variant-numeric:tabular-nums;white-space:nowrap">26 giờ</span>
+                </div>
+                <div data-pkg-row="h1b" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid var(--color-hairline)">
+                  <span style="font-size:13px;letter-spacing:0.01em;color:#7A8EA3">Đóng trước vào lớp</span>
+                  <span style="font-size:15px;font-weight:700;color:var(--color-navy);font-variant-numeric:tabular-nums;white-space:nowrap">5.000.000đ</span>
+                </div>
+              </div>
+              <button type="button" onClick="{{ pkgB1Toggle }}" aria-expanded="{{ pkgB1Open }}" style="font-family:inherit;justify-self:start;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0;margin:-6px 0 -4px;border:0;background:none;color:#5B7794;font-size:13.5px;font-weight:600;letter-spacing:0.01em;cursor:pointer;transition:opacity var(--transition-base)" style-hover="opacity:0.65">
+                <span>Chi tiết gói</span>
+                <span aria-hidden="true" style="flex:0 0 auto;font-size:9px;line-height:1;transition:transform 280ms cubic-bezier(0.22,1,0.36,1);transform: {{ pkgB1Icon }}">▼</span>
+              </button>
+              <div style="overflow:hidden;transition:max-height 340ms cubic-bezier(0.22,1,0.36,1),opacity 240ms cubic-bezier(0.22,1,0.36,1);max-height: {{ pkgB1Max }};opacity: {{ pkgB1Op }}">
+                <div style="display:grid">
+                  <div data-pkg-row="r1" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Hồ sơ mở lớp khai giảng</div>
+                  <div data-pkg-row="r2" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Phí khám sức khoẻ</div>
+                  <div data-pkg-row="r3" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Học lý thuyết + thi hết môn lý thuyết/thực hành + quản lý (làm hồ sơ, chụp ảnh, in ảnh, quản lý học viên…)</div>
+                  <div data-pkg-row="r4" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#A8BACB;text-align:center">–</div>
+                  <div data-pkg-row="r5" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480"><strong style="color:var(--color-navy);font-weight:700">Học vỡ:</strong> 01 buổi x 1,5h<br><strong style="color:var(--color-navy);font-weight:700">Học sa hình:</strong> 02 buổi x 1,5h<br>+ 01 buổi tổng ôn x 1,5h</div>
+                  <div data-pkg-row="r6" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#A8BACB;text-align:center">–</div>
+                  <div data-pkg-row="r7" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480"><strong style="color:var(--color-navy);font-weight:700">Chạy DAT:</strong><div style="display:grid;gap:5px;margin-top:6px"><div style="display:grid;grid-template-columns:14px 1fr;gap:8px"><span style="color:#A8BACB">•</span><span>Đủ 810km hạng B số sàn – 20h học</span></div></div></div>
+                  <div data-pkg-row="r8" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#A8BACB;text-align:center">–</div>
+                  <div data-pkg-row="r9" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#A8BACB;text-align:center">–</div>
+                  <div data-pkg-row="r10" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#A8BACB;text-align:center">–</div>
+                  <div data-pkg-row="r11" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#A8BACB;text-align:center">–</div>
+                  <div data-pkg-row="r12" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#A8BACB;text-align:center">–</div>
+                  <div data-pkg-row="r13" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Lệ phí thi sát hạch (645.000đ) — <span style="color:#B42318;font-weight:600">học viên tự nộp tại sân thi sát hạch</span></div>
+                </div>
+              </div>
+            </div>
+            <div style="background:var(--color-navy);border:1px solid var(--color-navy);border-radius:var(--radius-card);padding:22px;display:grid;gap:13px;align-content:start;scroll-snap-align:center;box-shadow:0 20px 48px rgba(7,38,68,0.26)">
+              <div data-pkg-row="h0" style="display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:24px">
+                <div style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9CC3E4">Tiêu chuẩn</div>
+                <div style="font-size:10.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-navy);background:var(--color-accent-badge);padding:4px 8px;border-radius:6px;flex:0 0 auto">Phổ biến nhất</div>
+              </div>
+              <div style="font-size:33px;font-weight:700;letter-spacing:-0.025em;color:var(--color-white);font-variant-numeric:tabular-nums;line-height:1.1">18.100.000đ</div>
+              <div data-pkg-row="h1" style="display:grid">
+                <div data-pkg-row="h1a" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid rgba(255,255,255,0.14)">
+                  <span style="font-size:13px;letter-spacing:0.01em;color:rgba(201,225,244,0.72)">Giờ học thực hành</span>
+                  <span style="font-size:15px;font-weight:700;color:var(--color-white);font-variant-numeric:tabular-nums;white-space:nowrap">28 giờ</span>
+                </div>
+                <div data-pkg-row="h1b" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid rgba(255,255,255,0.14)">
+                  <span style="font-size:13px;letter-spacing:0.01em;color:rgba(201,225,244,0.72)">Đóng trước vào lớp</span>
+                  <span style="font-size:15px;font-weight:700;color:var(--color-white);font-variant-numeric:tabular-nums;white-space:nowrap">5.000.000đ</span>
+                </div>
+              </div>
+              <button type="button" onClick="{{ pkgB2Toggle }}" aria-expanded="{{ pkgB2Open }}" style="font-family:inherit;justify-self:start;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0;margin:-6px 0 -4px;border:0;background:none;color:#9CC3E4;font-size:13.5px;font-weight:600;letter-spacing:0.01em;cursor:pointer;transition:opacity var(--transition-base)" style-hover="opacity:0.65">
+                <span>Chi tiết gói</span>
+                <span aria-hidden="true" style="flex:0 0 auto;font-size:9px;line-height:1;transition:transform 280ms cubic-bezier(0.22,1,0.36,1);transform: {{ pkgB2Icon }}">▼</span>
+              </button>
+              <div style="overflow:hidden;transition:max-height 340ms cubic-bezier(0.22,1,0.36,1),opacity 240ms cubic-bezier(0.22,1,0.36,1);max-height: {{ pkgB2Max }};opacity: {{ pkgB2Op }}">
+                <div style="display:grid">
+                  <div data-pkg-row="r1" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Hồ sơ mở lớp khai giảng sớm. Học sớm, thi sớm trong khoảng 04 tháng</div>
+                  <div data-pkg-row="r2" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Phí khám sức khoẻ</div>
+                  <div data-pkg-row="r3" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Học lý thuyết + thi hết môn lý thuyết/thực hành + quản lý (làm hồ sơ, chụp ảnh, in ảnh, quản lý học viên…)</div>
+                  <div data-pkg-row="r4" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">02h học cabin mô phỏng</div>
+                  <div data-pkg-row="r5" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4"><strong style="color:var(--color-white);font-weight:700">Học vỡ:</strong> 02 buổi x 1,5h<br><strong style="color:var(--color-white);font-weight:700">Học sa hình:</strong> 02 buổi x 1,5h<br>+ 01 buổi tổng ôn x 2h</div>
+                  <div data-pkg-row="r6" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Phí thuê sân tập sa hình</div>
+                  <div data-pkg-row="r7" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4"><strong style="color:var(--color-white);font-weight:700">Chạy DAT:</strong><div style="display:grid;gap:5px;margin-top:6px"><div style="display:grid;grid-template-columns:14px 1fr;gap:8px"><span style="color:rgba(201,225,244,0.45)">•</span><span>Đủ 810km hạng B số sàn – 20h học</span></div><div style="color:#FF9B8F;font-weight:600">Chạy cao tốc + đường tỉnh lộ + đỗ xe ngang dọc thực tế</div></div></div>
+                  <div data-pkg-row="r8" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:rgba(201,225,244,0.45);text-align:center">–</div>
+                  <div data-pkg-row="r9" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:rgba(201,225,244,0.45);text-align:center">–</div>
+                  <div data-pkg-row="r10" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:rgba(201,225,244,0.45);text-align:center">–</div>
+                  <div data-pkg-row="r11" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:rgba(201,225,244,0.45);text-align:center">–</div>
+                  <div data-pkg-row="r12" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:rgba(201,225,244,0.45);text-align:center">–</div>
+                  <div data-pkg-row="r13" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Lệ phí thi sát hạch (645.000đ) — <span style="color:#FF9B8F;font-weight:600">học viên tự nộp tại sân thi sát hạch</span></div>
+                </div>
+              </div>
+            </div>
+            <div style="background:var(--color-white);border:1px solid var(--color-hairline);border-radius:var(--radius-card);padding:22px;display:grid;gap:13px;align-content:start;scroll-snap-align:center;box-shadow:none">
+              <div data-pkg-row="h0" style="display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:24px">
+                <div style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#7A8EA3">Cao cấp</div>
+              </div>
+              <div style="font-size:33px;font-weight:700;letter-spacing:-0.025em;color:var(--color-navy);font-variant-numeric:tabular-nums;line-height:1.1">27.000.000đ</div>
+              <div data-pkg-row="h1" style="display:grid">
+                <div data-pkg-row="h1a" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid var(--color-hairline)">
+                  <span style="font-size:13px;letter-spacing:0.01em;color:#7A8EA3">Giờ học thực hành</span>
+                  <span style="font-size:15px;font-weight:700;color:var(--color-navy);font-variant-numeric:tabular-nums;white-space:nowrap">36 giờ</span>
+                </div>
+                <div data-pkg-row="h1b" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid var(--color-hairline)">
+                  <span style="font-size:13px;letter-spacing:0.01em;color:#7A8EA3">Đóng trước vào lớp</span>
+                  <span style="font-size:15px;font-weight:700;color:var(--color-navy);font-variant-numeric:tabular-nums;white-space:nowrap">15.000.000đ</span>
+                </div>
+              </div>
+              <button type="button" onClick="{{ pkgB3Toggle }}" aria-expanded="{{ pkgB3Open }}" style="font-family:inherit;justify-self:start;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0;margin:-6px 0 -4px;border:0;background:none;color:#5B7794;font-size:13.5px;font-weight:600;letter-spacing:0.01em;cursor:pointer;transition:opacity var(--transition-base)" style-hover="opacity:0.65">
+                <span>Chi tiết gói</span>
+                <span aria-hidden="true" style="flex:0 0 auto;font-size:9px;line-height:1;transition:transform 280ms cubic-bezier(0.22,1,0.36,1);transform: {{ pkgB3Icon }}">▼</span>
+              </button>
+              <div style="overflow:hidden;transition:max-height 340ms cubic-bezier(0.22,1,0.36,1),opacity 240ms cubic-bezier(0.22,1,0.36,1);max-height: {{ pkgB3Max }};opacity: {{ pkgB3Op }}">
+                <div style="display:grid">
+                  <div data-pkg-row="r1" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Hồ sơ mở lớp khai giảng sớm nhất. Đăng ký học ngay, thi sớm trong khoảng 03 tháng</div>
+                  <div data-pkg-row="r2" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Phí khám sức khoẻ</div>
+                  <div data-pkg-row="r3" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Học lý thuyết + thi hết môn lý thuyết/thực hành + quản lý (làm hồ sơ, chụp ảnh, in ảnh, quản lý học viên…)</div>
+                  <div data-pkg-row="r4" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">02h học cabin mô phỏng</div>
+                  <div data-pkg-row="r5" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480"><strong style="color:var(--color-navy);font-weight:700">Học vỡ:</strong> 03 buổi x 2h<br><strong style="color:var(--color-navy);font-weight:700">Học sa hình:</strong> 02 buổi x 2h<br>+ 01 buổi tổng ôn x 2h</div>
+                  <div data-pkg-row="r6" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Phí thuê sân tập sa hình</div>
+                  <div data-pkg-row="r7" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480"><strong style="color:var(--color-navy);font-weight:700">Chạy DAT:</strong><div style="display:grid;gap:5px;margin-top:6px"><div style="display:grid;grid-template-columns:14px 1fr;gap:8px"><span style="color:#A8BACB">•</span><span>Đủ 810km hạng B số sàn – 24h học</span></div><div style="color:#B42318;font-weight:600">Chạy cao tốc + đường tỉnh lộ + đi phố + đường đèo + đỗ xe ngang dọc thực tế</div></div></div>
+                  <div data-pkg-row="r8" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Hỗ trợ học lý thuyết + thi hết môn + cabin</div>
+                  <div data-pkg-row="r9" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Miễn phí 02h tập xe chip</div>
+                  <div data-pkg-row="r10" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Đưa đón đi học từng buổi</div>
+                  <div data-pkg-row="r11" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Đưa đón đi thi từng buổi</div>
+                  <div data-pkg-row="r12" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480">Miễn phí thi lại (nếu trượt)</div>
+                  <div data-pkg-row="r13" style="border-top:1px solid var(--color-hairline);padding:11px 0;font-size:14.5px;line-height:1.55;color:#4A6480"><strong style="color:var(--color-navy);font-weight:700">Đã bao gồm lệ phí thi sát hạch</strong> (645.000đ)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="position:relative;overflow:hidden;border-radius:var(--radius-card);aspect-ratio:21/9">
+            <img src="img/khoi5-xe-vios-so-san.jpg" alt="Xe tập lái Bảo Châu chạy trên đường trong khu vực sân tập" loading="lazy" decoding="async" width="1500" height="643" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--transition-image-zoom)" style-hover="transform:scale(1.05)">
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- Tab C1 -->
+      <sc-if value="{{ isTabC }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;gap:22px">
+          <div data-pkg-grid="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+            <div style="background:var(--color-navy);border:1px solid var(--color-navy);border-radius:var(--radius-card);padding:22px;display:grid;gap:13px;align-content:start;scroll-snap-align:center;box-shadow:0 20px 48px rgba(7,38,68,0.26)">
+              <div data-pkg-row="h0" style="display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:24px">
+                <div style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9CC3E4">C1 — Tiêu chuẩn</div>
+                <div style="font-size:10.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-navy);background:var(--color-accent-badge);padding:4px 8px;border-radius:6px;flex:0 0 auto">Gói duy nhất</div>
+              </div>
+              <div style="font-size:33px;font-weight:700;letter-spacing:-0.025em;color:var(--color-white);font-variant-numeric:tabular-nums;line-height:1.1">21.400.000đ</div>
+              <div data-pkg-row="h1" style="display:grid">
+                <div data-pkg-row="h1a" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid rgba(255,255,255,0.14)">
+                  <span style="font-size:13px;letter-spacing:0.01em;color:rgba(201,225,244,0.72)">Giờ học thực hành</span>
+                  <span style="font-size:15px;font-weight:700;color:var(--color-white);font-variant-numeric:tabular-nums;white-space:nowrap">32 giờ</span>
+                </div>
+                <div data-pkg-row="h1b" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid rgba(255,255,255,0.14)">
+                  <span style="font-size:13px;letter-spacing:0.01em;color:rgba(201,225,244,0.72)">Đóng trước vào lớp</span>
+                  <span style="font-size:15px;font-weight:700;color:var(--color-white);font-variant-numeric:tabular-nums;white-space:nowrap">7.000.000đ</span>
+                </div>
+              </div>
+              <button type="button" onClick="{{ pkgC1Toggle }}" aria-expanded="{{ pkgC1Open }}" style="font-family:inherit;justify-self:start;display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0;margin:-6px 0 -4px;border:0;background:none;color:#9CC3E4;font-size:13.5px;font-weight:600;letter-spacing:0.01em;cursor:pointer;transition:opacity var(--transition-base)" style-hover="opacity:0.65">
+                <span>Chi tiết gói</span>
+                <span aria-hidden="true" style="flex:0 0 auto;font-size:9px;line-height:1;transition:transform 280ms cubic-bezier(0.22,1,0.36,1);transform: {{ pkgC1Icon }}">▼</span>
+              </button>
+              <div style="overflow:hidden;transition:max-height 340ms cubic-bezier(0.22,1,0.36,1),opacity 240ms cubic-bezier(0.22,1,0.36,1);max-height: {{ pkgC1Max }};opacity: {{ pkgC1Op }}">
+                <div style="display:grid">
+                  <div data-pkg-row="r1" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Hồ sơ mở lớp khai giảng sớm. Học sớm, thi sớm trong khoảng 04 tháng</div>
+                  <div data-pkg-row="r2" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Phí khám sức khoẻ</div>
+                  <div data-pkg-row="r3" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Học lý thuyết + thi hết môn lý thuyết/thực hành + quản lý (làm hồ sơ, chụp ảnh, in ảnh, quản lý học viên…)</div>
+                  <div data-pkg-row="r4" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">02h học cabin mô phỏng</div>
+                  <div data-pkg-row="r5" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4"><strong style="color:var(--color-white);font-weight:700">Học vỡ:</strong> 02 buổi x 1,5h<br><strong style="color:var(--color-white);font-weight:700">Học sa hình:</strong> 02 buổi x 1,5h<br>+ 01 buổi tổng ôn x 2h</div>
+                  <div data-pkg-row="r6" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Phí thuê sân tập sa hình</div>
+                  <div data-pkg-row="r7" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4"><strong style="color:var(--color-white);font-weight:700">Chạy DAT:</strong><div style="display:grid;gap:5px;margin-top:6px"><div style="display:grid;grid-template-columns:14px 1fr;gap:8px"><span style="color:rgba(201,225,244,0.45)">•</span><span>Đủ 825km hạng C1 – 24h học</span></div><div style="color:#FF9B8F;font-weight:600">Chạy cao tốc + đường tỉnh lộ + đỗ xe ngang dọc thực tế</div></div></div>
+                  <div data-pkg-row="r13" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Lệ phí thi sát hạch (645.000đ) — <span style="color:#FF9B8F;font-weight:600">học viên tự nộp tại sân thi sát hạch</span></div>
+                  <div data-pkg-row="r14" style="border-top:1px solid rgba(255,255,255,0.16);padding:11px 0;font-size:14.5px;line-height:1.55;color:#C9E1F4">Xe học: Kia K250 (xe tải 3.500–7.500kg)</div>
+                </div>
+              </div>
+            </div>
+            <div style="background:var(--color-white);border:1px solid var(--color-hairline);border-radius:var(--radius-card);padding:clamp(22px,2.5vw,30px);display:grid;gap:12px;align-content:start">
+              <div style="font-size:18px;font-weight:700;color:var(--color-navy)">C1 lái được xe gì</div>
+              <p style="margin:0;font-size:15.5px;line-height:1.7;color:#4A6480;text-align:justify;text-justify:inter-word;">Xe tải trên 3.500kg đến 7.500kg, và lái được cả xe hạng B. Nhiều người vẫn gọi hạng này theo tên cũ là B2.</p>
+              <p style="margin:0;font-size:14px;line-height:1.65;color:#7A8EA3">Điều kiện: từ 18 tuổi. Một số trường hợp cần khám sức khoẻ mới xác định được.</p>
+            </div>
+          </div>
+          <div style="position:relative;overflow:hidden;border-radius:var(--radius-card);aspect-ratio:21/9">
+            <img src="img/khoi5-xe-kia-k250.jpg" alt="Toàn cảnh sân tập với các bài sa hình" loading="lazy" decoding="async" width="1500" height="643" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--transition-image-zoom)" style-hover="transform:scale(1.05)">
+          </div>
+        </div>
+      </sc-if>
+
+      <div data-reveal="1" style="display:flex;align-items:center;gap:clamp(14px,2vw,24px);flex-wrap:wrap;justify-content:space-between;background:var(--color-white);border:1px solid #C9E1F4;border-radius:var(--radius-card);box-shadow:0 10px 30px rgba(7,38,68,0.07);padding:clamp(16px,2vw,20px) clamp(18px,2.4vw,24px)">
+        <div style="display:grid;gap:4px;min-width:0;flex:99 1 260px">
+          <div style="display:flex;align-items:center;gap:9px">
+            <span style="width:8px;height:8px;border-radius:50%;background:#B42318;animation:bc-dot 1.6s ease-in-out infinite;flex:0 0 auto"></span>
+            <span style="font-size:clamp(18px,2vw,22px);font-weight:700;letter-spacing:-0.02em;line-height:1.25;color:var(--color-navy)">Giảm 1.000.000đ học phí</span>
+          </div>
+          <div style="font-size:14.5px;line-height:1.5;color:#5B7794;padding-left:17px"><span data-slot="1" style="font-weight:600;color:#B42318;font-variant-numeric:tabular-nums;transition:opacity var(--transition-base)">{{ slotsLabel }}</span> · áp dụng cho suất đăng ký sớm trong tháng</div>
+        </div>
+        <a href="#dang-ky" style="flex:1 1 auto;display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:46px;padding:11px 20px;border-radius:12px;background:var(--color-navy);color:var(--color-white);font-size:15px;font-weight:600;white-space:nowrap;transition:transform var(--transition-base),box-shadow var(--transition-base)" style-hover="transform:translateY(-2px);box-shadow:0 12px 26px rgba(7,38,68,0.24)">Giữ suất cho tôi →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KHỐI 6: LỘ TRÌNH 4 CHẶNG / 11 BƯỚC -->
+<section id="lo-trinh" data-screen-label="Khối 6 — Lộ trình" style="scroll-margin-top:88px;background:var(--color-white)">
+  <div style="max-width:var(--shell);margin:0 auto;padding:clamp(40px,7vw,96px) 22px;display:grid;gap:clamp(28px,3.5vw,46px)">
+    <div data-reveal="1" style="display:grid;gap:14px;max-width:100%">
+      <h2 style="margin:0;font-size:clamp(26px,3.6vw,40px);line-height:1.32;padding-top:0.08em;font-weight:700;letter-spacing:-0.025em;background:linear-gradient(135deg,var(--heading-gradient-start),var(--heading-gradient-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Từ lúc đăng ký tới lúc cầm bằng</h2>
+      <p style="margin:0;font-size:clamp(15px,1.5vw,17px);line-height:1.65;color:#4A6480;text-align:justify;text-justify:inter-word;">Bốn chặng, mười một bước. Dưới 1 tháng chuẩn bị hồ sơ, 3–4 tháng đào tạo theo quy định.</p>
+    </div>
+
+    <div style="display:grid;gap:clamp(18px,2.4vw,28px)">
+      <!-- Chặng 1 -->
+      <div data-reveal="1" style="border:1px solid var(--color-hairline);border-radius:var(--radius-card);padding:clamp(16px,2.4vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,3vw,36px);align-items:start">
+        <div style="display:grid;gap:16px">
+          <div style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-badge)">Chặng 1</div>
+          <h3 style="margin:0;font-size:clamp(19px,2.1vw,24px);line-height:1.3;font-weight:700;letter-spacing:-0.02em;color:var(--color-navy)">Chuẩn bị hồ sơ</h3>
+          <ol style="margin:0;padding:0;list-style:none;display:grid;gap:16px">
+            <li style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:start"><span style="width:32px;height:32px;border-radius:50%;background:var(--bg-gradient-start);border:1px solid #C9E1F4;color:var(--color-navy);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center">1</span><span style="font-size:17px;line-height:1.7;color:#4A6480;text-align:justify;text-justify:inter-word;"><strong style="color: var(--color-navy);">Đăng ký hồ sơ mở lớp</strong> — Bạn hoàn toàn có thể chọn đăng ký online hoặc đến trực tiếp văn phòng Bảo Châu.</span></li>
+            <li style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:start"><span style="width:32px;height:32px;border-radius:50%;background:var(--bg-gradient-start);border:1px solid #C9E1F4;color:var(--color-navy);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center">2</span><span style="font-size:17px;line-height:1.7;color:#4A6480;text-align:justify;text-justify:inter-word;"><strong style="color: var(--color-navy);">Khám sức khỏe hoàn thiện hồ sơ</strong> — Sau khi nộp hồ sơ, học viên được hướng dẫn đi khám sức khoẻ tổng quát tại phòng khám Bảo Châu liên kết.</span></li>
+          </ol>
+        </div>
+        <div style="position: {{ stickyPos }};top: {{ stageTop }};overflow:hidden;border-radius:12px;aspect-ratio: {{ stageRatio }}">
+          <img src="img/khoi6-chang1-ho-so.jpg" alt="Nhân viên Bảo Châu hoàn thiện hồ sơ học viên tại văn phòng" loading="lazy" decoding="async" width="900" height="675" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--transition-image-zoom)" style-hover="transform:scale(1.05)">
+        </div>
+      </div>
+
+      <!-- Chặng 2 -->
+      <div data-reveal="1" style="border:1px solid var(--color-hairline);border-radius:var(--radius-card);padding:clamp(16px,2.4vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,3vw,36px);align-items:start">
+        <div style="display:grid;gap:16px">
+          <div style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-badge)">Chặng 2</div>
+          <h3 style="margin:0;font-size:clamp(19px,2.1vw,24px);line-height:1.3;font-weight:700;letter-spacing:-0.02em;color:var(--color-navy)">Lý thuyết và mô phỏng</h3>
+          <ol style="margin:0;padding:0;list-style:none;display:grid;gap:16px">
+            <li style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:start"><span style="width:32px;height:32px;border-radius:50%;background:var(--bg-gradient-start);border:1px solid #C9E1F4;color:var(--color-navy);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center">3</span><span style="font-size:17px;line-height:1.7;color:#4A6480;text-align:justify;text-justify:inter-word;"><strong style="color: var(--color-navy);">Học luật + mô phỏng online</strong> — Bắt buộc phải đủ số giờ online hoặc offline theo quy định. Ngoài ra Bảo Châu sẽ kèm 1-1 lý thuyết cho học viên qua văn phòng ôn luyện.</span></li>
+            <li style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:start"><span style="width:32px;height:32px;border-radius:50%;background:var(--bg-gradient-start);border:1px solid #C9E1F4;color:var(--color-navy);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center">4</span><span style="font-size:17px;line-height:1.7;color:#4A6480;text-align:justify;text-justify:inter-word;"><strong style="color:var(--color-navy)">Kiểm tra hết môn lý thuyết + mô phỏng</strong></span></li>
+            <li style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:start"><span style="width:32px;height:32px;border-radius:50%;background:var(--bg-gradient-start);border:1px solid #C9E1F4;color:var(--color-navy);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center">5</span><span style="font-size:17px;line-height:1.7;color:#4A6480;text-align:justify;text-justify:inter-word;"><strong style="color: var(--color-navy);">Học cabin</strong> — bắt buộc học đủ 2 giờ trên cabin điện tử.</span></li>
+          </ol>
+        </div>
+        <div style="position: {{ stickyPos }};top: {{ stageTop }};overflow:hidden;border-radius:12px;aspect-ratio: {{ stageRatio }}">
+          <img src="img/khoi6-chang2-ly-thuyet-cabin.jpg" alt="Buổi học lý thuyết đông học viên trong hội trường" loading="lazy" decoding="async" width="900" height="675" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--transition-image-zoom)" style-hover="transform:scale(1.05)">
+        </div>
+      </div>
+
+      <!-- Chặng 3 -->
+      <div data-reveal="1" style="border:1px solid var(--color-hairline);border-radius:var(--radius-card);padding:clamp(16px,2.4vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,3vw,36px);align-items:start">
+        <div style="display:grid;gap:16px">
+          <div style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-badge)">Chặng 3</div>
+          <h3 style="margin:0;font-size:clamp(19px,2.1vw,24px);line-height:1.3;font-weight:700;letter-spacing:-0.02em;color:var(--color-navy)">Thực hành trên xe</h3>
+          <ol style="margin:0;padding:0;list-style:none;display:grid;gap:16px">
+            <li style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:start"><span style="width:32px;height:32px;border-radius:50%;background:var(--bg-gradient-start);border:1px solid #C9E1F4;color:var(--color-navy);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center">6</span><span style="font-size:17px;line-height:1.7;color:#4A6480;text-align:justify;text-justify:inter-word;"><strong style="color:var(--color-navy)">Học thực hành cơ bản</strong> — Làm quen xe, thao tác nền.</span></li>
+            <li style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:start"><span style="width:32px;height:32px;border-radius:50%;background:var(--bg-gradient-start);border:1px solid #C9E1F4;color:var(--color-navy);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center">7</span><span style="font-size:17px;line-height:1.7;color:#4A6480;text-align:justify;text-justify:inter-word;"><strong style="color:var(--color-navy)">Chạy đường trường (DAT)</strong> — 710km hạng B tự động · 810km hạng B số sàn · 825km hạng C1.</span></li>
+            <li style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:start"><span style="width:32px;height:32px;border-radius:50%;background:var(--bg-gradient-start);border:1px solid #C9E1F4;color:var(--color-navy);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center">8</span><span style="font-size:17px;line-height:1.7;color:#4A6480;text-align:justify;text-justify:inter-word;"><strong style="color: var(--color-navy);">Học 11 bài thi sa hình</strong></span></li>
+          </ol>
+        </div>
+        <div style="position: {{ stickyPos }};top: {{ stageTop }};overflow:hidden;border-radius:12px;aspect-ratio: {{ stageRatio }}">
+          <img src="img/khoi6-chang3-sa-hinh.jpg" alt="Học viên tập bài sa hình, giáo viên hướng dẫn ngay cạnh xe" loading="lazy" decoding="async" width="900" height="675" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--transition-image-zoom)" style-hover="transform:scale(1.05)">
+        </div>
+      </div>
+
+      <!-- Chặng 4 -->
+      <div data-reveal="1" style="border:1px solid var(--color-hairline);border-radius:var(--radius-card);padding:clamp(16px,2.4vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,3vw,36px);align-items:start">
+        <div style="display:grid;gap:16px">
+          <div style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-badge)">Chặng 4</div>
+          <h3 style="margin:0;font-size:clamp(19px,2.1vw,24px);line-height:1.3;font-weight:700;letter-spacing:-0.02em;color:var(--color-navy)">Về đích</h3>
+          <ol style="margin:0;padding:0;list-style:none;display:grid;gap:16px">
+            <li style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:start"><span style="width:32px;height:32px;border-radius:50%;background:var(--bg-gradient-start);border:1px solid #C9E1F4;color:var(--color-navy);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center">9</span><span style="font-size:17px;line-height:1.7;color:#4A6480;text-align:justify;text-justify:inter-word;"><strong style="color:var(--color-navy)">Kiểm tra hết môn thực hành</strong></span></li>
+            <li style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:start"><span style="width:32px;height:32px;border-radius:50%;background:var(--bg-gradient-start);border:1px solid #C9E1F4;color:var(--color-navy);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center">10</span><span style="font-size:17px;line-height:1.7;color:#4A6480;text-align:justify;text-justify:inter-word;"><strong style="color: var(--color-navy);">Tổng ôn sa hình + ôn xe chip</strong> — Ôn luyện trên xe và sân gắn thiết bị chấm điểm như thi thật.</span></li>
+            <li style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:start"><span style="width:32px;height:32px;border-radius:50%;background:var(--bg-gradient-start);border:1px solid #C9E1F4;color:var(--color-navy);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center">11</span><span style="font-size:17px;line-height:1.7;color:#4A6480;text-align:justify;text-justify:inter-word;"><strong style="color: var(--color-navy);">Thi sát hạch</strong> — Kỳ thi sát hạch gồm 3 phần thi: Lý thuyết, Sa hình, Đường trường.</span></li>
+          </ol>
+        </div>
+        <div style="position: {{ stickyPos }};top: {{ stageTop }};overflow:hidden;border-radius:12px;aspect-ratio: {{ stageRatio }}">
+          <img src="img/khoi6-chang4-tong-on-thi.jpg" alt="Học viên tổng ôn, hai tay trên vô-lăng trước kỳ thi sát hạch" loading="lazy" decoding="async" width="900" height="675" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:transform var(--transition-image-zoom)" style-hover="transform:scale(1.05)">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KHỐI 6.5: BANNER ƯU ĐÃI GIỮA TRANG -->
+<section data-screen-label="Khối 6.5 — Banner ưu đãi" style="background:var(--color-navy)">
+  <div data-reveal="1" data-reveal-scale="1" style="max-width:var(--shell);margin:0 auto;padding:clamp(36px,6vw,84px) 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(26px,4vw,52px);align-items:center">
+    <div style="display:grid;gap:16px">
+      <div style="justify-self:start;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-navy);background:var(--color-accent-badge);padding:6px 12px;border-radius:6px">Ưu đãi tháng này</div>
+      <h2 style="margin:0;font-size:clamp(26px,3.4vw,38px);line-height:1.3;padding-top:0.08em;font-weight:700;letter-spacing:-0.025em;color:var(--color-white)">Giảm 1.000.000đ học phí</h2>
+      <p style="margin:0;font-size:clamp(14.5px,1.5vw,16.5px);line-height:1.65;color:#C9E1F4;max-width:520px;text-align:justify;text-justify:inter-word;">Áp dụng cho tất cả các hạng và tất cả các gói.</p>
+      <sc-if value="{{ showStudentDiscount }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0;font-size:15px;line-height:1.65;color:#9CC3E4;max-width:520px">Ưu đãi riêng cho sinh viên có hoàn cảnh khó khăn — liên hệ tư vấn viên để được hướng dẫn.</p>
+      </sc-if>
+    </div>
+    <div style="justify-self:stretch;background:var(--color-white);border-radius:var(--radius-card);padding:clamp(22px,2.6vw,30px);display:grid;gap:16px;max-width:400px;width:100%;box-shadow:0 24px 60px rgba(0,0,0,0.28)">
+      <div style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#7A8EA3">Số suất còn lại</div>
+      <div data-slot="1" style="font-size:clamp(34px,4vw,46px);font-weight:700;letter-spacing:-0.03em;color:var(--color-navy);line-height:1;font-variant-numeric:tabular-nums;transition:opacity var(--transition-base)">{{ slotsCard }}</div>
+      <a href="#dang-ky" style="display:inline-flex;align-items:center;justify-content:center;width:100%;background:var(--color-navy);color:var(--color-white);font-size:16px;font-weight:600;padding:14px 22px;border-radius:var(--radius-button);box-shadow:0 6px 16px rgba(7,38,68,0.2);transition:transform var(--transition-base),filter var(--transition-base),box-shadow var(--transition-base)" style-hover="filter:brightness(1.14);transform:scale(1.02);box-shadow:0 12px 26px rgba(7,38,68,0.3);color:#FFFFFF" style-active="transform:scale(0.97)">Giữ suất cho tôi</a>
+      <div style="font-size:13.5px;line-height:1.6;color:#7A8EA3">Giới hạn 20 suất, xoay vòng lại mỗi tháng.</div>
+    </div>
+  </div>
+</section>
+
+<!-- KHỐI 7: FAQ -->
+<section id="cau-hoi" data-screen-label="Khối 7 — FAQ" style="scroll-margin-top:88px;background:var(--color-white)">
+  <div style="max-width:900px;margin:0 auto;padding:clamp(40px,7vw,96px) 22px;display:grid;gap:clamp(24px,3vw,36px)">
+    <h2 data-reveal="1" style="margin:0;font-size:clamp(26px,3.6vw,40px);line-height:1.32;padding-top:0.08em;font-weight:700;letter-spacing:-0.025em;background:linear-gradient(135deg,var(--heading-gradient-start),var(--heading-gradient-end));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Câu hỏi thường gặp</h2>
+    <div data-reveal="1" style="display:grid;border-top:1px solid var(--color-hairline)">
+
+      <div style="border-bottom:1px solid var(--color-hairline)">
+        <button type="button" onClick="{{ faq1Toggle }}" aria-expanded="{{ faq1Open }}" style="font-family:inherit;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;background:transparent;border:0;padding:18px 14px;cursor:pointer;transition:background var(--transition-base)" style-hover="background:#F5FAFD">
+          <span style="font-size:17px;font-weight:600;line-height:1.45;color:var(--color-navy)">Chưa từng cầm vô-lăng, học được không?</span>
+          <span aria-hidden="true" style="flex:0 0 auto;width:29px;height:29px;border-radius:50%;background:var(--bg-gradient-start);color:var(--color-navy);font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:transform 300ms cubic-bezier(0.22,1,0.36,1);transform: {{ faq1Icon }}">{{ faq1Glyph }}</span>
+        </button>
+        <div style="overflow:hidden;transition:max-height 320ms cubic-bezier(0.22,1,0.36,1),opacity 220ms cubic-bezier(0.22,1,0.36,1);max-height: {{ faq1Max }};opacity: {{ faq1Op }}">
+          <p style="margin:0;padding:0 14px 20px;font-size:15.5px;line-height:1.75;color:#4A6480;text-align:justify;text-justify:inter-word;">Được. Bắt đầu bằng buổi học thực hành cơ bản để làm quen xe và thao tác nền. Mỗi buổi 1 thầy – 1 trò – 1 xe nên không phải học ghép hay chờ tới lượt; bài nào chưa chắc thì tập lại bài đó, thầy đi cùng từng lượt.</p>
+        </div>
+      </div>
+
+      <div style="border-bottom:1px solid var(--color-hairline)">
+        <button type="button" onClick="{{ faq2Toggle }}" aria-expanded="{{ faq2Open }}" style="font-family:inherit;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;background:transparent;border:0;padding:18px 14px;cursor:pointer;transition:background var(--transition-base)" style-hover="background:#F5FAFD">
+          <span style="font-size:17px;font-weight:600;line-height:1.45;color:var(--color-navy)">Mất bao lâu thì có bằng?</span>
+          <span aria-hidden="true" style="flex:0 0 auto;width:29px;height:29px;border-radius:50%;background:var(--bg-gradient-start);color:var(--color-navy);font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:transform 300ms cubic-bezier(0.22,1,0.36,1);transform: {{ faq2Icon }}">{{ faq2Glyph }}</span>
+        </button>
+        <div style="overflow:hidden;transition:max-height 320ms cubic-bezier(0.22,1,0.36,1),opacity 220ms cubic-bezier(0.22,1,0.36,1);max-height: {{ faq2Max }};opacity: {{ faq2Op }}">
+          <p style="margin:0;padding:0 14px 20px;font-size:15.5px;line-height:1.75;color:#4A6480;text-align:justify;text-justify:inter-word;">Nộp hồ sơ tới khai giảng dưới 1 tháng; khai giảng tới ngày thi 3–4 tháng theo quy định. Gói Tiêu chuẩn khoảng 4 tháng, Cao cấp khoảng 3 tháng; gói Tiết kiệm không cam kết mốc cụ thể vì phụ thuộc lịch khai giảng và lịch thi của đơn vị tổ chức.</p>
+        </div>
+      </div>
+
+      <div style="border-bottom:1px solid var(--color-hairline)">
+        <button type="button" onClick="{{ faq3Toggle }}" aria-expanded="{{ faq3Open }}" style="font-family:inherit;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;background:transparent;border:0;padding:18px 14px;cursor:pointer;transition:background var(--transition-base)" style-hover="background:#F5FAFD">
+          <span style="font-size:17px;font-weight:600;line-height:1.45;color:var(--color-navy)">Đi làm giờ hành chính, học vào lúc nào?</span>
+          <span aria-hidden="true" style="flex:0 0 auto;width:29px;height:29px;border-radius:50%;background:var(--bg-gradient-start);color:var(--color-navy);font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:transform 300ms cubic-bezier(0.22,1,0.36,1);transform: {{ faq3Icon }}">{{ faq3Glyph }}</span>
+        </button>
+        <div style="overflow:hidden;transition:max-height 320ms cubic-bezier(0.22,1,0.36,1),opacity 220ms cubic-bezier(0.22,1,0.36,1);max-height: {{ faq3Max }};opacity: {{ faq3Op }}">
+          <p style="margin:0;padding:0 14px 20px;font-size:15.5px;line-height:1.75;color:#4A6480;text-align:justify;text-justify:inter-word;">Giờ thực hành do bạn và thầy tự thống nhất, không có lịch cứng. Trung tâm dạy cả thứ 7 và Chủ nhật; buổi tối thường đến 20h, sắp xếp được thì 21–22h. Lý thuyết học online nên không chiếm giờ làm.</p>
+        </div>
+      </div>
+
+            <div style="border-bottom:1px solid var(--color-hairline)">
+        <button type="button" onClick="{{ faq4Toggle }}" aria-expanded="{{ faq4Open }}" style="font-family:inherit;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;background:transparent;border:0;padding:18px 14px;cursor:pointer;transition:background var(--transition-base)" style-hover="background:#F5FAFD">
+          <span style="font-size:17px;font-weight:600;line-height:1.45;color:var(--color-navy)">Học phí đã gồm những gì, còn phải trả thêm khoản nào?</span>
+          <span aria-hidden="true" style="flex:0 0 auto;width:29px;height:29px;border-radius:50%;background:var(--bg-gradient-start);color:var(--color-navy);font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:transform 300ms cubic-bezier(0.22,1,0.36,1);transform: {{ faq4Icon }}">{{ faq4Glyph }}</span>
+        </button>
+        <div style="overflow:hidden;transition:max-height 320ms cubic-bezier(0.22,1,0.36,1),opacity 220ms cubic-bezier(0.22,1,0.36,1);max-height: {{ faq4Max }};opacity: {{ faq4Op }}">
+          <p style="margin:0;padding:0 14px 20px;font-size:15.5px;line-height:1.75;color:#4A6480;text-align:justify;text-justify:inter-word;">Đã gồm hồ sơ mở lớp khai giảng, phí khám sức khoẻ, học lý thuyết và thi hết môn, làm hồ sơ và chụp in ảnh, học vỡ, sa hình, tổng ôn, chạy DAT đủ km, công thầy và xăng xe. Chưa gồm lệ phí thi sát hạch 645.000đ — nộp trực tiếp cho đơn vị tổ chức thi theo quy định Nhà nước, Bảo Châu không thu khoản này; gói Cao cấp đã bao gồm.</p>
+        </div>
+      </div>
+
+      <div style="border-bottom:1px solid var(--color-hairline)">
+        <button type="button" onClick="{{ faq5Toggle }}" aria-expanded="{{ faq5Open }}" style="font-family:inherit;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;background:transparent;border:0;padding:18px 14px;cursor:pointer;transition:background var(--transition-base)" style-hover="background:#F5FAFD">
+          <span style="font-size:17px;font-weight:600;line-height:1.45;color:var(--color-navy)">Có trả góp không?</span>
+          <span aria-hidden="true" style="flex:0 0 auto;width:29px;height:29px;border-radius:50%;background:var(--bg-gradient-start);color:var(--color-navy);font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:transform 300ms cubic-bezier(0.22,1,0.36,1);transform: {{ faq5Icon }}">{{ faq5Glyph }}</span>
+        </button>
+        <div style="overflow:hidden;transition:max-height 320ms cubic-bezier(0.22,1,0.36,1),opacity 220ms cubic-bezier(0.22,1,0.36,1);max-height: {{ faq5Max }};opacity: {{ faq5Op }}">
+          <p style="margin:0;padding:0 14px 20px;font-size:15.5px;line-height:1.75;color:#4A6480;text-align:justify;text-justify:inter-word;">Có, lãi suất 0% cho tất cả hạng và tất cả gói. Bảo Châu tự cho học viên nợ, không qua công ty tài chính nên không thẩm định hồ sơ, không điều kiện. Lịch 4 đợt: hồ sơ mở lớp, sau khai giảng, trước buổi học lái thứ 2, trước buổi chạy DAT thứ 2.</p>
+        </div>
+      </div>
+
+      <div style="border-bottom:1px solid var(--color-hairline)">
+        <button type="button" onClick="{{ faq6Toggle }}" aria-expanded="{{ faq6Open }}" style="font-family:inherit;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;background:transparent;border:0;padding:18px 14px;cursor:pointer;transition:background var(--transition-base)" style-hover="background:#F5FAFD">
+          <span style="font-size:17px;font-weight:600;line-height:1.45;color:var(--color-navy)">Có chương trình hỗ trợ học phí không?</span>
+          <span aria-hidden="true" style="flex:0 0 auto;width:29px;height:29px;border-radius:50%;background:var(--bg-gradient-start);color:var(--color-navy);font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:transform 300ms cubic-bezier(0.22,1,0.36,1);transform: {{ faq6Icon }}">{{ faq6Glyph }}</span>
+        </button>
+        <div style="overflow:hidden;transition:max-height 320ms cubic-bezier(0.22,1,0.36,1),opacity 220ms cubic-bezier(0.22,1,0.36,1);max-height: {{ faq6Max }};opacity: {{ faq6Op }}">
+          <p style="margin:0;padding:0 14px 20px;font-size:15.5px;line-height:1.75;color:#4A6480;text-align:justify;text-justify:inter-word;">Có. Ngoài ưu đãi từng đợt khai giảng, Bảo Châu dành một số suất học bổng cho sinh viên và học viên có hoàn cảnh khó khăn. Số suất và mức hỗ trợ thay đổi theo từng đợt — bạn liên hệ tư vấn viên để được xét cụ thể.</p>
+        </div>
+      </div>
+
+      <div style="border-bottom:1px solid var(--color-hairline)">
+        <button type="button" onClick="{{ faq7Toggle }}" aria-expanded="{{ faq7Open }}" style="font-family:inherit;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;background:transparent;border:0;padding:18px 14px;cursor:pointer;transition:background var(--transition-base)" style-hover="background:#F5FAFD">
+          <span style="font-size:17px;font-weight:600;line-height:1.45;color:var(--color-navy)">Phần lý thuyết học online hay offline?</span>
+          <span aria-hidden="true" style="flex:0 0 auto;width:29px;height:29px;border-radius:50%;background:var(--bg-gradient-start);color:var(--color-navy);font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:transform 300ms cubic-bezier(0.22,1,0.36,1);transform: {{ faq7Icon }}">{{ faq7Glyph }}</span>
+        </button>
+        <div style="overflow:hidden;transition:max-height 320ms cubic-bezier(0.22,1,0.36,1),opacity 220ms cubic-bezier(0.22,1,0.36,1);max-height: {{ faq7Max }};opacity: {{ faq7Op }}">
+          <p style="margin:0;padding:0 14px 20px;font-size:15.5px;line-height:1.75;color:#4A6480;text-align:justify;text-justify:inter-word;">Lý thuyết học online qua Zoom và trên website của nhà trường, chủ động theo thời gian của bạn. Tuỳ từng thời điểm, theo quy định bạn có thể phải lên trung tâm học trực tiếp một số buổi. Dù online hay offline, kết quả thi vẫn phụ thuộc phần lớn vào việc bạn tự ôn bộ 600 câu — tư vấn viên sẽ nhắc lịch và hỗ trợ suốt quá trình.</p>
+        </div>
+      </div>
+
+      <div style="border-bottom:1px solid var(--color-hairline)">
+        <button type="button" onClick="{{ faq8Toggle }}" aria-expanded="{{ faq8Open }}" style="font-family:inherit;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;background:transparent;border:0;padding:18px 14px;cursor:pointer;transition:background var(--transition-base)" style-hover="background:#F5FAFD">
+          <span style="font-size:17px;font-weight:600;line-height:1.45;color:var(--color-navy)">Tôi tự đi khám sức khoẻ ở ngoài được không?</span>
+          <span aria-hidden="true" style="flex:0 0 auto;width:29px;height:29px;border-radius:50%;background:var(--bg-gradient-start);color:var(--color-navy);font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:transform 300ms cubic-bezier(0.22,1,0.36,1);transform: {{ faq8Icon }}">{{ faq8Glyph }}</span>
+        </button>
+        <div style="overflow:hidden;transition:max-height 320ms cubic-bezier(0.22,1,0.36,1),opacity 220ms cubic-bezier(0.22,1,0.36,1);max-height: {{ faq8Max }};opacity: {{ faq8Op }}">
+          <p style="margin:0;padding:0 14px 20px;font-size:15.5px;line-height:1.75;color:#4A6480;text-align:justify;text-justify:inter-word;">Được, nếu bạn không tiện qua phòng khám liên kết của Bảo Châu. Hai lưu ý bắt buộc: phòng khám phải được cấp phép khám sức khoẻ lái xe, và kết quả phải kèm phiếu xét nghiệm nước tiểu rời. Giấy khám sai quy chuẩn có thể bị từ chối khi đăng ký thi, nên bạn gửi ảnh cho tư vấn viên kiểm tra trước khi nộp hồ sơ.</p>
+        </div>
+      </div>
+
+      <div style="border-bottom:1px solid var(--color-hairline)">
+        <button type="button" onClick="{{ faq9Toggle }}" aria-expanded="{{ faq9Open }}" style="font-family:inherit;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;background:transparent;border:0;padding:18px 14px;cursor:pointer;transition:background var(--transition-base)" style-hover="background:#F5FAFD">
+          <span style="font-size:17px;font-weight:600;line-height:1.45;color:var(--color-navy)">Thi lần đầu chưa đạt thì sao?</span>
+          <span aria-hidden="true" style="flex:0 0 auto;width:29px;height:29px;border-radius:50%;background:var(--bg-gradient-start);color:var(--color-navy);font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:transform 300ms cubic-bezier(0.22,1,0.36,1);transform: {{ faq9Icon }}">{{ faq9Glyph }}</span>
+        </button>
+        <div style="overflow:hidden;transition:max-height 320ms cubic-bezier(0.22,1,0.36,1),opacity 220ms cubic-bezier(0.22,1,0.36,1);max-height: {{ faq9Max }};opacity: {{ faq9Op }}">
+          <p style="margin:0;padding:0 14px 20px;font-size:15.5px;line-height:1.75;color:#4A6480;text-align:justify;text-justify:inter-word;">Phí đăng ký thi lại 700.000đ, cộng phí phần bị trượt: lý thuyết 100.000đ, sa hình 350.000đ, đường trường 80.000đ. Ôn lại lý thuyết miễn phí — online hoặc lên văn phòng học trực tiếp với thầy; phần thực hành đăng ký bổ túc 350.000đ/giờ. Gói Cao cấp được miễn phí thi lại.</p>
+        </div>
+      </div>
+
+            <div style="border-bottom:1px solid var(--color-hairline)">
+        <button type="button" onClick="{{ faq10Toggle }}" aria-expanded="{{ faq10Open }}" style="font-family:inherit;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;background:transparent;border:0;padding:18px 14px;cursor:pointer;transition:background var(--transition-base)" style-hover="background:#F5FAFD">
+          <span style="font-size:17px;font-weight:600;line-height:1.45;color:var(--color-navy)">Vì sao cần tư vấn trước khi vào khoá?</span>
+          <span aria-hidden="true" style="flex:0 0 auto;width:29px;height:29px;border-radius:50%;background:var(--bg-gradient-start);color:var(--color-navy);font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:transform 300ms cubic-bezier(0.22,1,0.36,1);transform: {{ faq10Icon }}">{{ faq10Glyph }}</span>
+        </button>
+        <div style="overflow:hidden;transition:max-height 320ms cubic-bezier(0.22,1,0.36,1),opacity 220ms cubic-bezier(0.22,1,0.36,1);max-height: {{ faq10Max }};opacity: {{ faq10Op }}">
+          <p style="margin:0;padding:0 14px 20px;font-size:15.5px;line-height:1.75;color:#4A6480;text-align:justify;text-justify:inter-word;">Mỗi người một nhu cầu: xe gia đình số tự động, chạy dịch vụ, hay lái xe tải. Mười phút tư vấn giúp bạn chọn đúng hạng bằng, đúng gói theo quỹ thời gian và ngân sách, nắm rõ lộ trình học — thi trước khi đóng đồng nào. Tư vấn miễn phí, không ép đăng ký.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- KHỐI 8: CTA CUỐI -->
+<section id="dang-ky" data-final-cta="1" data-screen-label="Khối 8 — CTA cuối" style="scroll-margin-top:88px;position:relative;overflow:hidden;background:var(--color-navy)">
+  <div data-parallax="0.18" style="position:absolute;left:0;right:0;top:-12%;height:124%;will-change:transform">
+    <img src="img/khoi8-nen-hoc-vien-va-xe.jpg" alt="Xe tập lái Bảo Châu trên sân tập nhìn từ trên cao" loading="lazy" decoding="async" width="1600" height="900" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+  </div>
+  <div aria-hidden="true" style="position:absolute;inset:0;background:rgba(7,38,68,0.62)"></div>
+  <div style="position:relative;max-width:var(--shell);margin:0 auto;padding:clamp(40px,6.5vw,92px) 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,56px);align-items:center">
+    <div data-reveal="1" style="display:grid;gap:18px;max-width:540px">
+      <h2 style="margin:0;font-size:clamp(26px,3.6vw,40px);line-height:1.32;padding-top:0.08em;font-weight:700;letter-spacing:-0.025em;color:var(--color-white)">Để lại số, Bảo Châu sẽ liên hệ bạn ngay lập tức!</h2>
+      <p style="margin:0;font-size:clamp(15px,1.5vw,17px);line-height:1.7;color:#C9E1F4;text-align:justify;text-justify:inter-word;">Giảm 1.000.000đ học phí — áp dụng mọi hạng, mọi gói. Giới hạn 20 suất, xoay vòng lại mỗi tháng. <span data-slot="1" style="font-weight:600;color:var(--color-white);font-variant-numeric:tabular-nums;transition:opacity var(--transition-base)">{{ slotsLabel }}</span>.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="tel:0378999120" style="display:inline-flex;align-items:center;justify-content:center;min-height:52px;background:var(--color-white);color:var(--color-navy);font-size:16px;font-weight:600;padding:14px 24px;border-radius:var(--radius-button);box-shadow:0 8px 20px rgba(0,0,0,0.24);transition:transform var(--transition-base),filter var(--transition-base),box-shadow var(--transition-base)" style-hover="filter:brightness(0.97);transform:scale(1.02);box-shadow:0 14px 30px rgba(0,0,0,0.32);color:var(--color-navy)" style-active="transform:scale(0.97)">Gọi 0378.999.120</a>
+        <a href="https://zalo.me/0378999120" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:52px;background:rgba(255,255,255,0.1);color:var(--color-white);font-size:16px;font-weight:600;padding:14px 24px;border:1.5px solid rgba(255,255,255,0.5);border-radius:var(--radius-button);transition:transform var(--transition-base),background var(--transition-base),border-color var(--transition-base)" style-hover="background:rgba(255,255,255,0.18);border-color:#FFFFFF;transform:scale(1.02);color:#FFFFFF" style-active="transform:scale(0.97)">Chat Zalo</a>
+      </div>
+      <p style="margin:0;font-size:14.5px;line-height:1.65;color:#9CC3E4">Giờ làm việc: 8:00–17:30, kênh online trả lời cả ngoài giờ.</p>
+    </div>
+    <div data-reveal="1" data-reveal-delay="120" style="justify-self:stretch;max-width:440px;width:100%">
+      <dc-import name="FormDangKy" lead-api-url="{{ leadApiUrl }}" form-location="Cuối trang" hint-size="100%,360px"></dc-import>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#041B31;color:#9CC3E4">
+  <div style="max-width:var(--shell);margin:0 auto;padding:clamp(34px,4.5vw,60px) 20px clamp(22px,2.5vw,30px);display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(28px,4vw,56px)">
+    <div style="display:grid;gap:14px;align-content:start">
+      <img src="img/logo-bao-chau-mark-trang.png" alt="Bảo Châu" width="384" height="288" loading="lazy" decoding="async" style="display:block;height:46px;width:auto">
+      <div style="display:grid;gap:7px">
+        <div style="font-size:15.5px;font-weight:600;line-height:1.5;color:var(--color-white)">Văn phòng Tư vấn Tuyển sinh và Đào tạo lái xe Bảo Châu</div>
+        <div style="font-size:14.5px;line-height:1.65;color:#8FB4D6">Số 19, ngõ 126 Khuất Duy Tiến, Thanh Xuân, Hà Nội</div>
+      </div>
+    </div>
+    <div style="display:grid;gap:18px;align-content:start">
+      <div style="display:grid;gap:3px">
+        <div style="font-size:11.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#5F87AA">Hotline &amp; Zalo</div>
+        <a href="tel:0378999120" style="font-size:19px;font-weight:700;letter-spacing:-0.01em;color:var(--color-white);font-variant-numeric:tabular-nums;justify-self:start" style-hover="color:#C9E1F4">0378.999.120</a>
+      </div>
+      <div style="display:grid;gap:3px">
+        <div style="font-size:11.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#5F87AA">Email</div>
+        <a href="mailto:daotaolaixebaochau@gmail.com" style="font-size:14.5px;line-height:1.5;color:var(--color-white);justify-self:start;word-break:break-word" style-hover="color:#C9E1F4">daotaolaixebaochau@gmail.com</a>
+      </div>
+      <div style="display:grid;gap:3px">
+        <div style="font-size:11.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#5F87AA">Giờ làm việc</div>
+        <div style="font-size:14.5px;line-height:1.5;color:#8FB4D6">8:00 – 17:30 · cả thứ 7 và Chủ nhật</div>
+      </div>
+    </div>
+    <div style="display:grid;gap:3px;align-content:start">
+      <div style="font-size:11.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#5F87AA;margin-bottom:5px">Theo dõi Bảo Châu</div>
+      <a href="https://facebook.com/daylaixeotobaochau" target="_blank" rel="noopener" style="font-size:14.5px;line-height:1.9;color:#C9E1F4;justify-self:start" style-hover="color:#FFFFFF">Fanpage Bảo Châu</a>
+      <a href="https://youtube.com/@daotaolaixebaochau360" target="_blank" rel="noopener" style="font-size:14.5px;line-height:1.9;color:#C9E1F4;justify-self:start" style-hover="color:#FFFFFF">YouTube Bảo Châu</a>
+    </div>
+  </div>
+  <div style="max-width:var(--shell);margin:0 auto;padding:0 20px clamp(24px,3vw,32px)">
+    <div style="border-top:1px solid rgba(156,195,228,0.16);padding-top:16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:12.5px;color:#5F87AA">
+      <span>© 2026 Bảo Châu</span>
+      <a href="Chinh Sach Bao Mat.dc.html" style="color:#8FB4D6" style-hover="color:#FFFFFF">Chính sách bảo mật</a>
+    </div>
+  </div>
+</footer>
+
+<!-- THANH CTA STICKY MOBILE -->
+<sc-if value="{{ showCtaBar }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:70;background:rgba(255,255,255,0.98);border-top:1px solid var(--color-hairline);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr 1fr;gap:10px;box-shadow:0 -8px 24px rgba(7,38,68,0.12);transition:transform 320ms cubic-bezier(0.22,1,0.36,1);transform: {{ ctaBarTransform }}">
+    <a href="tel:0378999120" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;background:var(--color-navy);color:var(--color-white);font-size:15.5px;font-weight:600;border-radius:var(--radius-button);transition:transform var(--transition-base),filter var(--transition-base)" style-active="transform:scale(0.97)" style-hover="filter:brightness(1.12);color:#FFFFFF">Gọi ngay</a>
+    <a href="#dang-ky" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;background:var(--bg-gradient-start);color:var(--color-navy);font-size:15.5px;font-weight:600;border:1.5px solid #C9E1F4;border-radius:var(--radius-button);transition:transform var(--transition-base),background var(--transition-base)" style-active="transform:scale(0.97)" style-hover="background:#E3F1FB;color:var(--color-navy)">Để lại số</a>
+  </div>
+</sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;slotsRemaining&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:7,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:0,&quot;max&quot;:20,&quot;section&quot;:&quot;Ưu đãi&quot;,&quot;label&quot;:&quot;Số suất còn lại&quot;},&quot;showStudentDiscount&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Ưu đãi&quot;,&quot;label&quot;:&quot;Hiện ưu đãi sinh viên&quot;},&quot;parallaxEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hiệu ứng&quot;,&quot;label&quot;:&quot;Bật parallax&quot;}}">
+class Component extends DCLogic {
+  // Dán URL Web App của Google Apps Script vào đây (xem HUONG-DAN-KET-NOI-FORM.md)
+  LEAD_API_URL = "";
+
+  // ===== CẤU HÌNH SỐ SUẤT CÒN LẠI (dùng chung cho Hero / Khối 5 / Khối 6.5 / Khối 8) =====
+  slotConfig = {
+    apiUrl: "",                       // Claude Code chỉ cần điền 1 chỗ này (Google Apps Script)
+    pollMs: 60000,
+    total: 20,
+    fallbackText: "Liên hệ để kiểm tra"
+  };
+
+  state = { activeTab: 0, openFaq: -1, openPkg: {}, slots: null, isMobile: false, ctaVisible: false, stack: 0 };
+
+  // ===== NGĂN XẾP ẢNH HERO (lướt / kéo / bấm chấm) =====
+  stackDown = (e) => { this.dragX = e.clientX; this.dragY = e.clientY; this.dragT = Date.now(); };
+
+  stackUp = (e) => {
+    if (this.dragX == null) return;
+    const dx = e.clientX - this.dragX;
+    const dy = e.clientY - this.dragY;
+    const quick = Date.now() - this.dragT < 600;
+    this.dragX = null;
+    if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 30) return;
+    if (Math.abs(dx) > 40) return this.stackGo(dx < 0 ? 1 : -1);
+    if (quick) this.stackGo(1);
+  };
+
+  stackGo = (dir) => this.setState((s) => ({ stack: (s.stack + dir + 3) % 3 }));
+
+  stackVals() {
+    const v = {};
+    const depth = [
+      { t: "translateY(0) scale(1)", o: "1", z: "3" },
+      { t: "translateY(-13px) scale(0.945)", o: "0.72", z: "2" },
+      { t: "translateY(-22px) scale(0.89)", o: "0.45", z: "1" }
+    ];
+    for (let i = 0; i < 3; i++) {
+      const rel = (i - this.state.stack + 3) % 3;
+      const d = depth[rel];
+      v["s" + i + "t"] = d.t;
+      v["s" + i + "o"] = d.o;
+      v["s" + i + "z"] = d.z;
+      const on = this.state.stack === i;
+      v["dot" + i] = on ? "rgba(7,38,68,0.55)" : "rgba(255,255,255,0.55)";
+      v["dot" + i + "w"] = on ? "20px" : "6px";
+      v["goStack" + i] = () => this.setState({ stack: i });
+      v["s" + i + "img"] = rel === 0 && this.state.stackHover ? "scale(1.05)" : "scale(1)";
+    }
+    return v;
+  }
+
+  componentDidMount() {
+    this.setState({
+      slots: this.props.slotsRemaining ?? 7,
+      isMobile: window.matchMedia("(max-width: 760px)").matches
+    });
+    this.hasPointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    this.mq = window.matchMedia("(max-width: 760px)");
+    this.onMq = (e) => this.setState({ isMobile: e.matches });
+    if (this.mq.addEventListener) this.mq.addEventListener("change", this.onMq);
+
+    this.initReveal();
+    this.initCountUp();
+    this.onScroll = this.handleScroll.bind(this);
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    window.addEventListener("resize", this.onScroll, { passive: true });
+    this.handleScroll();
+    this.initSlots();
+    this.eqPkg = () => this.equalizePkgRows();
+    window.addEventListener("resize", this.eqPkg);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(this.eqPkg);
+    requestAnimationFrame(this.eqPkg);
+  }
+
+  componentDidUpdate() {
+    requestAnimationFrame(() => this.equalizePkgRows());
+  }
+
+  // ===== CÂN BẰNG CHIỀU CAO CÁC DÒNG SO SÁNH GIỮA 3 THẺ GÓI =====
+  equalizePkgRows() {
+    document.querySelectorAll("[data-pkg-grid]").forEach((grid) => {
+      const groups = {};
+      grid.querySelectorAll("[data-pkg-row]").forEach((el) => {
+        el.style.minHeight = "";
+        const key = el.getAttribute("data-pkg-row");
+        if (!groups[key]) groups[key] = [];
+        groups[key].push(el);
+      });
+      Object.keys(groups).forEach((key) => {
+        const els = groups[key];
+        if (els.length < 2) return;
+        let max = 0;
+        els.forEach((el) => { max = Math.max(max, el.getBoundingClientRect().height); });
+        els.forEach((el) => { el.style.minHeight = max + "px"; });
+      });
+    });
+  }
+
+  componentWillUnmount() {
+    if (this.io) this.io.disconnect();
+    if (this.ioCount) this.ioCount.disconnect();
+    if (this.mq && this.mq.removeEventListener) this.mq.removeEventListener("change", this.onMq);
+    window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("resize", this.onScroll);
+    if (this.eqPkg) window.removeEventListener("resize", this.eqPkg);
+    if (this.raf) cancelAnimationFrame(this.raf);
+    if (this.pollTimer) clearInterval(this.pollTimer);
+  }
+
+  // ===== HIỆU ỨNG CUỘN: fade-in + trượt lên, stagger, scale-in =====
+  initReveal() {
+    const ease = "cubic-bezier(0.22, 1, 0.36, 1)";
+    const els = Array.from(document.querySelectorAll("[data-reveal]"));
+    const vh = window.innerHeight;
+    const pending = [];
+    els.forEach((el) => {
+      if (el.getBoundingClientRect().top < vh * 0.92) return; // đang trong khung hình: để nguyên, không nhấp nháy
+      el.style.opacity = "0";
+      el.style.transform = el.dataset.revealScale ? "scale(0.97)" : "translateY(24px)";
+      el.style.transition = `opacity 600ms ${ease}, transform 600ms ${ease}`;
+      pending.push(el);
+    });
+    if (!pending.length) return;
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        const el = en.target;
+        const delay = parseInt(el.dataset.revealDelay || "0", 10);
+        setTimeout(() => {
+          el.style.opacity = "1";
+          el.style.transform = el.dataset.revealScale ? "scale(1)" : "translateY(0)";
+        }, delay);
+        this.io.unobserve(el);
+      });
+    }, { threshold: 0.01, rootMargin: "0px 0px -15% 0px" });
+    pending.forEach((el) => this.io.observe(el));
+    // Cuộn nhanh (kéo thanh cuộn / phím End) có thể bỏ qua cả khối: quét lại phần đã cuộn qua
+    this.revealSweep = () => {
+      pending.forEach((el) => {
+        if (el.style.opacity === "1") return;
+        if (el.getBoundingClientRect().bottom < 0) {
+          el.style.opacity = "1";
+          el.style.transform = el.dataset.revealScale ? "scale(1)" : "translateY(0)";
+          this.io.unobserve(el);
+        }
+      });
+    };
+  }
+
+  // ===== ĐẾM SỐ (Khối 1.5) — chạy đúng 1 lần =====
+  initCountUp() {
+    const els = Array.from(document.querySelectorAll("[data-count]"));
+    if (!els.length) return;
+    const run = (el) => {
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || "";
+      const dur = 1500;
+      const t0 = performance.now();
+      const step = (t) => {
+        const p = Math.min((t - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased).toLocaleString("vi-VN") + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    this.ioCount = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        run(en.target);
+        this.ioCount.unobserve(en.target);
+      });
+    }, { threshold: 0.4 });
+    els.forEach((el) => this.ioCount.observe(el));
+  }
+
+  // ===== PARALLAX (Hero, Khối 8) + THANH CTA STICKY MOBILE =====
+  handleScroll() {
+    if (this.raf) return;
+    this.raf = requestAnimationFrame(() => {
+      this.raf = null;
+      if (this.props.parallaxEnabled !== false) {
+        document.querySelectorAll("[data-parallax]").forEach((el) => {
+          const host = el.parentElement;
+          if (!host) return;
+          const r = host.getBoundingClientRect();
+          if (r.bottom < -200 || r.top > window.innerHeight + 200) return;
+          const factor = parseFloat(el.dataset.parallax) || 0.15;
+          const off = (r.top + r.height / 2 - window.innerHeight / 2) * -factor;
+          el.style.transform = `translate3d(0, ${off.toFixed(1)}px, 0)`;
+        });
+      }
+      if (this.revealSweep) this.revealSweep();
+      const hero = document.querySelector("[data-hero]");
+      const final = document.querySelector("[data-final-cta]");
+      const past = hero ? window.scrollY > hero.offsetHeight * 0.75 : false;
+      const near = final ? final.getBoundingClientRect().top < window.innerHeight : false;
+      const vis = past && !near;
+      if (vis !== this.state.ctaVisible) this.setState({ ctaVisible: vis });
+    });
+  }
+
+  // ===== SỐ SUẤT CÒN LẠI: 1 nguồn, crossfade khi đổi =====
+  initSlots() {
+    if (!this.slotConfig.apiUrl) return;
+    const pull = () => {
+      fetch(this.slotConfig.apiUrl, { cache: "no-store" })
+        .then((r) => r.json())
+        .then((d) => {
+          const n = parseInt(d.suatConLai ?? d.remaining ?? d.slots ?? d.value, 10);
+          if (!isNaN(n)) this.setSlots(n);
+        })
+        .catch(() => this.setSlots(null));
+    };
+    pull();
+    this.pollTimer = setInterval(pull, this.slotConfig.pollMs);
+  }
+
+  setSlots(n) {
+    if (n === this.state.slots) return;
+    const nodes = Array.from(document.querySelectorAll("[data-slot]"));
+    nodes.forEach((el) => { el.style.opacity = "0"; });
+    setTimeout(() => {
+      this.setState({ slots: n });
+      requestAnimationFrame(() => nodes.forEach((el) => { el.style.opacity = "1"; }));
+    }, 200);
+  }
+
+  // ===== TAB HỌC PHÍ =====
+  setTab = (i) => this.setState({ activeTab: i });
+
+  // ===== CHI TIẾT GÓI HỌC PHÍ (mở/đóng độc lập từng gói) =====
+  togglePkg = (k) => this.setState((s) => ({ openPkg: { ...s.openPkg, [k]: !s.openPkg[k] } }));
+
+  pkgVals() {
+    const keys = ["pkgA1","pkgA2","pkgA3","pkgB1","pkgB2","pkgB3","pkgC1"];
+    const v = {};
+    for (const k of keys) {
+      const open = !!this.state.openPkg[k];
+      v[k + "Open"] = open;
+      v[k + "Max"] = open ? "1400px" : "0px";
+      v[k + "Op"] = open ? "1" : "0";
+      v[k + "Icon"] = open ? "rotate(180deg)" : "rotate(0deg)";
+      v[k + "Toggle"] = () => this.togglePkg(k);
+    }
+    return v;
+  }
+
+  // ===== FAQ =====
+  toggleFaq = (i) => this.setState((s) => ({ openFaq: s.openFaq === i ? -1 : i }));
+
+  renderVals() {
+    const s = this.state;
+    const slots = s.slots;
+    const total = this.slotConfig.total;
+    const vals = {
+      slotsLabel: slots == null ? this.slotConfig.fallbackText : `Còn ${slots}/${total} suất`,
+      slotsCard: slots == null ? this.slotConfig.fallbackText : `${slots}/${total}`,
+      showStudentDiscount: this.props.showStudentDiscount !== false,
+      stickyPos: s.isMobile ? "relative" : "sticky",
+      hotlineDisplay: s.isMobile ? "none" : "inline-flex",
+      navLinkDisplay: s.isMobile ? "none" : "inline",
+      statCols: s.isMobile ? "repeat(2,minmax(0,1fr))" : "repeat(auto-fit,minmax(188px,1fr))",
+      statLastSpan: s.isMobile ? "span 2" : "auto",
+      heroCols: s.isMobile ? "minmax(0,1fr)" : "1.02fr 0.98fr",
+      heroAreas: s.isMobile ? '"hero-media" "hero-text" "hero-form"' : '"hero-text hero-media" "hero-text hero-form"',
+      stageRatio: s.isMobile ? "16/9" : "4/3",
+      stageTop: s.isMobile ? "auto" : "96px",
+      priceFlow: s.isMobile
+        ? "grid-auto-flow:column;grid-auto-columns:86%;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 8px"
+        : "grid-template-columns:repeat(auto-fit,minmax(250px,1fr))",
+      showCtaBar: s.isMobile,
+      ctaBarTransform: s.ctaVisible ? "translateY(0)" : "translateY(120%)",
+      isTabA: s.activeTab === 0,
+      isTabB: s.activeTab === 1,
+      isTabC: s.activeTab === 2,
+      tabAColor: s.activeTab === 0 ? "#FFFFFF" : "#3E5A75",
+      tabBColor: s.activeTab === 1 ? "#FFFFFF" : "#3E5A75",
+      tabCColor: s.activeTab === 2 ? "#FFFFFF" : "#3E5A75",
+      tabIndicator: `translateX(${s.activeTab * 100}%)`,
+      dotsDisplay: this.hasPointer && !s.isMobile ? "flex" : "none",
+      arrowOpacity: s.stackHover ? "0.72" : "0",
+      stackPrev: (e) => { e.stopPropagation(); this.stackGo(-1); },
+      stackNext: (e) => { e.stopPropagation(); this.stackGo(1); },
+      stackEnter: () => this.setState({ stackHover: true }),
+      stackLeave: () => this.setState({ stackHover: false }),
+      stackDown: this.stackDown,
+      stackUp: this.stackUp,
+      leadApiUrl: this.props.leadApiUrl ?? this.LEAD_API_URL,
+      ...this.stackVals(),
+      ...this.pkgVals(),
+      setTabA: () => this.setTab(0),
+      setTabB: () => this.setTab(1),
+      setTabC: () => this.setTab(2)
+    };
+    for (let i = 1; i <= 10; i++) {
+      const open = s.openFaq === i;
+      vals[`faq${i}Open`] = open;
+      vals[`faq${i}Max`] = open ? "460px" : "0px";
+      vals[`faq${i}Op`] = open ? "1" : "0";
+      vals[`faq${i}Icon`] = open ? "rotate(180deg)" : "rotate(0deg)";
+      vals[`faq${i}Glyph`] = open ? "−" : "+";
+      vals[`faq${i}Toggle`] = () => this.toggleFaq(i);
+    }
+    return vals;
+  }
+}
+
+</script>
+</body>
+</html>

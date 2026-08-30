@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</helmet>
+<div style="font-family:'Be Vietnam Pro',system-ui,sans-serif;background:#FFFFFF;border-radius:var(--radius-card,14px);padding:24px;box-shadow:0 18px 44px rgba(7,38,68,0.14);display:grid;gap:18px;text-align:left">
+  <div style="font-size:19px;font-weight:700;color:#072644;letter-spacing:-0.01em">Nhận tư vấn miễn phí</div>
+
+  <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;gap:8px;background:#F0F8FD;border:1px solid #C9E1F4;border-radius:12px;padding:18px">
+      <div style="font-size:15px;font-weight:600;color:#072644">Đã nhận thông tin của bạn</div>
+      <div style="font-size:13px;line-height:1.6;color:#4A6480">Tư vấn viên Bảo Châu sẽ gọi lại trong ít phút.</div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+    <form onSubmit="{{ onSubmit }}" style="display:grid;gap:12px">
+      <input type="text" name="hoten" autoComplete="name" aria-label="Họ và tên" placeholder="Họ và tên" value="{{ name }}" onChange="{{ onName }}" style="font-family:inherit;font-size:15px;color:#072644;background:#FFFFFF;padding:14px;border:1.5px solid #D6E4F0;border-radius:var(--radius-button,10px);outline:none;transition:border-color var(--transition-base,200ms cubic-bezier(0.22,1,0.36,1)),box-shadow var(--transition-base,200ms cubic-bezier(0.22,1,0.36,1))" style-focus="border-color:#072644;box-shadow:0 0 0 3px rgba(30,111,181,0.16)" style-hover="border-color:#B9D3E8" />
+      <input type="tel" name="sdt" autoComplete="tel" inputMode="numeric" aria-label="Số điện thoại" placeholder="Số điện thoại" value="{{ phone }}" onChange="{{ onPhone }}" style="font-family:inherit;font-size:15px;color:#072644;background:#FFFFFF;padding:14px;border:1.5px solid #D6E4F0;border-radius:var(--radius-button,10px);outline:none;transition:border-color var(--transition-base,200ms cubic-bezier(0.22,1,0.36,1)),box-shadow var(--transition-base,200ms cubic-bezier(0.22,1,0.36,1))" style-focus="border-color:#072644;box-shadow:0 0 0 3px rgba(30,111,181,0.16)" style-hover="border-color:#B9D3E8" />
+      <select name="hang" aria-label="Hạng muốn học" value="{{ level }}" onChange="{{ onLevel }}" style="font-family:inherit;font-size:15px;color:#072644;background:#FFFFFF;padding:14px;border:1.5px solid #D6E4F0;border-radius:var(--radius-button,10px);outline:none;cursor:pointer;appearance:none;transition:border-color var(--transition-base,200ms cubic-bezier(0.22,1,0.36,1)),box-shadow var(--transition-base,200ms cubic-bezier(0.22,1,0.36,1))" style-focus="border-color:#072644;box-shadow:0 0 0 3px rgba(30,111,181,0.16)" style-hover="border-color:#B9D3E8">
+        <option value="B số tự động">B số tự động</option>
+        <option value="B số sàn">B số sàn</option>
+        <option value="C1">C1</option>
+        <option value="Chưa biết, cần tư vấn">Chưa biết, cần tư vấn</option>
+      </select>
+      <sc-if value="{{ error }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:12.5px;line-height:1.5;color:#A3341F;background:#FDF0EC;border-radius:8px;padding:9px 12px">{{ error }}</div>
+      </sc-if>
+      <button type="submit" disabled="{{ sending }}" style="font-family:inherit;display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#072644;color:#FFFFFF;font-size:16px;font-weight:600;padding:15px 22px;border:0;border-radius:var(--radius-button,10px);cursor:pointer;box-shadow:0 6px 16px rgba(7,38,68,0.2);transition:transform var(--transition-base,200ms cubic-bezier(0.22,1,0.36,1)),filter var(--transition-base,200ms cubic-bezier(0.22,1,0.36,1)),box-shadow var(--transition-base,200ms cubic-bezier(0.22,1,0.36,1))" style-hover="filter:brightness(1.12);transform:scale(1.02);box-shadow:0 12px 26px rgba(7,38,68,0.28)" style-active="transform:scale(0.97)" style-focus="box-shadow:0 0 0 3px rgba(30,111,181,0.35)">{{ submitLabel }}</button>
+    </form>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:360},&quot;submitLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Đăng ký&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;leadApiUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Kết nối&quot;},&quot;formLocation&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Kết nối&quot;},&quot;onSubmitted&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(data: {name: string, phone: string, level: string}) =&gt; void&quot;}}">
+class Component extends DCLogic {
+  state = { name: "", phone: "", level: "B số tự động", sent: false, sending: false, error: "" };
+
+  submit = (e) => {
+    e.preventDefault();
+    if (this.state.sending) return;
+    const name = this.state.name.trim();
+    const phone = this.state.phone.replace(/[^0-9]/g, "");
+    if (name.length < 2) return this.setState({ error: "Bạn nhập giúp họ tên nhé." });
+    if (!/^0\d{9}$/.test(phone)) return this.setState({ error: "Số điện thoại cần 10 số, bắt đầu bằng 0." });
+    const lead = { name, phone, level: this.state.level };
+    this.setState({ error: "", sending: true });
+    this.sendLead(lead).then(() => {
+      this.setState({ sending: false, sent: true });
+      if (typeof this.props.onSubmitted === "function") this.props.onSubmitted(lead);
+    });
+  };
+
+  // Gửi lead sang Google Apps Script (ghi Google Sheet + báo Telegram).
+  // text/plain để tránh CORS preflight; thử lại 1 lần nếu mạng lỗi.
+  sendLead(lead) {
+    const url = this.props.leadApiUrl;
+    if (!url) return Promise.resolve();
+    const payload = JSON.stringify({
+      hoTen: lead.name,
+      soDienThoai: lead.phone,
+      hangBang: lead.level,
+      viTri: this.props.formLocation ?? "",
+      trang: typeof location !== "undefined" ? location.href : "",
+      nguon: typeof document !== "undefined" ? document.referrer : "",
+      thoiGian: new Date().toISOString()
+    });
+    const post = () => fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: payload
+    });
+    return post().catch(() => post()).catch(() => {
+      try { if (typeof localStorage !== "undefined") localStorage.setItem("bc_lead_loi_" + Date.now(), payload); } catch (err) {}
+    });
+  }
+
+  renderVals() {
+    return {
+      name: this.state.name,
+      phone: this.state.phone,
+      level: this.state.level,
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      error: this.state.error,
+      sending: this.state.sending,
+      submitLabel: this.state.sending ? "Đang gửi…" : (this.props.submitLabel ?? "Đăng ký"),
+      onSubmit: this.submit,
+      onName: (e) => this.setState({ name: e.target.value }),
+      onPhone: (e) => this.setState({ phone: e.target.value }),
+      onLevel: (e) => this.setState({ level: e.target.value })
+    };
+  }
+}
+
+</script>
+</body>
+</html>
