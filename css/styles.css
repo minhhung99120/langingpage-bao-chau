@@ -155,11 +155,11 @@ a:hover{color:var(--color-navy)}
   max-width:var(--shell);margin:0 auto;padding:10px 16px;
   display:flex;align-items:center;gap:12px;flex-wrap:nowrap;
 }
-.logo{display:flex;align-items:center;gap:10px;flex:0 0 auto}
-.logo img{display:block;height:clamp(34px,4vw,42px);width:auto}
-.logo__chu{display:grid;gap:1px}
-.logo__ten{font-size:20px;font-weight:700;letter-spacing:-0.02em;line-height:1.1;color:var(--color-navy)}
-.logo__phu{font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--xanh-mo)}
+/* Logo đứng một mình, không kèm chữ. Cho cao hơn bản cũ (42px → 48px) vì
+   giờ nó phải tự gánh cả phía trái header. */
+.logo{display:flex;align-items:center;flex:0 0 auto}
+.logo img{display:block;height:clamp(38px,4.4vw,48px);width:auto;transition:transform var(--transition-base)}
+.logo:hover img{transform:scale(1.04)}
 .nav{display:flex;align-items:center;gap:18px;margin-left:auto;flex-wrap:nowrap}
 .nav__link{
   font-size:15px;font-weight:500;color:var(--color-navy);
@@ -229,11 +229,22 @@ a:hover{color:var(--color-navy)}
 .o-nho:hover{transform:translateY(-3px);border-color:#1E6FB5;box-shadow:0 12px 26px rgba(7,38,68,0.16)}
 .o-nho--suat{display:flex;align-items:center;gap:9px}
 .o-nho__nhan{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-navy)}
-.o-nho__gia-tri{font-size:20px;font-weight:700;color:var(--color-navy);margin-top:3px}
+/* Chỉ đổi độ mờ, không đổi kích thước: phóng to thu nhỏ chữ liên tục làm
+   nét chữ bị nhoè do dựng hình theo pixel lẻ. Chu kỳ 3.8s cố ý chậm hơn
+   hẳn chấm nhấp nháy 1.6s bên ô cạnh để hai nhịp không đọc thành một. */
+.o-nho__gia-tri{
+  font-size:20px;font-weight:700;color:var(--do-nhan);margin-top:3px;
+  animation:bc-tho-cham 3.8s ease-in-out infinite;
+}
+@keyframes bc-tho-cham{
+  0%,100%{opacity:1}
+  50%    {opacity:0.72}   /* không hạ thấp hơn: dưới mức này chữ đỏ trên nền
+                             trắng tụt xuống ~2.6:1, dưới ngưỡng đọc được */
+}
 .cham{width:8px;height:8px;border-radius:50%;flex:0 0 auto;animation:bc-dot 1.6s ease-in-out infinite}
 .cham--xanh{background:#1E6FB5}
 .cham--do{background:var(--do-nhan)}
-.o-nho__suat{font-size:15px;font-weight:600;color:var(--color-navy);font-variant-numeric:tabular-nums}
+.o-nho__suat{font-size:17px;font-weight:600;color:var(--color-navy);font-variant-numeric:tabular-nums}
 
 .hero__media{grid-area:hero-media;display:grid;gap:14px;justify-items:center}
 .hero__form{grid-area:hero-form}
