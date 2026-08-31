@@ -11,13 +11,13 @@
    Hướng dẫn dựng: HUONG-DAN-KET-NOI-FORM.md
    Để trống "" thì form vẫn chạy, chỉ hiện màn hình cảm ơn tại chỗ.
 ------------------------------------------------------------ */
-const URL_NHAN_DANG_KY = "";
+const URL_NHAN_DANG_KY = "https://script.google.com/macros/s/AKfycbxx2DjWLi0EcpHHn4QjjQhA_aFgUHFqPWKrnUSFMld5Vql9JThXLBE3iG9N88QSLFlu/exec";
 
 /* URL đọc số suất còn lại. Dùng CHUNG một URL Apps Script với URL_NHAN_DANG_KY
    ở trên — cùng một cầu nối, một Sheet, Sheet vẫn để "Chỉ mình tôi".
    Cách dựng: HUONG-DAN-KET-NOI-FORM.md
    Để trống thì trang dùng con số cố định ở mục UU_DAI bên dưới. */
-const URL_NOI_DUNG_SHEET = "";
+const URL_NOI_DUNG_SHEET = "https://script.google.com/macros/s/AKfycbxx2DjWLi0EcpHHn4QjjQhA_aFgUHFqPWKrnUSFMld5Vql9JThXLBE3iG9N88QSLFlu/exec";
 
 /* ------------------------------------------------------------
    2. THÔNG TIN LIÊN HỆ
