@@ -468,7 +468,11 @@
       return fetch(URL_NHAN_DANG_KY, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: payload
+        body: payload,
+        /* Trang hiện màn hình cảm ơn ngay rồi mới gửi ngầm, nên khách có thể
+           đóng tab lúc request chưa xong. keepalive bảo trình duyệt cứ gửi
+           cho xong dù trang đã đóng. Thiếu cờ này là mất đơn. */
+        keepalive: true
       });
     };
     return post().catch(post).catch(function () {
@@ -512,9 +516,6 @@
 
       oLoi.hidden = true;
       dangGui = true;
-      nut.disabled = true;
-      nut.textContent = "Đang gửi…";
-
       var hangBang = form.hang.value;
 
       /* Báo Facebook NGAY tại đây, KHÔNG chờ Apps Script trả lời.
@@ -526,15 +527,19 @@
          KHÔNG gửi họ tên và số điện thoại. */
       bcSuKien("Lead", { content_name: viTri, content_category: hangBang });
 
-      guiLead({ hoTen: hoTen, soDienThoai: soDienThoai, hangBang: hangBang }, viTri)
-        .then(function () {
-          the.innerHTML =
-            '<div class="form-dk__tieu-de">Nhận tư vấn miễn phí</div>' +
-            '<div class="form-dk__xong">' +
-              '<div class="form-dk__xong-tieu-de">Đã nhận thông tin của bạn</div>' +
-              '<div class="form-dk__xong-mo-ta">Tư vấn viên Bảo Châu sẽ gọi lại trong ít phút.</div>' +
-            "</div>";
-        });
+      /* Hiện màn hình cảm ơn NGAY, không bắt khách chờ Apps Script 2–3 giây.
+         Chờ cũng không đổi lấy được gì: kể cả khi gửi thất bại, trang vẫn
+         hiện cảm ơn (đã có cơ chế lưu tạm vào localStorage). */
+      the.innerHTML =
+        '<div class="form-dk__tieu-de">Nhận tư vấn miễn phí</div>' +
+        '<div class="form-dk__xong">' +
+          '<div class="form-dk__xong-tieu-de">Đã nhận thông tin của bạn</div>' +
+          '<div class="form-dk__xong-mo-ta">Tư vấn viên Bảo Châu sẽ gọi lại trong ít phút.</div>' +
+        "</div>";
+
+      /* Gửi ngầm phía sau. Mọi giá trị đã lấy ra biến ở trên rồi nên không
+         sao khi thẻ form vừa bị thay mất. */
+      guiLead({ hoTen: hoTen, soDienThoai: soDienThoai, hangBang: hangBang }, viTri);
     });
   }
 
