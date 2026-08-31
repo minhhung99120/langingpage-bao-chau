@@ -134,7 +134,26 @@ sips -Z 1500 -s format jpeg -s formatOptions 60 anh-goc.jpg --out img/ten-moi.jp
 > ⚠️ `khoi5-xe-vios-so-san.jpg` là ảnh **cần số sàn** (tab B số sàn),
 > `khoi5-xe-kia-k250.jpg` là ảnh **xe tải sát hạch** (tab C1) — đừng đổi chỗ.
 
-### 6. Đổi màu / cỡ chữ
+### 6. ⚠️ SAU KHI SỬA BẤT KỲ FILE NÀO TRONG `css/` HOẶC `js/`
+
+Hostinger đặt header `cache-control: max-age=604800` cho file tĩnh — trình duyệt của
+khách **giữ bản cũ suốt 7 ngày**. Sửa giá xong mà không làm bước này thì khách đã từng
+vào trang vẫn thấy giá cũ cả tuần.
+
+Cách xử lý: mở `index.html`, tìm 3 dòng có `?v=`:
+
+```html
+<link rel="stylesheet" href="css/styles.css?v=1">
+<script src="js/noi-dung.js?v=1"></script>
+<script src="js/app.js?v=1"></script>
+```
+
+**Tăng cả 3 số lên 1** (`?v=1` → `?v=2`), rồi mở `chinh-sach-bao-mat.html` tăng nốt
+dòng `css/styles.css?v=1` ở đó. Tổng cộng 4 chỗ, phải cùng một số.
+
+Đổi số là trình duyệt coi như file mới hoàn toàn và tải lại ngay.
+
+### 7. Đổi màu / cỡ chữ
 
 `css/styles.css`, phần `:root` ở đầu file chứa toàn bộ biến màu và bo góc.
 
@@ -172,11 +191,10 @@ dán URL vào `URL_API_SUAT` ở ngay dưới. Trang gọi lại mỗi 60 giây;
 ## Trước khi đưa lên hosting
 
 - [ ] Đã dán `URL_NHAN_DANG_KY` và thử gửi một đơn thật, kiểm tra Google Sheet có dòng mới.
-- [ ] **Khai `canonical`**: mở `index.html`, tìm khối chú thích ngay dưới thẻ `<title>`,
-      thay `ten-mien-cua-ban.vn` bằng tên miền thật rồi bỏ dấu chú thích cho thẻ hoạt động.
-      Hiện đang cố tình để trống — khai trỏ sang tên miền chưa tồn tại có thể làm
-      Google không index trang thật.
-- [ ] Mở `ten-mien/robots.txt` xem có hiển thị không, rồi bỏ dấu `#` ở dòng `Sitemap:` nếu có sitemap.
+- [x] ~~Khai `canonical`, `og:url`, sitemap~~ — đã dùng `https://daotaolaixebaochau.com`.
+      Nếu đổi tên miền, sửa ở 4 chỗ: `index.html`, `chinh-sach-bao-mat.html`,
+      `robots.txt`, `sitemap.xml`.
+- [ ] Khai báo `https://daotaolaixebaochau.com/sitemap.xml` trong Google Search Console.
 - [ ] Xem lại trang trên điện thoại thật, không chỉ thu nhỏ cửa sổ trình duyệt.
 - [ ] `chinh-sach-bao-mat.html` phải truy cập được — Facebook và Google bắt buộc có
       trang này mới duyệt quảng cáo.

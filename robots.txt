@@ -17,5 +17,4 @@ Disallow: /apps-script-lead.gs
 
 Allow: /
 
-# Khi đã có tên miền thật, bỏ dấu # và điền vào:
-# Sitemap: https://ten-mien-cua-ban.vn/sitemap.xml
+Sitemap: https://daotaolaixebaochau.com/sitemap.xml
