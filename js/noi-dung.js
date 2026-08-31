@@ -51,6 +51,12 @@ const UU_DAI = {
 /* ------------------------------------------------------------
    4. ẢNH NGĂN XẾP Ở HERO (vuốt / bấm để đổi)
 ------------------------------------------------------------ */
+
+/* Tự động đổi ảnh sau bao nhiêu mili-giây. 5000 = 5 giây.
+   Đặt 0 để tắt hẳn, khách phải tự vuốt.
+   Tự dừng khi khách đang rê chuột lên ảnh hoặc đang mở tab khác. */
+const ANH_HERO_TU_DOI = 5000;
+
 const ANH_HERO = [
   { src: "img/hero-giao-vien-hoc-vien.jpg", alt: "Giáo viên Bảo Châu ngồi ghế phụ hướng dẫn học viên đang cầm vô-lăng" },
   { src: "img/hero-huong-dan-can-so.jpg",   alt: "Giáo viên chỉ cách chuyển cần số trên xe tập lái" },

@@ -119,6 +119,7 @@ Chép ảnh mới vào thư mục `img/`, rồi trỏ lại đường dẫn:
 | Ảnh | Sửa ở đâu |
 |---|---|
 | 3 ảnh trượt ở Hero | `js/noi-dung.js` → `ANH_HERO` |
+| Tốc độ tự đổi ảnh Hero | `js/noi-dung.js` → `ANH_HERO_TU_DOI` (mili-giây, `0` để tắt) |
 | Ảnh xe cuối mỗi tab học phí | `js/noi-dung.js` → `BANG_GIA` → `anh` |
 | 4 ảnh lộ trình | `js/noi-dung.js` → `LO_TRINH` → `anh` |
 | 3 ảnh khối "3 Không", ảnh hợp đồng, ảnh nền CTA cuối | `index.html` |

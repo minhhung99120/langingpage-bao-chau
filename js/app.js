@@ -148,12 +148,6 @@
      Đổi ảnh bằng: vuốt ngang, bấm nhanh, 2 mũi tên, 3 chấm.
      Chỉ ảnh đang ở trước mới phóng scale(1.05) khi hover.
      ========================================================== */
-  var LOP_SAU = [
-    { t: "translateY(0) scale(1)",          o: "1",    z: "3" },
-    { t: "translateY(-13px) scale(0.945)",  o: "0.72", z: "2" },
-    { t: "translateY(-22px) scale(0.89)",   o: "0.45", z: "1" }
-  ];
-
   function khoiTaoNganXep() {
     var boc = $("[data-ngan-xep]");
     if (!boc) return;
@@ -174,27 +168,67 @@
 
     var lop = $$(".ngan-xep__lop", boc);
     var cham = $$(".ngan-xep__cham button", boc);
-    var hienTai = 0;
+    var hienTai = 0, truocDo = null, hen = null;
+    var giamChuyenDong = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    function ve() {
+    function ve(huong) {
+      // Gỡ lớp animation cũ rồi ép trình duyệt tính lại, nếu không animation
+      // sẽ không chạy lại khi bấm liên tục cùng một hướng.
+      lop.forEach(function (el) { el.classList.remove("la-truoc", "vao", "ra"); });
+      void boc.offsetWidth;
+
+      if (huong) boc.style.setProperty("--huong", huong > 0 ? "1" : "-1");
+
       lop.forEach(function (el, i) {
-        var rel = (i - hienTai + lop.length) % lop.length;
-        var d = LOP_SAU[Math.min(rel, LOP_SAU.length - 1)];
-        el.style.transform = d.t;
-        el.style.opacity = d.o;
-        el.style.zIndex = d.z;
-        el.setAttribute("data-vi-tri", rel);
+        if (i === hienTai) {
+          el.classList.add("la-truoc");
+          if (huong) el.classList.add("vao");      // rút ra rồi lên trước
+        } else if (huong && i === truocDo) {
+          el.classList.add("ra");                  // chìm xuống cuối cọc
+        }
+        el.setAttribute("data-vi-tri", i === hienTai ? "0" : "1");
       });
+
       cham.forEach(function (b, i) { b.setAttribute("aria-current", String(i === hienTai)); });
     }
 
-    function di(huong) { hienTai = (hienTai + huong + lop.length) % lop.length; ve(); }
-    ve();
+    function di(huong) {
+      truocDo = hienTai;
+      hienTai = (hienTai + huong + lop.length) % lop.length;
+      ve(huong);
+      henLai();
+    }
+
+    function toi(i) {
+      if (i === hienTai) return;
+      var huong = i > hienTai ? 1 : -1;
+      truocDo = hienTai;
+      hienTai = i;
+      ve(huong);
+      henLai();
+    }
+
+    /* ---- Tự động đổi ảnh ----
+       Dừng khi: khách đang rê chuột lên ảnh, đang mở tab khác, hoặc máy đặt
+       chế độ giảm chuyển động. Mỗi lần khách tự vuốt thì đếm lại từ đầu. */
+    function dungHen() { if (hen) { clearTimeout(hen); hen = null; } }
+
+    function henLai() {
+      dungHen();
+      if (!ANH_HERO_TU_DOI || giamChuyenDong.matches || lop.length < 2) return;
+      hen = setTimeout(function () {
+        if (document.visibilityState === "visible" && !boc.classList.contains("dang-hover")) di(1);
+        else henLai();
+      }, ANH_HERO_TU_DOI);
+    }
+
+    ve(0);
+    henLai();
 
     $(".ngan-xep__mui-ten--truoc", boc).addEventListener("click", function (e) { e.stopPropagation(); di(-1); });
     $(".ngan-xep__mui-ten--sau", boc).addEventListener("click", function (e) { e.stopPropagation(); di(1); });
     cham.forEach(function (b, i) {
-      b.addEventListener("click", function (e) { e.stopPropagation(); hienTai = i; ve(); });
+      b.addEventListener("click", function (e) { e.stopPropagation(); toi(i); });
     });
 
     boc.addEventListener("mouseenter", function () { boc.classList.add("dang-hover"); });
