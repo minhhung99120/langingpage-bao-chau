@@ -480,6 +480,12 @@
     });
   }
 
+  /* Trang có hai form (Hero và cuối trang). Chúng phải dùng CHUNG trạng thái:
+     khách điền ở một chỗ rồi cuộn tới chỗ kia thấy form vẫn trống sẽ dễ điền
+     lại, thành hai đơn trùng cho cùng một người. */
+  var cacFormCamOn = [];   // hàm chuyển sang màn hình cảm ơn của từng form
+  var daGuiLead = false;   // đã có form nào gửi chưa
+
   function taoForm(host, viTri) {
     host.innerHTML =
       '<div class="form-dk">' +
@@ -499,7 +505,20 @@
     var form = $("form", the);
     var oLoi = $(".form-dk__loi", the);
     var nut = $(".form-dk__gui", the);
-    var dangGui = false;
+
+    function hienCamOn() {
+      the.innerHTML =
+        '<div class="form-dk__tieu-de">Nhận tư vấn miễn phí</div>' +
+        '<div class="form-dk__xong">' +
+          '<div class="form-dk__xong-tieu-de">Đã nhận thông tin của bạn</div>' +
+          '<div class="form-dk__xong-mo-ta">Tư vấn viên Bảo Châu sẽ gọi lại trong ít phút.</div>' +
+        "</div>";
+    }
+    cacFormCamOn.push(hienCamOn);
+
+    /* Form kia đã gửi trước rồi thì form này cũng cảm ơn luôn — xảy ra khi
+       trang dựng form thứ hai sau khi form thứ nhất đã gửi xong. */
+    if (daGuiLead) return hienCamOn();
 
     function baoLoi(chu) {
       oLoi.textContent = chu;
@@ -508,14 +527,14 @@
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      if (dangGui) return;
+      if (daGuiLead) return;   // cờ dùng chung: một form gửi rồi thì khoá cả hai
       var hoTen = form.hoten.value.trim();
       var soDienThoai = form.sdt.value.replace(/[^0-9]/g, "");
       if (hoTen.length < 2) return baoLoi("Bạn nhập giúp họ tên nhé.");
       if (!/^0\d{9}$/.test(soDienThoai)) return baoLoi("Số điện thoại cần 10 số, bắt đầu bằng 0.");
 
       oLoi.hidden = true;
-      dangGui = true;
+      daGuiLead = true;
       nut.disabled = true;
       nut.textContent = "Đang gửi…";
       var hangBang = form.hang.value;
@@ -540,12 +559,7 @@
          Khác chỗ cũ ở điểm quan trọng: thời gian chờ này CỐ ĐỊNH, không phụ
          thuộc mạng. Apps Script có chậm 5 giây thì khách vẫn chỉ chờ chừng này. */
       setTimeout(function () {
-        the.innerHTML =
-          '<div class="form-dk__tieu-de">Nhận tư vấn miễn phí</div>' +
-          '<div class="form-dk__xong">' +
-            '<div class="form-dk__xong-tieu-de">Đã nhận thông tin của bạn</div>' +
-            '<div class="form-dk__xong-mo-ta">Tư vấn viên Bảo Châu sẽ gọi lại trong ít phút.</div>' +
-          "</div>";
+        cacFormCamOn.forEach(function (hien) { hien(); });
       }, CHO_CAM_ON);
     });
   }
