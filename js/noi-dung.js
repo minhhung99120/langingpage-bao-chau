@@ -346,3 +346,9 @@ const CAU_HOI = [
    9. LỰA CHỌN TRONG FORM ĐĂNG KÝ
 ------------------------------------------------------------ */
 const HANG_BANG = ["B số tự động", "B số sàn", "C1", "Chưa biết, cần tư vấn"];
+
+/* Bấm Đăng ký xong, giữ trạng thái "Đang gửi…" bao nhiêu mili-giây rồi mới
+   hiện màn hình cảm ơn. Đây là nhịp nghỉ cho khách kịp thấy thao tác đã
+   nhận — KHÔNG phải thời gian chờ mạng, đơn đã gửi ngầm từ trước.
+   Đặt 0 thì hiện cảm ơn tức thì. */
+const CHO_CAM_ON = 1500;

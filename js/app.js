@@ -516,6 +516,8 @@
 
       oLoi.hidden = true;
       dangGui = true;
+      nut.disabled = true;
+      nut.textContent = "Đang gửi…";
       var hangBang = form.hang.value;
 
       /* Báo Facebook NGAY tại đây, KHÔNG chờ Apps Script trả lời.
@@ -527,19 +529,24 @@
          KHÔNG gửi họ tên và số điện thoại. */
       bcSuKien("Lead", { content_name: viTri, content_category: hangBang });
 
-      /* Hiện màn hình cảm ơn NGAY, không bắt khách chờ Apps Script 2–3 giây.
-         Chờ cũng không đổi lấy được gì: kể cả khi gửi thất bại, trang vẫn
-         hiện cảm ơn (đã có cơ chế lưu tạm vào localStorage). */
-      the.innerHTML =
-        '<div class="form-dk__tieu-de">Nhận tư vấn miễn phí</div>' +
-        '<div class="form-dk__xong">' +
-          '<div class="form-dk__xong-tieu-de">Đã nhận thông tin của bạn</div>' +
-          '<div class="form-dk__xong-mo-ta">Tư vấn viên Bảo Châu sẽ gọi lại trong ít phút.</div>' +
-        "</div>";
-
-      /* Gửi ngầm phía sau. Mọi giá trị đã lấy ra biến ở trên rồi nên không
-         sao khi thẻ form vừa bị thay mất. */
+      /* Gửi ngầm ngay, không chặn giao diện. Mọi giá trị đã lấy ra biến ở
+         trên rồi nên không sao khi thẻ form bị thay mất sau đó. */
       guiLead({ hoTen: hoTen, soDienThoai: soDienThoai, hangBang: hangBang }, viTri);
+
+      /* Chờ đúng CHO_CAM_ON rồi mới hiện cảm ơn.
+         Đây KHÔNG phải chờ Apps Script — việc gửi đã chạy ngầm ở trên rồi.
+         Đây là nhịp nghỉ cố tình: hiện cảm ơn tức thì thì thao tác trôi tuột,
+         khách không kịp thấy gì nên không chắc đã gửi được chưa.
+         Khác chỗ cũ ở điểm quan trọng: thời gian chờ này CỐ ĐỊNH, không phụ
+         thuộc mạng. Apps Script có chậm 5 giây thì khách vẫn chỉ chờ chừng này. */
+      setTimeout(function () {
+        the.innerHTML =
+          '<div class="form-dk__tieu-de">Nhận tư vấn miễn phí</div>' +
+          '<div class="form-dk__xong">' +
+            '<div class="form-dk__xong-tieu-de">Đã nhận thông tin của bạn</div>' +
+            '<div class="form-dk__xong-mo-ta">Tư vấn viên Bảo Châu sẽ gọi lại trong ít phút.</div>' +
+          "</div>";
+      }, CHO_CAM_ON);
     });
   }
 
