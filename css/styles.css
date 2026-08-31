@@ -214,6 +214,9 @@ a:hover{color:var(--color-navy)}
 .ngan-xep{
   position:relative;width:100%;aspect-ratio:4/3;padding-top:20px;
   cursor:grab;touch-action:pan-y;user-select:none;
+  /* Lá bài nhô ngang ra bao nhiêu khi được rút. Nhô nhiều thì thấy rõ động
+     tác rút nhưng rối mắt; nhô ít thì gọn gàng hơn. Chỉnh đúng một dòng này. */
+  --nho-ra:12%;
 }
 /* Chỉ ảnh trước hiện; hai ảnh sau ẩn hẳn, chờ tới lượt được "rút" ra */
 .ngan-xep__lop{
@@ -233,11 +236,11 @@ a:hover{color:var(--color-navy)}
    ⚠ Mốc 42% là lúc lật z-index. Lá cũ phải mờ gần hết TRƯỚC mốc này, nếu
    không cú lật sẽ làm 3/4 diện tích lá mới hiện ra đột ngột — nhìn rất thô. */
 @keyframes bc-rut-la-cuoi{
-  0%   {z-index:2;opacity:0;transform:translateX(0) scale(0.87);
+  0%   {z-index:2;opacity:0;transform:translateX(0) scale(0.945);
         animation-timing-function:cubic-bezier(0.32,0.02,0.4,1)}
-  40%  {z-index:2;opacity:0.92;transform:translateX(calc(var(--huong,1) * 29%)) scale(0.915);
+  40%  {z-index:2;opacity:0.92;transform:translateX(calc(var(--huong,1) * var(--nho-ra))) scale(0.962);
         animation-timing-function:cubic-bezier(0.45,0,0.35,1)}
-  42%  {z-index:6;opacity:0.96;transform:translateX(calc(var(--huong,1) * 29%)) scale(0.92);
+  42%  {z-index:6;opacity:0.96;transform:translateX(calc(var(--huong,1) * var(--nho-ra))) scale(0.965);
         animation-timing-function:cubic-bezier(0.28,0.62,0.24,1)}
   100% {z-index:6;opacity:1;transform:translateX(0) scale(1)}
 }
