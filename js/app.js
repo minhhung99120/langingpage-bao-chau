@@ -515,8 +515,12 @@
       nut.disabled = true;
       nut.textContent = "Đang gửi…";
 
-      guiLead({ hoTen: hoTen, soDienThoai: soDienThoai, hangBang: form.hang.value }, viTri)
+      var hangBang = form.hang.value;
+      guiLead({ hoTen: hoTen, soDienThoai: soDienThoai, hangBang: hangBang }, viTri)
         .then(function () {
+          /* Báo Facebook có khách để lại thông tin — đây là sự kiện để
+             quảng cáo tối ưu. KHÔNG gửi họ tên và số điện thoại. */
+          bcSuKien("Lead", { content_name: viTri, content_category: hangBang });
           the.innerHTML =
             '<div class="form-dk__tieu-de">Nhận tư vấn miễn phí</div>' +
             '<div class="form-dk__xong">' +
@@ -524,6 +528,17 @@
               '<div class="form-dk__xong-mo-ta">Tư vấn viên Bảo Châu sẽ gọi lại trong ít phút.</div>' +
             "</div>";
         });
+    });
+  }
+
+  /* Nhiều khách gọi thẳng chứ không điền form — đếm cả hành vi đó,
+     nếu không quảng cáo sẽ tưởng những lượt ấy là thất bại. */
+  function khoiTaoBamGoi() {
+    $$('a[href^="tel:"]').forEach(function (a) {
+      a.addEventListener("click", function () { bcSuKien("Contact", { content_name: "Gọi điện" }); });
+    });
+    $$('a[href*="zalo.me"]').forEach(function (a) {
+      a.addEventListener("click", function () { bcSuKien("Contact", { content_name: "Zalo" }); });
     });
   }
 
@@ -655,6 +670,7 @@
     renderLoTrinh();
     renderFaq();
     khoiTaoForm();
+    khoiTaoBamGoi();
     khoiTaoSuat();
 
     khoiTaoReveal();

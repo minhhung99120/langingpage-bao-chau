@@ -47,6 +47,20 @@ Nếu deploy xong mà trang vẫn cũ kể cả sau `Cmd+Shift+R` → nghi `.hta
 
 Danh sách đầy đủ kèm lý do: `README-THIET-KE-GOC.md` mục "Ranh giới nội dung".
 
+## Đo lường quảng cáo
+
+`js/theo-doi.js` nạp trong `<head>` cả hai trang. `FACEBOOK_PIXEL_ID` để trống thì file
+không làm gì cả — không gọi ra ngoài, không đặt cookie. Điền ID vào là bật.
+
+Sự kiện đang bắn: `PageView` (tự động), `Lead` (gửi form thành công), `Contact` (bấm gọi / Zalo).
+
+**⚠ TUYỆT ĐỐI KHÔNG gửi họ tên hay số điện thoại sang Facebook.** Trang chính sách bảo mật đã
+cam kết với khách rằng công cụ đo lường "ghi nhận hành vi ở dạng ẩn danh, không kèm tên hay số
+điện thoại". Chỉ được gửi: khách điền form nào (`content_name`), quan tâm hạng bằng nào
+(`content_category`). Nếu sau này bàn tới Advanced Matching thì phải hỏi Hùng trước.
+
+Gọi `bcSuKien(ten, thamSo)` ở bất cứ đâu cũng an toàn — hàm luôn tồn tại kể cả khi Pixel tắt.
+
 ## Số liệu là số thật — không tự sửa
 
 Giá, số giờ, km DAT trong `BANG_GIA` là số đã chốt với chủ trung tâm.
