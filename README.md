@@ -134,24 +134,21 @@ sips -Z 1500 -s format jpeg -s formatOptions 60 anh-goc.jpg --out img/ten-moi.jp
 > ⚠️ `khoi5-xe-vios-so-san.jpg` là ảnh **cần số sàn** (tab B số sàn),
 > `khoi5-xe-kia-k250.jpg` là ảnh **xe tải sát hạch** (tab C1) — đừng đổi chỗ.
 
-### 6. ⚠️ SAU KHI SỬA BẤT KỲ FILE NÀO TRONG `css/` HOẶC `js/`
+### 6. Sau khi sửa xong thì làm gì
 
-Hostinger đặt header `cache-control: max-age=604800` cho file tĩnh — trình duyệt của
-khách **giữ bản cũ suốt 7 ngày**. Sửa giá xong mà không làm bước này thì khách đã từng
-vào trang vẫn thấy giá cũ cả tuần.
-
-Cách xử lý: mở `index.html`, tìm 3 dòng có `?v=`:
-
-```html
-<link rel="stylesheet" href="css/styles.css?v=1">
-<script src="js/noi-dung.js?v=1"></script>
-<script src="js/app.js?v=1"></script>
+```bash
+cd "/Users/minhhung/Desktop/design_handoff_landing_baochau" && git add -A && git commit -m "Mô tả ngắn thay đổi" && git push
 ```
 
-**Tăng cả 3 số lên 1** (`?v=1` → `?v=2`), rồi mở `chinh-sach-bao-mat.html` tăng nốt
-dòng `css/styles.css?v=1` ở đó. Tổng cộng 4 chỗ, phải cùng một số.
+Rồi vào Hostinger bấm deploy. Xong.
 
-Đổi số là trình duyệt coi như file mới hoàn toàn và tải lại ngay.
+**Không phải bơm số phiên bản gì cả.** File `.htaccess` ở gốc dự án đã bắt máy chủ trả về
+`Cache-Control: max-age=0, must-revalidate` cho html/css/js, nên trình duyệt khách luôn hỏi lại
+máy chủ trước khi dùng bản cũ. Đã đo trên tên miền thật, đang chạy đúng.
+
+> Nếu một ngày anh sửa xong, deploy rồi mà trang vẫn hiện nội dung cũ kể cả khi bấm
+> `Cmd+Shift+R`, nguyên nhân gần như chắc chắn là `.htaccess` không còn được áp dụng.
+> Báo tôi, đừng tự đoán.
 
 ### 7. Đổi màu / cỡ chữ
 
