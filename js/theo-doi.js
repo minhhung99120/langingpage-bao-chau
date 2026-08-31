@@ -13,7 +13,7 @@
    Lấy ở Meta Events Manager, là dãy 15–16 chữ số.
    Cách lấy: xem HUONG-DAN-FACEBOOK-PIXEL.md
 ------------------------------------------------------------ */
-var FACEBOOK_PIXEL_ID = "";
+var FACEBOOK_PIXEL_ID = "922199400952564";
 
 
 (function () {
