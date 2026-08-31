@@ -1,0 +1,31 @@
+# ============================================================
+# Bảo Châu — cấu hình máy chủ
+#
+# Mục đích: sửa nội dung xong là khách thấy ngay, không phải chờ.
+#
+# Mặc định Hostinger gửi "Cache-Control: max-age=604800" cho css/js
+# = bắt trình duyệt khách giữ file cũ 7 NGÀY. Sửa giá hôm nay thì
+# tuần sau khách mới thấy. File này ghi đè quy tắc đó.
+#
+# Mọi lệnh đều bọc trong <IfModule>: nếu máy chủ không hỗ trợ module
+# nào thì phần đó bị bỏ qua, KHÔNG làm sập trang.
+# ============================================================
+
+<IfModule mod_headers.c>
+
+  # --- HTML, CSS, JS: luôn hỏi lại máy chủ trước khi dùng bản cũ ---
+  # max-age=0 + must-revalidate: trình duyệt vẫn giữ file, nhưng mỗi lần
+  # vào phải hỏi "file có đổi không?". Chưa đổi thì máy chủ trả 304
+  # (rất nhẹ, gần như không tốn băng thông). Đổi rồi thì tải bản mới ngay.
+  <FilesMatch "\.(html|css|js)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+
+  # --- Ảnh, logo, font: giữ cache 30 ngày ---
+  # Những file này gần như không đổi, cache lâu giúp trang tải nhanh.
+  # Khi thay ảnh thì đặt tên file mới là xong.
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+</IfModule>
