@@ -13,9 +13,10 @@
 ------------------------------------------------------------ */
 const URL_NHAN_DANG_KY = "";
 
-/* URL API trả về số suất còn lại (tuỳ chọn).
+/* URL Google Sheet đã xuất bản dạng CSV — nơi sửa số suất còn lại hằng ngày
+   mà không phải đụng vào code. Cách dựng: HUONG-DAN-SHEET-NOI-DUNG.md
    Để trống thì trang dùng con số cố định ở mục UU_DAI bên dưới. */
-const URL_API_SUAT = "";
+const URL_NOI_DUNG_SHEET = "";
 
 /* ------------------------------------------------------------
    2. THÔNG TIN LIÊN HỆ
@@ -37,10 +38,13 @@ const THONG_TIN = {
    ĐỔI SỐ SUẤT: sửa đúng dòng "conLai" bên dưới.
 ------------------------------------------------------------ */
 const UU_DAI = {
-  conLai: 7,                            // số suất còn lại
-  tong: 20,                             // tổng số suất mỗi tháng
-  chuKhiLoi: "Liên hệ để kiểm tra",     // hiện khi gọi API lỗi
-  chuKyPoll: 60000,                     // 60 giây gọi lại API một lần
+  conLai: 7,     // SỐ SUẤT CÒN LẠI — số dự phòng, dùng khi chưa nối Sheet
+                 // hoặc khi Sheet trục trặc. Nối Sheet rồi thì sửa trên Sheet,
+                 // thỉnh thoảng cập nhật số này cho khỏi lệch quá xa.
+  tong: 20,      // tổng số suất mỗi tháng
+  chuKyPoll: 300000,   // 5 phút đọc lại Sheet một lần (Google giữ đệm CSV ~5 phút,
+                       // đọc dày hơn cũng không nhận được số mới sớm hơn)
+  chuKhiLoi: "Liên hệ để kiểm tra",   // chỉ dùng nếu conLai ở trên không phải là số
   hienUuDaiSinhVien: true               // dòng ưu đãi sinh viên ở Khối 6.5
 };
 

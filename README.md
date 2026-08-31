@@ -182,9 +182,18 @@ Xong. Trang gửi `{hoTen, soDienThoai, hangBang, viTri, trang, nguon, thoiGian}
 Nếu mạng lỗi, trang tự thử lại 1 lần; vẫn lỗi thì lưu tạm vào `localStorage`
 (khoá `bc_lead_loi_<thời điểm>`) và vẫn báo thành công cho khách.
 
-**Tuỳ chọn — lấy số suất còn lại tự động:** nếu có API trả về JSON dạng `{"suatConLai": 7}`,
-dán URL vào `URL_API_SUAT` ở ngay dưới. Trang gọi lại mỗi 60 giây; API lỗi thì hiện
-"Liên hệ để kiểm tra".
+---
+
+## Đổi số suất còn lại bằng Google Sheet (khuyến nghị)
+
+Đây là nội dung duy nhất đổi hằng ngày, nên đáng để tách khỏi code.
+
+Dựng một lần theo `HUONG-DAN-SHEET-NOI-DUNG.md`, dán link CSV vào `URL_NOI_DUNG_SHEET`
+ở đầu `js/noi-dung.js`. Từ đó đổi số suất chỉ là sửa một ô trong Google Sheet trên điện thoại —
+**không push, không deploy, không dính cache**, trang cập nhật trong 5 phút.
+
+Sheet trục trặc thì trang lặng lẽ dùng số dự phòng `UU_DAI.conLai` trong `js/noi-dung.js`,
+khách không thấy dấu hiệu gì bất thường.
 
 ---
 

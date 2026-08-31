@@ -37,10 +37,10 @@
      2. SỐ SUẤT CÒN LẠI — MỘT NGUỒN, HIỂN THỊ Ở 4 CHỖ
      Hero · Khối 5 · Khối 6.5 · Khối 8. Đổi số thì cả 4 chỗ crossfade.
      ========================================================== */
-  var suatHienTai = null;
+  var khoaHienTai = null;   // "7/20" — đổi tử hoặc mẫu đều vẽ lại
 
   function chuSuat(n, kieu) {
-    if (n === null || n === undefined) return UU_DAI.chuKhiLoi;
+    if (n === null || n === undefined || isNaN(n)) return UU_DAI.chuKhiLoi;
     return kieu === "the" ? n + "/" + UU_DAI.tong : "Còn " + n + "/" + UU_DAI.tong + " suất";
   }
 
@@ -51,12 +51,13 @@
   }
 
   function datSuat(n) {
-    if (n === suatHienTai) return;
+    var khoa = n + "/" + UU_DAI.tong;
+    if (khoa === khoaHienTai) return;
     var nodes = $$("[data-suat]");
-    if (suatHienTai === null) { suatHienTai = n; veSuat(n); return; }
+    if (khoaHienTai === null) { khoaHienTai = khoa; veSuat(n); return; }
+    khoaHienTai = khoa;
     nodes.forEach(function (el) { el.style.opacity = "0"; });
     setTimeout(function () {
-      suatHienTai = n;
       veSuat(n);
       requestAnimationFrame(function () {
         nodes.forEach(function (el) { el.style.opacity = "1"; });
@@ -64,19 +65,59 @@
     }, 200);
   }
 
+  /* Đọc dữ liệu trả về — nhận cả CSV (Google Sheet xuất bản) lẫn JSON (API riêng) */
+  function docNoiDung(chu) {
+    var s = chu.replace(/^\uFEFF/, "").trim();
+    if (s.charAt(0) === "{" || s.charAt(0) === "[") {
+      try { return JSON.parse(s); } catch (e) { return {}; }
+    }
+    var kq = {};
+    s.split(/\r?\n/).forEach(function (dong) {
+      var o = tachCsv(dong);
+      if (o.length < 2) return;
+      var khoa = o[0].trim().toLowerCase();
+      if (!khoa || khoa === "khoa") return;   // bỏ dòng tiêu đề
+      kq[khoa] = o[1].trim();
+    });
+    return kq;
+  }
+
+  /* Tách một dòng CSV, hiểu được ô đặt trong dấu ngoặc kép */
+  function tachCsv(dong) {
+    var o = [], dem = "", trongNgoac = false;
+    for (var i = 0; i < dong.length; i++) {
+      var c = dong.charAt(i);
+      if (c === '"') {
+        if (trongNgoac && dong.charAt(i + 1) === '"') { dem += '"'; i++; }
+        else trongNgoac = !trongNgoac;
+      } else if (c === "," && !trongNgoac) { o.push(dem); dem = ""; }
+      else dem += c;
+    }
+    o.push(dem);
+    return o;
+  }
+
   function khoiTaoSuat() {
-    datSuat(UU_DAI.conLai);
-    if (!URL_API_SUAT) return;
+    datSuat(UU_DAI.conLai);            // hiện ngay số dự phòng ghi trong file này
+    if (!URL_NOI_DUNG_SHEET) return;
+
     var keo = function () {
-      fetch(URL_API_SUAT, { cache: "no-store" })
-        .then(function (r) { return r.json(); })
-        .then(function (d) {
-          var n = parseInt(d.suatConLai != null ? d.suatConLai
-                  : d.remaining != null ? d.remaining
-                  : d.slots != null ? d.slots : d.value, 10);
-          if (!isNaN(n)) datSuat(n);
+      fetch(URL_NOI_DUNG_SHEET, { cache: "no-store" })
+        .then(function (r) { return r.text(); })
+        .then(function (chu) {
+          var d = docNoiDung(chu);
+          var tong = parseInt(d.tong_suat != null ? d.tong_suat : d.tongSuat, 10);
+          if (!isNaN(tong) && tong > 0) UU_DAI.tong = tong;
+          var n = parseInt(d.suat_con_lai != null ? d.suat_con_lai
+                  : d.suatConLai != null ? d.suatConLai : d.remaining, 10);
+          // Chỉ nhận số hợp lý: 0 → tổng suất. Ngoài khoảng đó là gõ nhầm
+          // (số âm, hoặc gõ 50 khi tổng chỉ 20) → bỏ qua, giữ nguyên số đang hiện.
+          if (!isNaN(n) && n >= 0 && n <= UU_DAI.tong) datSuat(n);
         })
-        .catch(function () { datSuat(null); });
+        .catch(function () {
+          // Sheet lỗi / mất mạng / bị chặn → KHÔNG đổi gì cả.
+          // Trang chạy tiếp bằng số dự phòng, khách không thấy trục trặc.
+        });
     };
     keo();
     setInterval(keo, UU_DAI.chuKyPoll);
