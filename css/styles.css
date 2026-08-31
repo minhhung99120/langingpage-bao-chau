@@ -775,8 +775,6 @@ a:hover{color:var(--color-navy)}
   /* Chừa chỗ cho thanh CTA để không che footer */
   .footer__duoi{padding-bottom:calc(clamp(24px,3vw,32px) + 78px)}
 
-  /* Chữ căn justify trên màn hẹp dễ bị giãn rỗng — trả về căn trái */
-  .doan,.chang__buoc,.faq__tra-loi,.bao-gom__ds--khong{text-align:left}
 
   /* Vùng bấm trên điện thoại: mọi nút tối thiểu 48px */
   .nut,.tab-bar__nut,.goi__mo,.form-dk__gui{min-height:48px}
@@ -844,6 +842,3 @@ a:hover{color:var(--color-navy)}
 .cs-footer__link a:hover{color:var(--color-white)}
 .cs-footer__link span{color:#5F87AA}
 
-@media (max-width:760px){
-  .cs-doan{text-align:left}
-}
