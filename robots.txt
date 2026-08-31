@@ -1,0 +1,21 @@
+# Bảo Châu — https://github.com/minhhung99120/langingpage-bao-chau
+# Hostinger phục vụ toàn bộ repo, nên chặn những thứ không phải trang bán hàng.
+
+User-agent: *
+
+# Bản thiết kế tham chiếu — nội dung gần giống trang chính.
+# Để Google index sẽ thành trùng lặp nội dung, hai URL tự cạnh tranh nhau.
+Disallow: /reference/
+
+# Tài liệu nội bộ của dự án
+Disallow: /README.md
+Disallow: /README-THIET-KE-GOC.md
+Disallow: /DEPLOY.md
+Disallow: /PROMPT-CLAUDE-CODE.md
+Disallow: /HUONG-DAN-KET-NOI-FORM.md
+Disallow: /apps-script-lead.gs
+
+Allow: /
+
+# Khi đã có tên miền thật, bỏ dấu # và điền vào:
+# Sitemap: https://ten-mien-cua-ban.vn/sitemap.xml

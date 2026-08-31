@@ -172,7 +172,11 @@ dán URL vào `URL_API_SUAT` ở ngay dưới. Trang gọi lại mỗi 60 giây;
 ## Trước khi đưa lên hosting
 
 - [ ] Đã dán `URL_NHAN_DANG_KY` và thử gửi một đơn thật, kiểm tra Google Sheet có dòng mới.
-- [ ] Sửa `<link rel="canonical">` trong `index.html` thành tên miền thật.
+- [ ] **Khai `canonical`**: mở `index.html`, tìm khối chú thích ngay dưới thẻ `<title>`,
+      thay `ten-mien-cua-ban.vn` bằng tên miền thật rồi bỏ dấu chú thích cho thẻ hoạt động.
+      Hiện đang cố tình để trống — khai trỏ sang tên miền chưa tồn tại có thể làm
+      Google không index trang thật.
+- [ ] Mở `ten-mien/robots.txt` xem có hiển thị không, rồi bỏ dấu `#` ở dòng `Sitemap:` nếu có sitemap.
 - [ ] Xem lại trang trên điện thoại thật, không chỉ thu nhỏ cửa sổ trình duyệt.
 - [ ] `chinh-sach-bao-mat.html` phải truy cập được — Facebook và Google bắt buộc có
       trang này mới duyệt quảng cáo.
