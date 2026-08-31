@@ -188,9 +188,13 @@ Nếu mạng lỗi, trang tự thử lại 1 lần; vẫn lỗi thì lưu tạm 
 
 Đây là nội dung duy nhất đổi hằng ngày, nên đáng để tách khỏi code.
 
-Dựng một lần theo `HUONG-DAN-SHEET-NOI-DUNG.md`, dán link CSV vào `URL_NOI_DUNG_SHEET`
-ở đầu `js/noi-dung.js`. Từ đó đổi số suất chỉ là sửa một ô trong Google Sheet trên điện thoại —
-**không push, không deploy, không dính cache**, trang cập nhật trong 5 phút.
+Dựng một lần theo `HUONG-DAN-KET-NOI-FORM.md` — cùng một Sheet, cùng một cầu nối Apps Script
+với phần nhận đăng ký. Dán URL vào `URL_NOI_DUNG_SHEET` ở đầu `js/noi-dung.js`.
+Từ đó đổi số suất chỉ là sửa một ô trong Google Sheet trên điện thoại —
+**không push, không deploy, không dính cache**.
+
+Sheet giữ nguyên quyền **"Chỉ mình tôi"**: Apps Script chạy bằng quyền của anh, khách chỉ
+gọi tới script chứ không nhìn thấy Sheet.
 
 Sheet trục trặc thì trang lặng lẽ dùng số dự phòng `UU_DAI.conLai` trong `js/noi-dung.js`,
 khách không thấy dấu hiệu gì bất thường.

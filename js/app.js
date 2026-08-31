@@ -120,7 +120,11 @@
         });
     };
     keo();
-    setInterval(keo, UU_DAI.chuKyPoll);
+    // Chỉ đọc lại khi khách đang thực sự xem. Tab để nền cả ngày mà vẫn gọi
+    // đều đặn là phí — và Apps Script có giới hạn lượt chạy đồng thời.
+    setInterval(function () {
+      if (document.visibilityState === "visible") keo();
+    }, UU_DAI.chuKyPoll);
   }
 
   /* ==========================================================

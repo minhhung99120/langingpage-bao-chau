@@ -13,8 +13,9 @@
 ------------------------------------------------------------ */
 const URL_NHAN_DANG_KY = "";
 
-/* URL Google Sheet đã xuất bản dạng CSV — nơi sửa số suất còn lại hằng ngày
-   mà không phải đụng vào code. Cách dựng: HUONG-DAN-SHEET-NOI-DUNG.md
+/* URL đọc số suất còn lại. Dùng CHUNG một URL Apps Script với URL_NHAN_DANG_KY
+   ở trên — cùng một cầu nối, một Sheet, Sheet vẫn để "Chỉ mình tôi".
+   Cách dựng: HUONG-DAN-KET-NOI-FORM.md
    Để trống thì trang dùng con số cố định ở mục UU_DAI bên dưới. */
 const URL_NOI_DUNG_SHEET = "";
 
@@ -42,8 +43,7 @@ const UU_DAI = {
                  // hoặc khi Sheet trục trặc. Nối Sheet rồi thì sửa trên Sheet,
                  // thỉnh thoảng cập nhật số này cho khỏi lệch quá xa.
   tong: 20,      // tổng số suất mỗi tháng
-  chuKyPoll: 300000,   // 5 phút đọc lại Sheet một lần (Google giữ đệm CSV ~5 phút,
-                       // đọc dày hơn cũng không nhận được số mới sớm hơn)
+  chuKyPoll: 300000,   // 5 phút đọc lại một lần, và chỉ khi khách đang xem tab
   chuKhiLoi: "Liên hệ để kiểm tra",   // chỉ dùng nếu conLai ở trên không phải là số
   hienUuDaiSinhVien: true               // dòng ưu đãi sinh viên ở Khối 6.5
 };
