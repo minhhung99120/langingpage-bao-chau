@@ -178,10 +178,23 @@ a:hover{color:var(--color-navy)}
 }
 .hero__nen{
   position:absolute;left:0;right:0;top:-12%;height:124%;
-  background:
-    radial-gradient(60% 55% at 78% 30%,rgba(255,255,255,0.75),rgba(255,255,255,0) 70%),
-    linear-gradient(135deg,rgba(30,111,181,0.08),rgba(7,38,68,0.05));
+  background:linear-gradient(135deg,rgba(30,111,181,0.08),rgba(7,38,68,0.05));
   will-change:transform;pointer-events:none;
+}
+/* NỀN THỞ — vệt sáng trôi rất chậm, chu kỳ 26 giây, như nắng dịch qua cửa kính.
+   ⚠ Phải nằm ở pseudo-element riêng: js/app.js đang ghi transform lên chính
+   .hero__nen để chạy parallax, hai transform trên cùng phần tử sẽ đè nhau.
+   Chu kỳ 26s cố ý dài gấp hơn 5 lần nhịp đổi ảnh (5s) để hai chuyển động
+   không đập cùng nhau gây rối mắt. */
+.hero__nen::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 55% at 78% 30%,rgba(255,255,255,0.75),rgba(255,255,255,0) 70%);
+  animation:bc-nen-tho 26s ease-in-out infinite;
+  will-change:transform,opacity;
+}
+@keyframes bc-nen-tho{
+  0%,100%{transform:translate3d(0,0,0) scale(1);opacity:0.9}
+  50%    {transform:translate3d(-4.5%,2.5%,0) scale(1.1);opacity:1}
 }
 .hero__grid{
   position:relative;max-width:var(--shell);margin:0 auto;
@@ -191,6 +204,21 @@ a:hover{color:var(--color-navy)}
   grid-template-areas:"hero-text hero-media" "hero-text hero-form";
 }
 .hero__text{grid-area:hero-text;display:grid;grid-template-columns:minmax(0,1fr);gap:22px;max-width:560px;min-width:0}
+
+/* HIỆN THEO TỪNG DÒNG khi tải trang — chỉ chạy một lần, không lặp lại.
+   Hai dòng tiêu đề phải là block mới nhận được translateY (phần tử inline
+   thì transform không ăn). Vì thế index.html đã bỏ thẻ <br> giữa hai span. */
+.tieu-de-1 .chu-gradient{display:block}
+
+@keyframes bc-hero-len{
+  from{opacity:0;transform:translateY(15px)}
+  to  {opacity:1;transform:translateY(0)}
+}
+.hero__text .tieu-de-1 .chu-gradient:nth-child(1){animation:bc-hero-len 720ms cubic-bezier(0.22,1,0.36,1) both}
+.hero__text .tieu-de-1 .chu-gradient:nth-child(2){animation:bc-hero-len 720ms cubic-bezier(0.22,1,0.36,1) 130ms both}
+.hero__text .hero__gioi-thieu{animation:bc-hero-len 720ms cubic-bezier(0.22,1,0.36,1) 260ms both}
+.hero__text .hero__o-nho .o-nho:nth-child(1){animation:bc-hero-len 720ms cubic-bezier(0.22,1,0.36,1) 380ms both}
+.hero__text .hero__o-nho .o-nho:nth-child(2){animation:bc-hero-len 720ms cubic-bezier(0.22,1,0.36,1) 470ms both}
 .hero__gioi-thieu{font-size:clamp(16px,1.5vw,18.5px);line-height:1.7;color:var(--xanh-dam)}
 .hero__o-nho{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;max-width:480px;min-width:0}
 .o-nho{

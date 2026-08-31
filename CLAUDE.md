@@ -65,6 +65,11 @@ Giá, số giờ, km DAT trong `BANG_GIA` là số đã chốt với chủ trung
 - **Cân hàng bảng giá**: dòng so sánh mang `data-pkg-row`, thùng chứa mang `data-pkg-grid`.
   Hàm `canHangGoi()` trong `app.js` cân chiều cao. Thêm dòng mới nhớ gắn `data-pkg-row`.
 - **`line-height` H1/H2 ≥ 1.3 và `padding-top: 0.08em`** — chặt hơn cắt mất dấu tiếng Việt.
+- **Không đặt animation transform lên `.hero__nen` hay `.cta-cuoi__nen`** — `app.js` đang ghi
+  `transform` lên chính hai phần tử đó để chạy parallax, hai transform sẽ đè nhau. Hiệu ứng
+  "nền thở" vì thế nằm ở `.hero__nen::before`.
+- **Hai dòng H1 Hero là `display:block`**, không có `<br>` — cần thế để chạy được hiệu ứng
+  hiện lần lượt từng dòng (phần tử inline không nhận `translateY`).
 - **Chỉ một ngưỡng mobile: `max-width: 760px`.** Đừng thêm breakpoint.
 - **`khoi5-xe-vios-so-san.jpg`** là ảnh cần số sàn, **`khoi5-xe-kia-k250.jpg`** là xe tải C1 —
   đừng đổi chỗ.
