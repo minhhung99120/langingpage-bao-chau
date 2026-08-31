@@ -516,11 +516,18 @@
       nut.textContent = "Đang gửi…";
 
       var hangBang = form.hang.value;
+
+      /* Báo Facebook NGAY tại đây, KHÔNG chờ Apps Script trả lời.
+         Apps Script mất 1,5–3 giây. Nếu để trong .then() mà khách đóng tab
+         trong khoảng chờ đó thì sự kiện không bao giờ bắn, dù đơn đã ghi
+         vào Sheet — mất lead trong báo cáo quảng cáo.
+         Bắn ở đây là đúng: từ giây phút này trang đã coi như nhận đơn, kể
+         cả khi mạng lỗi (có cơ chế lưu tạm rồi vẫn báo thành công).
+         KHÔNG gửi họ tên và số điện thoại. */
+      bcSuKien("Lead", { content_name: viTri, content_category: hangBang });
+
       guiLead({ hoTen: hoTen, soDienThoai: soDienThoai, hangBang: hangBang }, viTri)
         .then(function () {
-          /* Báo Facebook có khách để lại thông tin — đây là sự kiện để
-             quảng cáo tối ưu. KHÔNG gửi họ tên và số điện thoại. */
-          bcSuKien("Lead", { content_name: viTri, content_category: hangBang });
           the.innerHTML =
             '<div class="form-dk__tieu-de">Nhận tư vấn miễn phí</div>' +
             '<div class="form-dk__xong">' +
