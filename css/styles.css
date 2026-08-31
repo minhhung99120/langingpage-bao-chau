@@ -351,7 +351,8 @@ a:hover{color:var(--color-navy)}
 .tab-panel{display:grid;gap:22px}
 .tab-panel[hidden]{display:none}
 .goi-luoi{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.goi-luoi--don{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+/* Tab C1 chỉ có một thẻ — giữ đúng bề ngang, không giãn hết khung */
+.goi-luoi--don{grid-template-columns:minmax(0,560px)}
 .hoc-phi__anh{aspect-ratio:21/9}
 
 /* Thẻ gói */
@@ -421,16 +422,6 @@ a:hover{color:var(--color-navy)}
 .goi--navy .goi__cham-dat{color:rgba(201,225,244,0.45)}
 .canh-bao{color:var(--do-nhan);font-weight:600}
 .goi--navy .canh-bao{color:var(--do-nhan-toi)}
-
-/* Thẻ phụ "C1 lái được xe gì" */
-.the-c1{
-  background:var(--color-white);border:1px solid var(--color-hairline);
-  border-radius:var(--radius-card);padding:clamp(22px,2.5vw,30px);
-  display:grid;gap:12px;align-content:start;
-}
-.the-c1__ten{font-size:18px;font-weight:700;color:var(--color-navy)}
-.the-c1 .doan{font-size:15.5px;line-height:1.7;color:var(--xanh-phu)}
-.the-c1__ghi-chu{margin:0;font-size:14px;line-height:1.65;color:var(--xanh-mo)}
 
 /* Dải ưu đãi cuối khối — rộng bằng ảnh phía trên */
 .dai-uu-dai{
@@ -691,7 +682,8 @@ a:hover{color:var(--color-navy)}
     padding:2px 2px 8px;
     -webkit-overflow-scrolling:touch;
   }
-  .goi-luoi--don{grid-auto-columns:86%}
+  /* Một thẻ thì không có gì để vuốt — trả về một cột full, bỏ cuộn ngang */
+  .goi-luoi--don{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:minmax(0,1fr);overflow-x:visible;scroll-snap-type:none;padding:0}
 
   /* Lộ trình: ảnh relative 16:9 (top:auto — nếu giữ 96px sẽ đè lên chữ) */
   .chang__anh{position:relative;top:auto;aspect-ratio:16/9}

@@ -220,11 +220,6 @@ const BANG_GIA = [
     /* C1 chỉ có 1 thẻ nên không cần dòng "–" để so sánh */
     hangMuc: ["r1","r2","r3","r4","r5","r6","r7","r13","r14"],
     anh: { src: "img/khoi5-xe-kia-k250.jpg", alt: "Toàn cảnh sân tập với các bài sa hình", w: 1500, h: 643 },
-    theGioiThieu: {
-      ten: "C1 lái được xe gì",
-      moTa: "Xe tải trên 3.500kg đến 7.500kg, và lái được cả xe hạng B. Nhiều người vẫn gọi hạng này theo tên cũ là B2.",
-      ghiChu: "Điều kiện: từ 18 tuổi. Một số trường hợp cần khám sức khoẻ mới xác định được."
-    },
     goi: [
       {
         ma: "C1", ten: "C1 — Tiêu chuẩn", badge: "Gói duy nhất", noiBat: true,

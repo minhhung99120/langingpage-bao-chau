@@ -219,17 +219,10 @@
       }).join("") + "</div>";
 
     var panels = BANG_GIA.map(function (t, i) {
-      var theC1 = t.theGioiThieu
-        ? '<div class="the-c1">' +
-            '<div class="the-c1__ten">' + t.theGioiThieu.ten + "</div>" +
-            '<p class="doan">' + t.theGioiThieu.moTa + "</p>" +
-            '<p class="the-c1__ghi-chu">' + t.theGioiThieu.ghiChu + "</p>" +
-          "</div>"
-        : "";
       return '<div class="tab-panel" id="panel-' + t.ma + '" role="tabpanel" aria-labelledby="tab-' + t.ma + '"' +
              (i === 0 ? "" : " hidden") + ">" +
           '<div class="goi-luoi' + (t.goi.length === 1 ? " goi-luoi--don" : "") + '" data-pkg-grid>' +
-            t.goi.map(function (g) { return htmlTheGoi(g, t.hangMuc); }).join("") + theC1 +
+            t.goi.map(function (g) { return htmlTheGoi(g, t.hangMuc); }).join("") +
           "</div>" +
           '<div class="o-anh hoc-phi__anh">' +
             '<img src="' + t.anh.src + '" alt="' + t.anh.alt + '" loading="lazy" decoding="async" width="' +
