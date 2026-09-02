@@ -7,6 +7,7 @@
   "use strict";
 
   var MOBILE = "(max-width: 760px)";
+  var giamChuyenDong = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function $(sel, goc) { return (goc || document).querySelector(sel); }
   function $$(sel, goc) { return Array.prototype.slice.call((goc || document).querySelectorAll(sel)); }
@@ -38,6 +39,8 @@
      Hero · Khối 5 · Khối 6.5 · Khối 8. Đổi số thì cả 4 chỗ crossfade.
      ========================================================== */
   var khoaHienTai = null;   // "7/20" — đổi tử hoặc mẫu đều vẽ lại
+  var soDangHien = null;    // con số đang hiện trên màn hình
+  var rafSuat = null;
 
   function chuSuat(n, kieu) {
     if (n === null || n === undefined || isNaN(n)) return UU_DAI.chuKhiLoi;
@@ -50,19 +53,33 @@
     });
   }
 
+  /* Chạy số từ chỗ đang hiện về số đích, cùng kiểu easing với dải số liệu
+     ở Khối 1.5. Trang mở ra hiện đủ 20/20 rồi mới đếm ngược về số thật,
+     thay cho kiểu nháy đổi số đột ngột trước đây. */
+  function chayVeSo(den) {
+    if (rafSuat) { cancelAnimationFrame(rafSuat); rafSuat = null; }
+    var tu = soDangHien;
+    soDangHien = den;
+
+    // Lần vẽ đầu, số không đổi, hoặc máy đặt giảm chuyển động → nhảy thẳng
+    if (tu === null || tu === den || giamChuyenDong.matches) { veSuat(den); return; }
+
+    var t0 = performance.now(), dai = 900;
+    function buoc(t) {
+      var p = Math.min((t - t0) / dai, 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      veSuat(Math.round(tu + (den - tu) * e));
+      if (p < 1) { rafSuat = requestAnimationFrame(buoc); }
+      else { rafSuat = null; veSuat(den); }
+    }
+    rafSuat = requestAnimationFrame(buoc);
+  }
+
   function datSuat(n) {
     var khoa = n + "/" + UU_DAI.tong;
     if (khoa === khoaHienTai) return;
-    var nodes = $$("[data-suat]");
-    if (khoaHienTai === null) { khoaHienTai = khoa; veSuat(n); return; }
     khoaHienTai = khoa;
-    nodes.forEach(function (el) { el.style.opacity = "0"; });
-    setTimeout(function () {
-      veSuat(n);
-      requestAnimationFrame(function () {
-        nodes.forEach(function (el) { el.style.opacity = "1"; });
-      });
-    }, 200);
+    chayVeSo(n);
   }
 
   /* Đọc dữ liệu trả về — nhận cả CSV (Google Sheet xuất bản) lẫn JSON (API riêng) */
@@ -98,7 +115,9 @@
   }
 
   function khoiTaoSuat() {
-    datSuat(UU_DAI.conLai);            // hiện ngay số dự phòng ghi trong file này
+    /* Hiện ngay con số mặc định, không hiệu ứng — đây là điểm xuất phát.
+       Số thật đọc từ Sheet sẽ đếm ngược từ đây xuống. */
+    datSuat(UU_DAI.conLai);
     if (!URL_NOI_DUNG_SHEET) return;
 
     var keo = function () {
@@ -115,8 +134,9 @@
           if (!isNaN(n) && n >= 0 && n <= UU_DAI.tong) datSuat(n);
         })
         .catch(function () {
-          // Sheet lỗi / mất mạng / bị chặn → KHÔNG đổi gì cả.
-          // Trang chạy tiếp bằng số dự phòng, khách không thấy trục trặc.
+          /* Sheet lỗi / mất mạng / bị chặn → KHÔNG đổi gì cả, giữ nguyên số
+             mặc định 20/20. Đây là chiều an toàn: hiện đủ suất thì không tạo
+             cảm giác khan hiếm giả. */
         });
     };
     keo();
@@ -168,7 +188,6 @@
 
     var lop = $$(".ngan-xep__lop", boc);
     var cham = $$(".ngan-xep__cham button", boc);
-    var giamChuyenDong = window.matchMedia("(prefers-reduced-motion: reduce)");
     var hen = null;
 
     /* CỌC BÀI: coc[0] là lá trên cùng, coc[cuối] là lá dưới đáy.

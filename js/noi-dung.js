@@ -39,9 +39,10 @@ const THONG_TIN = {
    ĐỔI SỐ SUẤT: sửa đúng dòng "conLai" bên dưới.
 ------------------------------------------------------------ */
 const UU_DAI = {
-  conLai: 7,     // SỐ SUẤT CÒN LẠI — số dự phòng, dùng khi chưa nối Sheet
-                 // hoặc khi Sheet trục trặc. Nối Sheet rồi thì sửa trên Sheet,
-                 // thỉnh thoảng cập nhật số này cho khỏi lệch quá xa.
+  conLai: 20,    // SỐ HIỆN LÚC MỚI MỞ TRANG, cũng là số giữ lại khi Sheet lỗi.
+                 // Để bằng "tong" nên trang mở ra luôn thấy đủ 20/20, rồi mới
+                 // đếm ngược về số thật đọc từ Sheet.
+                 // ⚠ Số suất thật sửa trên Google Sheet, KHÔNG sửa ở đây.
   tong: 20,      // tổng số suất mỗi tháng
   chuKyPoll: 300000,   // 5 phút đọc lại một lần, và chỉ khi khách đang xem tab
   chuKhiLoi: "Liên hệ để kiểm tra",   // chỉ dùng nếu conLai ở trên không phải là số

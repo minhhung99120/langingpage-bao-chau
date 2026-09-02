@@ -80,11 +80,14 @@ rồi thêm `"r15"` vào mảng `hangMuc` của hạng bằng đó — `hangMuc`
 
 ```js
 const UU_DAI = {
-  conLai: 7,     // ← đổi số này
+  conLai: 20,    // ← số hiện lúc mới mở trang, cũng là số giữ khi Sheet lỗi
   tong: 20,
   ...
 };
 ```
+
+> Nối Sheet rồi thì **đổi số suất trên Sheet**, không đổi ở đây. `conLai` để bằng `tong`
+> nên trang mở ra luôn thấy đủ 20/20, rồi đếm ngược về số thật đọc từ Sheet.
 
 Một chỗ duy nhất, cả 4 vị trí trên trang (Hero, Học phí, Banner giữa trang, CTA cuối) tự cập nhật.
 
