@@ -205,6 +205,47 @@ khách không thấy dấu hiệu gì bất thường.
 
 ---
 
+## Đồng hồ đếm ngược ưu đãi
+
+Hiện ở hai chỗ: Hero (màn hình đầu) và khối cuối cạnh form đăng ký. Cả hai chạy cùng một
+đồng hồ, đếm về **00:00 ngày 10 hằng tháng** — tức hết ngày 9 là hết ưu đãi. Ngày 1 tháng
+sau tự mở lại, anh không phải làm gì.
+
+Ba điều nó tự lo:
+
+- Còn **dưới 24 giờ** thì số chuyển sang đỏ.
+- **Hết ngày 9** mà chưa gia hạn: số về 0, chữ đổi thành "Ưu đãi tháng này đã kết thúc".
+- **Số suất về 0**: đồng hồ về 0 luôn, kể cả còn thời gian — vì còn giờ cũng không giữ
+  được suất nào nữa. Chữ đổi thành "Đã hết suất ưu đãi tháng này".
+
+### Gia hạn thêm sau ngày 9
+
+Mở Google Sheet, tab `NoiDung`, thêm một dòng:
+
+| Cột A | Cột B |
+|---|---|
+| `gia_han` | `3ngay` |
+
+Ô B nhận đúng bốn giá trị:
+
+| Gõ vào | Ưu đãi kéo tới |
+|---|---|
+| *(để trống)* | hết ngày 9 như bình thường |
+| `3ngay` | 00:00 ngày 13 |
+| `24h` | 00:00 ngày 11 |
+| `7h` | 07:00 ngày 10 |
+
+Sửa xong khoảng 5 phút trang tự đổi — **không push, không deploy**. Khách sẽ thấy thêm
+thẻ nhỏ "Đã gia hạn thêm 3 ngày" bên cạnh đồng hồ.
+
+> ⚠️ **Đầu tháng sau nhớ xoá ô đó về trống.** Để nguyên `3ngay` thì tháng nào cũng tự
+> gia hạn thêm 3 ngày và không ai nhắc anh.
+
+Muốn tắt hẳn đồng hồ: mở `js/noi-dung.js`, mục `DEM_NGUOC`, đổi `bat: true` thành
+`bat: false`. Phần còn lại của trang không đổi gì.
+
+---
+
 ## Trước khi đưa lên hosting
 
 - [ ] Đã dán `URL_NHAN_DANG_KY` và thử gửi một đơn thật, kiểm tra Google Sheet có dòng mới.

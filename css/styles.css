@@ -224,6 +224,7 @@ a:hover{color:var(--color-navy)}
 .hero__text .hero__gioi-thieu{animation:bc-hero-len 720ms cubic-bezier(0.22,1,0.36,1) 260ms both}
 .hero__text .hero__o-nho .o-nho:nth-child(1){animation:bc-hero-len 720ms cubic-bezier(0.22,1,0.36,1) 380ms both}
 .hero__text .hero__o-nho .o-nho:nth-child(2){animation:bc-hero-len 720ms cubic-bezier(0.22,1,0.36,1) 470ms both}
+.hero__text .hero__dong-ho{animation:bc-hero-len 720ms cubic-bezier(0.22,1,0.36,1) 560ms both}
 .hero__gioi-thieu{font-size:clamp(16px,1.5vw,18.5px);line-height:1.7;color:var(--xanh-dam)}
 .hero__o-nho{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;max-width:480px;min-width:0}
 .o-nho{
@@ -333,6 +334,84 @@ a:hover{color:var(--color-navy)}
 @media (hover:hover) and (pointer:fine) and (min-width:761px){
   .ngan-xep__mui-ten{display:flex}
 }
+
+/* ---------- 7.5. ĐỒNG HỒ ĐẾM NGƯỢC ƯU ĐÃI (Hero + Khối 8) ---------- */
+/* ⚠ CHIỀU RỘNG PHẢI BÁM THEO PHẦN TỬ CẠNH NÓ, KHÔNG ĐẶT SỐ TỰ NGHĨ RA:
+     · trong Hero  → 480px, đúng bằng .hero__o-nho ngay phía trên
+     · trong Khối 8 → 440px, đúng bằng .cta-cuoi__form ở cột bên cạnh
+   Đổi một trong hai con số kia thì đổi luôn ở đây, nếu không đồng hồ sẽ
+   thò ra hoặc thụt vào so với khối bên cạnh. */
+.dong-ho{
+  border:1px solid;border-radius:12px;
+  padding:13px 15px 12px;
+  display:flex;flex-direction:column;gap:10px;
+  transition:border-color var(--transition-base);
+}
+.hero__dong-ho{max-width:480px}      /* = .hero__o-nho */
+.cta-cuoi__dong-ho{max-width:440px}  /* = .cta-cuoi__form */
+
+/* Hai nền khác hẳn nhau nên tách biến thể, không dùng chung màu nửa vời */
+.dong-ho--sang{background:var(--color-white);border-color:var(--xanh-sang)}
+.dong-ho--toi{background:rgba(255,255,255,0.07);border-color:rgba(201,225,244,0.26)}
+
+.dong-ho__dau{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dong-ho__nhan{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase}
+.dong-ho--sang .dong-ho__nhan{color:var(--color-navy)}
+.dong-ho--toi .dong-ho__nhan{color:var(--xanh-nhat)}
+
+/* Thẻ "Đã gia hạn thêm…" — app.js tự ẩn/hiện, mặc định ẩn trong HTML */
+.dong-ho__gia-han{
+  font-size:10.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  border:1px solid;border-radius:999px;padding:3px 8px;
+}
+.dong-ho--sang .dong-ho__gia-han{color:#1E6FB5;border-color:var(--xanh-sang);background:#F2F8FD}
+.dong-ho--toi .dong-ho__gia-han{color:var(--xanh-sang);border-color:rgba(201,225,244,0.34);background:rgba(255,255,255,0.06)}
+
+/* Bốn ô chia đều bề ngang. tabular-nums bắt buộc: thiếu nó thì mỗi giây
+   đổi số là cả dãy nhích ngang một chút, nhìn rất rẻ tiền. */
+.dong-ho__day{display:flex;align-items:flex-start;gap:4px}
+.dong-ho__o{display:flex;flex-direction:column;align-items:center;gap:3px;flex:1 1 0;min-width:0}
+.dong-ho__so{
+  font-size:clamp(26px,4.6vw,32px);font-weight:700;line-height:1.08;
+  letter-spacing:-0.02em;font-variant-numeric:tabular-nums;
+  transition:color var(--transition-base);
+}
+.dong-ho__don-vi{font-size:10.5px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase}
+/* Dấu hai chấm nháy cùng nhịp 1.6s với .cham ở ô số suất — hai chi tiết
+   nhỏ đập cùng nhịp thì đọc thành một, lệch nhịp mới thành rối. */
+.dong-ho__ngan{
+  flex:0 0 auto;padding-top:1px;
+  font-size:clamp(22px,4vw,26px);font-weight:600;line-height:1.28;
+  animation:bc-dot 1.6s ease-in-out infinite;
+}
+
+.dong-ho--sang .dong-ho__so{color:var(--color-navy)}
+.dong-ho--sang .dong-ho__don-vi{color:var(--xanh-mo)}
+.dong-ho--sang .dong-ho__ngan{color:#B9CFE2}
+.dong-ho--toi .dong-ho__so{color:var(--color-white)}
+.dong-ho--toi .dong-ho__don-vi{color:var(--xanh-nhat)}
+.dong-ho--toi .dong-ho__ngan{color:rgba(201,225,244,0.45)}
+
+/* Dưới 24 giờ — CHỈ đổi màu. Không phóng to, không thêm nhịp nháy:
+   trang đã có 3 chuyển động chạy sẵn ở vùng này rồi. */
+.dong-ho--gap.dong-ho--sang{border-color:#E9C4BF}
+.dong-ho--gap.dong-ho--sang .dong-ho__so{color:var(--do-nhan)}
+.dong-ho--gap.dong-ho--toi{border-color:rgba(255,155,143,0.40)}
+.dong-ho--gap.dong-ho--toi .dong-ho__so{color:var(--do-nhan-toi)}
+
+/* Hết hạn hoặc hết suất — số về 0 và lặng đi. Không đỏ, không nháy:
+   hết rồi thì không còn gì để giục. */
+.dong-ho--het .dong-ho__ngan{animation:none}
+.dong-ho--het.dong-ho--sang .dong-ho__so{color:#A9BCCD}
+.dong-ho--het.dong-ho--sang .dong-ho__ngan{color:#D3E0EB}
+.dong-ho--het.dong-ho--toi .dong-ho__so{color:rgba(201,225,244,0.50)}
+.dong-ho--het.dong-ho--toi .dong-ho__ngan{color:rgba(201,225,244,0.22)}
+
+.dong-ho__loi-nhan{margin:0;font-size:13.5px;line-height:1.55}
+.dong-ho--sang .dong-ho__loi-nhan{color:var(--xanh-phu)}
+.dong-ho--toi .dong-ho__loi-nhan{color:var(--xanh-nhat)}
+.dong-ho--het.dong-ho--sang .dong-ho__loi-nhan{color:var(--color-navy);font-weight:500}
+.dong-ho--het.dong-ho--toi .dong-ho__loi-nhan{color:var(--color-white);font-weight:500}
 
 /* ---------- 8. KHỐI 1.5 — DẢI SỐ LIỆU ---------- */
 .so-lieu{background:var(--color-white)}

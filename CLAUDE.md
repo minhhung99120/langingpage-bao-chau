@@ -40,7 +40,10 @@ Nếu deploy xong mà trang vẫn cũ kể cả sau `Cmd+Shift+R` → nghi `.hta
    Không "được Sở cấp phép", không "cơ sở đạt chuẩn", không số giấy phép, không schema ngụ ý chứng nhận.
 4. **Không liệt kê tên/địa chỉ sân tập**, không nói sân "đạt chuẩn". Sân là của bên thứ ba.
 5. **Không hứa "tự do chọn sân tập".**
-6. **Không đếm ngược giả, không giá gạch ngang.**
+6. **Không giá gạch ngang.** Đồng hồ đếm ngược thì được, nhưng phải đếm về **hạn thật**
+   (hết ngày 9 hằng tháng, xem `DEM_NGUOC` trong `noi-dung.js`). Hết hạn là phải hiện
+   "đã kết thúc" — **cấm tự quay vòng về đầu** để giả khan hiếm. Hết suất thì đồng hồ
+   cũng phải về 0 theo.
 7. Học bổng chỉ viết chung, **không nêu số suất hay mức giảm cụ thể**.
 8. **Không dùng tên "Minh Hùng"** ở bất cứ đâu — chỉ thương hiệu Bảo Châu.
 9. Lệ phí thi sát hạch **luôn phải ghi rõ nộp cho đơn vị tổ chức thi, Bảo Châu không thu**.
@@ -84,6 +87,11 @@ Giá, số giờ, km DAT trong `BANG_GIA` là số đã chốt với chủ trung
   "nền thở" vì thế nằm ở `.hero__nen::before`.
 - **Hai dòng H1 Hero là `display:block`**, không có `<br>` — cần thế để chạy được hiệu ứng
   hiện lần lượt từng dòng (phần tử inline không nhận `translateY`).
+- **Chiều rộng đồng hồ đếm ngược bám theo phần tử cạnh nó, không phải số tự nghĩ ra**:
+  `.hero__dong-ho` = 480px = `.hero__o-nho`; `.cta-cuoi__dong-ho` = 440px = `.cta-cuoi__form`.
+  Đổi một trong hai con số kia mà quên chỗ này là đồng hồ thò/thụt so với khối bên cạnh.
+- **Đồng hồ đếm ngược dùng giờ Việt Nam cố định (+07)**, không dùng múi giờ máy khách —
+  máy đặt sai múi giờ sẽ ra hạn lệch. Việt Nam không có giờ mùa hè nên +07 đúng quanh năm.
 - **Chỉ một ngưỡng mobile: `max-width: 760px`.** Đừng thêm breakpoint.
 - **`khoi5-xe-vios-so-san.jpg`** là ảnh cần số sàn, **`khoi5-xe-kia-k250.jpg`** là xe tải C1 —
   đừng đổi chỗ.
@@ -102,6 +110,11 @@ trong `noi-dung.js` — **cùng một URL**.
 - Bot token chỉ nằm trong Apps Script trên Google. **Không bao giờ đưa token vào repo** — repo public.
 
 Hùng đổi số suất hằng ngày bằng cách sửa ô B2 tab `NoiDung`, không cần đụng code.
+
+Tab `NoiDung` giờ nhận thêm khoá **`gia_han`** để kéo dài ưu đãi sau ngày 9:
+giá trị hợp lệ `3ngay` · `24h` · `7h`, để trống là không gia hạn.
+`doGet` trả về mọi dòng của tab nên **không phải sửa Apps Script** — chỉ thêm một dòng.
+**Đầu tháng sau phải xoá về trống**, để nguyên thì tháng nào cũng tự gia hạn.
 
 ## Kiểm tra trước khi báo xong
 

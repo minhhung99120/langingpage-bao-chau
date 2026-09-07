@@ -50,6 +50,34 @@ const UU_DAI = {
 };
 
 /* ------------------------------------------------------------
+   3.5. ĐỒNG HỒ ĐẾM NGƯỢC ƯU ĐÃI
+   Đếm về 00:00 ngày 10 hằng tháng — tức là hết ngày 9 thì hết ưu đãi.
+   Giờ Việt Nam. Ngày 1 tháng sau tự mở lại, không phải làm gì cả.
+
+   GIA HẠN — chỉ dùng khi đã qua ngày 9 mà muốn kéo dài thêm.
+   Gõ đúng một trong bốn giá trị dưới đây:
+     ""       không gia hạn (bình thường để thế này)
+     "3ngay"  thêm 3 ngày  → hết lúc 00:00 ngày 13
+     "24h"    thêm 24 giờ  → hết lúc 00:00 ngày 11
+     "7h"     thêm 7 giờ   → hết lúc 07:00 ngày 10
+
+   Sửa được ở HAI nơi, Sheet luôn thắng:
+     · Google Sheet, tab "NoiDung", thêm một dòng có ô A ghi  gia_han
+       và ô B ghi giá trị. Sửa xong khoảng 5 phút trang tự đổi, KHÔNG cần deploy.
+       Đây là cách nên dùng.
+     · Hoặc dòng "giaHan" ngay dưới đây — nhưng phải sửa code và deploy lại.
+
+   ⚠ ĐẦU THÁNG SAU NHỚ XOÁ VỀ TRỐNG. Để nguyên "3ngay" thì tháng nào
+     cũng tự gia hạn thêm 3 ngày, không ai nhắc.
+------------------------------------------------------------ */
+const DEM_NGUOC = {
+  bat: true,              // false = giấu hẳn đồng hồ, phần còn lại của trang không đổi
+  ngayHetUuDai: 9,        // hết ngày này là hết ưu đãi. Đổi thành 15 thì đếm tới hết ngày 15.
+  giaHan: "",             // "" | "3ngay" | "24h" | "7h" — xem giải thích ở trên
+  hienTheGiaHan: true     // true = hiện thẻ "Đã gia hạn thêm 3 ngày" cho khách thấy
+};
+
+/* ------------------------------------------------------------
    4. ẢNH NGĂN XẾP Ở HERO (vuốt / bấm để đổi)
 ------------------------------------------------------------ */
 

@@ -76,6 +76,11 @@
   }
 
   function datSuat(n) {
+    /* Báo sang đồng hồ TRƯỚC lần thoát sớm bên dưới: lần gọi đầu tiên số
+       chưa đổi so với mặc định nhưng đồng hồ vẫn cần biết còn bao nhiêu suất. */
+    suatChoDongHo = n;
+    veDongHo();
+
     var khoa = n + "/" + UU_DAI.tong;
     if (khoa === khoaHienTai) return;
     khoaHienTai = khoa;
@@ -132,6 +137,14 @@
           // Chỉ nhận số hợp lý: 0 → tổng suất. Ngoài khoảng đó là gõ nhầm
           // (số âm, hoặc gõ 50 khi tổng chỉ 20) → bỏ qua, giữ nguyên số đang hiện.
           if (!isNaN(n) && n >= 0 && n <= UU_DAI.tong) datSuat(n);
+
+          /* Gia hạn ưu đãi — ô "gia_han" ở tab NoiDung. Chỉ đụng tới khi Sheet
+             thật sự có khoá đó, để người sửa noi-dung.js không bị Sheet trống ghi đè. */
+          if ("gia_han" in d || "giaHan" in d) {
+            var gh = docGiaHan(d.gia_han != null ? d.gia_han : d.giaHan);
+            if (gh !== null) DEM_NGUOC.giaHan = gh;
+            veDongHo();
+          }
         })
         .catch(function () {
           /* Sheet lỗi / mất mạng / bị chặn → KHÔNG đổi gì cả, giữ nguyên số
@@ -145,6 +158,133 @@
     setInterval(function () {
       if (document.visibilityState === "visible") keo();
     }, UU_DAI.chuKyPoll);
+  }
+
+  /* ==========================================================
+     2.5. ĐỒNG HỒ ĐẾM NGƯỢC ƯU ĐÃI — HERO + KHỐI 8
+     Đếm về 00:00 ngày (ngayHetUuDai + 1) hằng tháng, theo GIỜ VIỆT NAM.
+
+     ⚠ Cố ý KHÔNG dùng múi giờ của máy khách. Máy đặt sai múi giờ — chuyện
+       thường gặp trên điện thoại mua lại — sẽ ra hạn lệch cả tiếng, mà đây
+       là con số khách dựa vào để quyết định đăng ký ngay hay để mai.
+       Việt Nam không có giờ mùa hè nên +07 cố định là đúng quanh năm.
+
+     Số suất về 0 thì đồng hồ về 0 luôn, kể cả còn thời gian: còn giờ mà
+     hết suất thì cũng không giữ được suất nào, hiện số đang chạy là nói dối.
+     ========================================================== */
+  var LECH_VN = 7 * 3600000;
+
+  var BU_GIA_HAN  = { "3ngay": 3 * 86400000, "24h": 86400000, "7h": 7 * 3600000 };
+  var TEN_GIA_HAN = { "3ngay": "Đã gia hạn thêm 3 ngày",
+                      "24h":   "Đã gia hạn thêm 24 giờ",
+                      "7h":    "Đã gia hạn thêm 7 giờ" };
+
+  /* Người gõ vào ô Sheet là người, không phải máy. Nhận cả mấy cách viết
+     hay gặp; gõ sai hẳn thì trả null để bên gọi giữ nguyên giá trị cũ. */
+  var DOI_TEN_GIA_HAN = {
+    "3ngay": "3ngay", "3ngày": "3ngay", "3d": "3ngay",
+    "24h": "24h", "24gio": "24h", "24giờ": "24h", "1ngay": "24h", "1ngày": "24h",
+    "7h": "7h", "7gio": "7h", "7giờ": "7h"
+  };
+
+  function docGiaHan(gt) {
+    var v = String(gt == null ? "" : gt).trim().toLowerCase().replace(/[\s.\-_]/g, "");
+    if (v === "" || v === "khong" || v === "không") return "";
+    return DOI_TEN_GIA_HAN[v] || null;
+  }
+
+  var suatChoDongHo = null;   // null = chưa đọc được số suất → đồng hồ cứ chạy
+  var dsDongHo = [];
+  var nhipDongHo = null;
+
+  function oDongHo(goc, ten) { return goc.querySelector('[data-dh="' + ten + '"]'); }
+  function hai(n) { return n < 10 ? "0" + n : String(n); }
+
+  /* Mốc hết ưu đãi, tính bằng mốc thời gian tuyệt đối (epoch ms).
+     Date.UTC(...) - LECH_VN = đúng thời điểm 00:00 giờ Việt Nam của ngày đó. */
+  function hanUuDai(bayGio) {
+    var vn = new Date(bayGio + LECH_VN);
+    var ngayChot = (parseInt(DEM_NGUOC.ngayHetUuDai, 10) || 9) + 1;
+    var moc = Date.UTC(vn.getUTCFullYear(), vn.getUTCMonth(), ngayChot, 0, 0, 0) - LECH_VN;
+    return moc + (BU_GIA_HAN[DEM_NGUOC.giaHan] || 0);
+  }
+
+  function veDongHo() {
+    if (!dsDongHo.length) return;
+
+    var bayGio = Date.now();
+    var con = hanUuDai(bayGio) - bayGio;
+
+    var hetSuat = (suatChoDongHo !== null && suatChoDongHo <= 0);
+    var hetGio  = (con <= 0);
+    var het     = hetSuat || hetGio;
+
+    var ngay = 0, gio = 0, phut = 0, giay = 0, gap = false;
+    if (!het) {
+      ngay = Math.floor(con / 86400000);
+      gio  = Math.floor(con / 3600000) % 24;
+      phut = Math.floor(con / 60000) % 60;
+      giay = Math.floor(con / 1000) % 60;
+      gap  = con < 86400000;      // dưới 24 giờ mới đổi sang đỏ
+    }
+
+    /* Hết suất được báo trước hết giờ: khách hỏi "hết giờ hay hết suất" thì
+       câu trả lời đúng là hết suất — đó mới là lý do không đăng ký được. */
+    var loiNhan = !het ? ""
+      : hetSuat ? "Đã hết suất ưu đãi tháng này. Để lại số, Bảo Châu báo ngay khi có suất mới."
+                : "Ưu đãi tháng này đã kết thúc. Đợt mới mở lại từ ngày 1 tháng sau.";
+
+    var tenGiaHan = DEM_NGUOC.hienTheGiaHan ? (TEN_GIA_HAN[DEM_NGUOC.giaHan] || "") : "";
+
+    dsDongHo.forEach(function (goc) {
+      oDongHo(goc, "ngay").textContent = hai(ngay);
+      oDongHo(goc, "gio").textContent  = hai(gio);
+      oDongHo(goc, "phut").textContent = hai(phut);
+      oDongHo(goc, "giay").textContent = hai(giay);
+
+      goc.classList.toggle("dong-ho--gap", gap);
+      goc.classList.toggle("dong-ho--het", het);
+
+      oDongHo(goc, "nhan").textContent = het ? "Ưu đãi tháng này" : "Ưu đãi kết thúc sau";
+
+      var the = oDongHo(goc, "the-gia-han");
+      the.hidden = !tenGiaHan || het;
+      if (tenGiaHan) the.textContent = tenGiaHan;
+
+      var loi = oDongHo(goc, "loi-nhan");
+      loi.hidden = !loiNhan;
+      loi.textContent = loiNhan;
+
+      /* Trình đọc màn hình: đọc cả dãy số mỗi giây là tra tấn. Chỉ để một
+         nhãn tĩnh, cập nhật thầm lặng (aria-live="off" đặt sẵn trong HTML). */
+      oDongHo(goc, "day").setAttribute("aria-label", het ? loiNhan :
+        "Ưu đãi kết thúc sau " + ngay + " ngày " + gio + " giờ " + phut + " phút");
+    });
+  }
+
+  function khoiTaoDongHo() {
+    dsDongHo = $$("[data-dong-ho]");
+    if (!dsDongHo.length) return;
+
+    if (!DEM_NGUOC.bat) {
+      dsDongHo.forEach(function (g) { g.remove(); });
+      dsDongHo = [];
+      return;
+    }
+
+    /* Giá trị đặt sẵn trong noi-dung.js cũng phải qua cửa kiểm tra */
+    var gh = docGiaHan(DEM_NGUOC.giaHan);
+    DEM_NGUOC.giaHan = (gh === null) ? "" : gh;
+
+    veDongHo();
+    if (nhipDongHo) clearInterval(nhipDongHo);
+    nhipDongHo = setInterval(veDongHo, 1000);
+
+    /* Điện thoại khoá màn hình thì trình duyệt bóp nhịp setInterval, mở lại
+       đồng hồ sẽ trễ vài giây. Vẽ ngay một lần khi khách quay lại tab. */
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "visible") veDongHo();
+    });
   }
 
   /* ==========================================================
@@ -724,6 +864,7 @@
     khoiTaoForm();
     khoiTaoBamGoi();
     khoiTaoSuat();
+    khoiTaoDongHo();
 
     khoiTaoReveal();
     khoiTaoDemSo();

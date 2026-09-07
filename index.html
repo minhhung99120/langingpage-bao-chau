@@ -111,6 +111,25 @@
           <span class="o-nho__suat" data-suat="nhan">Còn 7/20 suất</span>
         </div>
       </div>
+
+      <!-- Đồng hồ đếm ngược ưu đãi — số do js/app.js điền, HTML để 00 làm chỗ đứng.
+           Đổi mốc ngày / gia hạn: js/noi-dung.js, mục DEM_NGUOC. -->
+      <div class="dong-ho hero__dong-ho dong-ho--sang" data-dong-ho>
+        <div class="dong-ho__dau">
+          <span class="dong-ho__nhan" data-dh="nhan">Ưu đãi kết thúc sau</span>
+          <span class="dong-ho__gia-han" data-dh="the-gia-han" hidden>Đã gia hạn</span>
+        </div>
+        <div class="dong-ho__day" data-dh="day" role="timer" aria-live="off">
+          <div class="dong-ho__o"><span class="dong-ho__so" data-dh="ngay">00</span><span class="dong-ho__don-vi">Ngày</span></div>
+          <span class="dong-ho__ngan" aria-hidden="true">:</span>
+          <div class="dong-ho__o"><span class="dong-ho__so" data-dh="gio">00</span><span class="dong-ho__don-vi">Giờ</span></div>
+          <span class="dong-ho__ngan" aria-hidden="true">:</span>
+          <div class="dong-ho__o"><span class="dong-ho__so" data-dh="phut">00</span><span class="dong-ho__don-vi">Phút</span></div>
+          <span class="dong-ho__ngan" aria-hidden="true">:</span>
+          <div class="dong-ho__o"><span class="dong-ho__so" data-dh="giay">00</span><span class="dong-ho__don-vi">Giây</span></div>
+        </div>
+        <p class="dong-ho__loi-nhan" data-dh="loi-nhan" hidden></p>
+      </div>
     </div>
 
     <div class="hero__media" data-reveal data-reveal-delay="120">
@@ -311,6 +330,24 @@
     <div class="cta-cuoi__chu" data-reveal>
       <h2 class="cta-cuoi__tieu-de">Để lại số, Bảo Châu sẽ liên hệ bạn ngay lập tức!</h2>
       <p class="doan cta-cuoi__doan">Giảm 1.000.000đ học phí — áp dụng mọi hạng, mọi gói. Giới hạn 20 suất, xoay vòng lại mỗi tháng. <span class="suat" data-suat="nhan">Còn 7/20 suất</span>.</p>
+      <!-- Đồng hồ đếm ngược ưu đãi — số do js/app.js điền, HTML để 00 làm chỗ đứng.
+           Đổi mốc ngày / gia hạn: js/noi-dung.js, mục DEM_NGUOC. -->
+      <div class="dong-ho cta-cuoi__dong-ho dong-ho--toi" data-dong-ho>
+        <div class="dong-ho__dau">
+          <span class="dong-ho__nhan" data-dh="nhan">Ưu đãi kết thúc sau</span>
+          <span class="dong-ho__gia-han" data-dh="the-gia-han" hidden>Đã gia hạn</span>
+        </div>
+        <div class="dong-ho__day" data-dh="day" role="timer" aria-live="off">
+          <div class="dong-ho__o"><span class="dong-ho__so" data-dh="ngay">00</span><span class="dong-ho__don-vi">Ngày</span></div>
+          <span class="dong-ho__ngan" aria-hidden="true">:</span>
+          <div class="dong-ho__o"><span class="dong-ho__so" data-dh="gio">00</span><span class="dong-ho__don-vi">Giờ</span></div>
+          <span class="dong-ho__ngan" aria-hidden="true">:</span>
+          <div class="dong-ho__o"><span class="dong-ho__so" data-dh="phut">00</span><span class="dong-ho__don-vi">Phút</span></div>
+          <span class="dong-ho__ngan" aria-hidden="true">:</span>
+          <div class="dong-ho__o"><span class="dong-ho__so" data-dh="giay">00</span><span class="dong-ho__don-vi">Giây</span></div>
+        </div>
+        <p class="dong-ho__loi-nhan" data-dh="loi-nhan" hidden></p>
+      </div>
       <div class="cta-cuoi__nut">
         <a class="nut nut--trang" href="tel:0378999120" data-bc="tel"><span data-bc="hotline-nut">Gọi 0378.999.120</span></a>
         <a class="nut nut--vien" href="https://zalo.me/0378999120" data-bc="zalo" target="_blank" rel="noopener">Chat Zalo</a>
