@@ -235,8 +235,13 @@ Mở Google Sheet, tab `NoiDung`, thêm một dòng:
 | `24h` | 00:00 ngày 11 |
 | `7h` | 07:00 ngày 10 |
 
-Sửa xong khoảng 5 phút trang tự đổi — **không push, không deploy**. Khách sẽ thấy thêm
-thẻ nhỏ "Đã gia hạn thêm 3 ngày" bên cạnh đồng hồ.
+Sửa xong khoảng 5 phút trang tự đổi — **không push, không deploy**.
+
+**Khách không hề biết là đã gia hạn.** Trang chỉ lặng lẽ đổi con số đang đếm, không có
+nhãn nào báo ra — nói cho khách biết hạn co giãn được thì lần sau họ không việc gì phải vội.
+
+Muốn biết Sheet đã ăn chưa thì nhìn **số ở ô "NGÀY"**: gõ `3ngay` xong nó phải nhảy lên
+`02` hoặc `03`. Vẫn `00` là chưa ăn — kiểm lại chữ `gia_han` ở cột A.
 
 > ⚠️ **Đầu tháng sau nhớ xoá ô đó về trống.** Để nguyên `3ngay` thì tháng nào cũng tự
 > gia hạn thêm 3 ngày và không ai nhắc anh.

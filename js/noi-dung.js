@@ -67,14 +67,16 @@ const UU_DAI = {
        Đây là cách nên dùng.
      · Hoặc dòng "giaHan" ngay dưới đây — nhưng phải sửa code và deploy lại.
 
+   Khách KHÔNG hề biết là đã gia hạn — trang chỉ lặng lẽ đổi con số đang đếm,
+   không có nhãn nào báo ra. Đây là chuyện nội bộ.
+
    ⚠ ĐẦU THÁNG SAU NHỚ XOÁ VỀ TRỐNG. Để nguyên "3ngay" thì tháng nào
      cũng tự gia hạn thêm 3 ngày, không ai nhắc.
 ------------------------------------------------------------ */
 const DEM_NGUOC = {
   bat: true,              // false = giấu hẳn đồng hồ, phần còn lại của trang không đổi
   ngayHetUuDai: 9,        // hết ngày này là hết ưu đãi. Đổi thành 15 thì đếm tới hết ngày 15.
-  giaHan: "",             // "" | "3ngay" | "24h" | "7h" — xem giải thích ở trên
-  hienTheGiaHan: true     // true = hiện thẻ "Đã gia hạn thêm 3 ngày" cho khách thấy
+  giaHan: ""              // "" | "3ngay" | "24h" | "7h" — xem giải thích ở trên
 };
 
 /* ------------------------------------------------------------

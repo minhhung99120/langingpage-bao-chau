@@ -354,18 +354,12 @@ a:hover{color:var(--color-navy)}
 .dong-ho--sang{background:var(--color-white);border-color:var(--xanh-sang)}
 .dong-ho--toi{background:rgba(255,255,255,0.07);border-color:rgba(201,225,244,0.26)}
 
-.dong-ho__dau{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+/* ⚠ KHÔNG hiện gì cho khách biết ưu đãi đã được gia hạn. Gia hạn là quyết
+   định nội bộ; nói ra chỉ dạy khách rằng hạn của Bảo Châu co giãn được, lần
+   sau không việc gì phải vội. */
 .dong-ho__nhan{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase}
 .dong-ho--sang .dong-ho__nhan{color:var(--color-navy)}
 .dong-ho--toi .dong-ho__nhan{color:var(--xanh-nhat)}
-
-/* Thẻ "Đã gia hạn thêm…" — app.js tự ẩn/hiện, mặc định ẩn trong HTML */
-.dong-ho__gia-han{
-  font-size:10.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
-  border:1px solid;border-radius:999px;padding:3px 8px;
-}
-.dong-ho--sang .dong-ho__gia-han{color:#1E6FB5;border-color:var(--xanh-sang);background:#F2F8FD}
-.dong-ho--toi .dong-ho__gia-han{color:var(--xanh-sang);border-color:rgba(201,225,244,0.34);background:rgba(255,255,255,0.06)}
 
 /* Bốn ô chia đều bề ngang. tabular-nums bắt buộc: thiếu nó thì mỗi giây
    đổi số là cả dãy nhích ngang một chút, nhìn rất rẻ tiền. */

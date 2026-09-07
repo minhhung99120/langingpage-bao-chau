@@ -175,9 +175,10 @@
   var LECH_VN = 7 * 3600000;
 
   var BU_GIA_HAN  = { "3ngay": 3 * 86400000, "24h": 86400000, "7h": 7 * 3600000 };
-  var TEN_GIA_HAN = { "3ngay": "Đã gia hạn thêm 3 ngày",
-                      "24h":   "Đã gia hạn thêm 24 giờ",
-                      "7h":    "Đã gia hạn thêm 7 giờ" };
+
+  /* ⚠ Gia hạn KHÔNG được lộ ra ngoài. Trang chỉ đổi con số đang đếm, không
+     có nhãn nào báo "đã gia hạn" — khách biết hạn co giãn được thì lần sau
+     không việc gì phải vội. Đây là yêu cầu của Hùng, đừng thêm lại. */
 
   /* Người gõ vào ô Sheet là người, không phải máy. Nhận cả mấy cách viết
      hay gặp; gõ sai hẳn thì trả null để bên gọi giữ nguyên giá trị cũ. */
@@ -234,8 +235,6 @@
       : hetSuat ? "Đã hết suất ưu đãi tháng này. Để lại số, Bảo Châu báo ngay khi có suất mới."
                 : "Ưu đãi tháng này đã kết thúc. Đợt mới mở lại từ ngày 1 tháng sau.";
 
-    var tenGiaHan = DEM_NGUOC.hienTheGiaHan ? (TEN_GIA_HAN[DEM_NGUOC.giaHan] || "") : "";
-
     dsDongHo.forEach(function (goc) {
       oDongHo(goc, "ngay").textContent = hai(ngay);
       oDongHo(goc, "gio").textContent  = hai(gio);
@@ -246,10 +245,6 @@
       goc.classList.toggle("dong-ho--het", het);
 
       oDongHo(goc, "nhan").textContent = het ? "Ưu đãi tháng này" : "Ưu đãi kết thúc sau";
-
-      var the = oDongHo(goc, "the-gia-han");
-      the.hidden = !tenGiaHan || het;
-      if (tenGiaHan) the.textContent = tenGiaHan;
 
       var loi = oDongHo(goc, "loi-nhan");
       loi.hidden = !loiNhan;
