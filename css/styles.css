@@ -482,6 +482,10 @@ a:hover{color:var(--color-navy)}
 .hoc-phi__dau{display:grid;gap:14px;max-width:720px}
 .hoc-phi__dau .doan{font-size:clamp(15px,1.5vw,17px);line-height:1.65;color:var(--xanh-dam)}
 .hoc-phi__than{display:grid;gap:22px}
+/* ⚠ Thùng chứa bảng giá PHẢI có gap. Nó bọc .tab-bar và các .tab-panel; để
+   display:block như trước thì mép thẻ giá dính sát đáy thanh chọn hạng
+   (đo được đúng 0px). 22px = cùng nhịp với .hoc-phi__than và .tab-panel. */
+.hoc-phi__bang{display:grid;gap:22px}
 
 .tab-bar{
   position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;
@@ -709,7 +713,6 @@ a:hover{color:var(--color-navy)}
 .cta-cuoi__doan{font-size:clamp(15px,1.5vw,17px);line-height:1.7;color:var(--xanh-sang)}
 .cta-cuoi__doan .suat{font-weight:600;color:var(--color-white);font-variant-numeric:tabular-nums}
 .cta-cuoi__nut{display:flex;gap:12px;flex-wrap:wrap}
-.cta-cuoi__gio{margin:0;font-size:14.5px;line-height:1.65;color:var(--xanh-nhat)}
 .cta-cuoi__form{justify-self:stretch;max-width:440px;width:100%}
 
 /* ---------- 16. FORM ĐĂNG KÝ (dùng chung Hero + Khối 8) ---------- */
